@@ -1,0 +1,237 @@
+/* ===== Search page (also uses dash.css for the navbar and listing cards) ===== */
+.search-page {
+  padding-top: 36px;
+  padding-bottom: 90px;
+}
+
+/* Title, grid/map switch and sort */
+.search-top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+.search-top h1 {
+  margin-bottom: 8px;
+  font-size: 48px;
+  line-height: 1.1;
+}
+.search-tools {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.view-toggle {
+  display: flex;
+  padding: 4px;
+  border-radius: 12px;
+  background: var(--light);
+}
+.view-toggle a {
+  padding: 9px 16px;
+  border-radius: 9px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--grey);
+}
+.view-toggle .view-on {
+  background: #fff;
+  font-weight: 700;
+  color: var(--dark);
+}
+.search-select {
+  padding: 13px 14px;
+  border: 1.5px solid #D5DCD4;
+  border-radius: 12px;
+  background: #fff;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* Filters on the left, results on the right */
+.search-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 36px;
+}
+.filter-toggle,
+.filter-button {
+  display: none;
+}
+.filters {
+  position: sticky;
+  top: 100px;
+  flex: none;
+  width: 300px;
+  padding: 26px 24px;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+}
+.filters-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+.filters-top h2 {
+  font-size: 19px;
+}
+.filters-top a {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--green);
+}
+.filter-group {
+  margin-bottom: 24px;
+}
+.filter-label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--grey);
+}
+.filter-select {
+  width: 100%;
+}
+
+/* Round choices (only one can be picked in each group) */
+.pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.pill input {
+  display: none;
+}
+.pill span {
+  display: block;
+  padding: 9px 15px;
+  border: 1.5px solid #D5DCD4;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.pill input:checked + span {
+  border-color: var(--dark);
+  background: var(--dark);
+  color: #fff;
+}
+
+.amenity {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.amenity input {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  accent-color: var(--green);
+}
+.filters .btn {
+  width: 100%;
+  padding: 16px;
+  border: 0;
+  font-family: inherit;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+/* Results */
+.results {
+  flex: 1;
+  min-width: 0;
+}
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 26px;
+}
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+.tags span {
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: var(--light);
+  font-size: 12px;
+  font-weight: 600;
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 44px;
+}
+.pagination a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid #D5DCD4;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.pagination .page-on {
+  border-color: var(--dark);
+  background: var(--dark);
+  color: #fff;
+}
+
+/* Search on phones: filters hide behind a Filters button */
+@media (max-width: 800px) {
+  .search-page {
+    padding-bottom: 56px;
+  }
+  .search-top h1 {
+    font-size: 32px;
+  }
+  .search-tools {
+    width: 100%;
+  }
+  .search-tools .search-select {
+    flex: 1;
+  }
+  .search-layout {
+    flex-direction: column;
+    gap: 24px;
+  }
+  .filter-button {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    border: 1.5px solid #D5DCD4;
+    border-radius: 12px;
+    text-align: center;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .filters {
+    display: none;
+    position: static;
+    width: 100%;
+  }
+  .filter-toggle:checked ~ .filters {
+    display: block;
+  }
+  .results {
+    width: 100%;
+  }
+  .tags {
+    justify-content: center;
+  }
+}

@@ -1,0 +1,166 @@
+/* ===== My credit page (also uses dash.css for the navbar) ===== */
+.credit-page {
+  padding-top: 48px;
+  padding-bottom: 90px;
+}
+
+.credit-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.credit-intro {
+  margin: 6px 0 32px;
+  font-size: 16px;
+}
+
+/* Big green balance box */
+.balance-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-bottom: 28px;
+  padding: 34px 36px;
+  border-radius: 28px;
+  background: linear-gradient(135deg, #0F3D22 0%, #16803C 100%);
+  color: #fff;
+}
+
+.balance-label {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #BFE3CB;
+}
+
+.balance-amount {
+  margin-top: 4px;
+  font-size: 56px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.balance-card .btn {
+  padding: 16px 24px;
+}
+
+/* History list */
+.history {
+  padding: 0;
+  overflow: hidden;
+  border-radius: 28px;
+}
+
+.history h3 {
+  padding: 24px;
+  font-size: 22px;
+}
+
+.history-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 24px;
+  border-top: 1px solid var(--line);
+}
+
+.history-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex: none;
+  border-radius: 12px;
+  font-weight: 800;
+}
+
+.icon-plus {
+  background: #E9F5EC;
+  color: var(--green);
+}
+
+.icon-minus {
+  background: var(--light);
+  color: var(--grey);
+}
+
+.history-info {
+  flex: 1;
+}
+
+.history-info .muted {
+  margin-top: 3px;
+  font-size: 13px;
+}
+
+.amount-plus {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--green);
+}
+
+.amount-minus {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--grey);
+}
+
+/* How credit works */
+.credit-note {
+  margin-top: 20px;
+  padding: 24px 26px;
+  border: 1px solid #FAD9C3;
+  border-radius: 22px;
+  background: #FFF8F3;
+  font-size: 15px;
+  line-height: 1.65;
+  color: #33403A;
+}
+
+/* Shown when there is no credit */
+.no-credit {
+  padding: 36px;
+  text-align: center;
+}
+
+.no-credit h3 {
+  margin-bottom: 6px;
+  font-size: 22px;
+}
+
+/* ===== PHONE ===== */
+@media (max-width: 800px) {
+
+  .credit-page {
+    padding-top: 28px;
+  }
+
+  .balance-card {
+    padding: 24px;
+  }
+
+  .balance-amount {
+    font-size: 44px;
+  }
+
+  .balance-card .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .history h3 {
+    padding: 20px;
+  }
+
+  .history-row {
+    padding: 16px 20px;
+  }
+
+  .credit-note {
+    padding: 20px;
+  }
+}

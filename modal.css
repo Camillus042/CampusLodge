@@ -1,0 +1,392 @@
+/* ===== MODALS (pop-up boxes) ===== */
+
+/* The dark background behind the box. Hidden until JS adds "open" */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(13, 27, 20, 0.55);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 100;
+}
+
+.modal-overlay.open {
+  display: flex;
+}
+
+/* The white box */
+.modal-box {
+  background: #fff;
+  width: 100%;
+  max-width: 520px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 24px;
+}
+
+/* Title and close button */
+.modal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--line);
+}
+
+.modal-head h2 {
+  font-size: 20px;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 28px;
+  line-height: 1;
+  color: var(--grey);
+  cursor: pointer;
+}
+
+/* Middle part */
+.modal-body {
+  padding: 24px;
+}
+
+/* Buttons at the bottom */
+.modal-foot {
+  display: flex;
+  gap: 12px;
+  padding: 0 24px 24px;
+}
+
+.modal-foot .btn {
+  flex: 1;
+  font-family: inherit;
+  font-size: 15px;
+  text-align: center;
+}
+
+/* ===== PAYMENT MODAL ===== */
+.pay-room {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 12px;
+  margin-bottom: 20px;
+}
+
+.pay-room .photo-box {
+  width: 90px;
+  height: 80px;
+  border-radius: 12px;
+  flex: none;
+}
+
+.pay-room p {
+  font-size: 14px;
+}
+
+.pay-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.pay-row.total {
+  border-bottom: none;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.pay-notes {
+  background: var(--light);
+  border-radius: 14px;
+  padding: 16px;
+  margin: 8px 0 16px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.pay-notes p {
+  margin-bottom: 10px;
+}
+
+.pay-notes p:last-child {
+  margin-bottom: 0;
+}
+
+.use-credit {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  border: 1.5px solid var(--green);
+  background: #F1FAF4;
+  border-radius: 14px;
+  padding: 14px;
+  margin-bottom: 16px;
+  cursor: pointer;
+}
+
+.use-credit input {
+  margin-top: 3px;
+  accent-color: var(--green);
+}
+
+.use-credit span {
+  font-size: 13px;
+  color: var(--grey);
+  display: block;
+  margin-top: 2px;
+}
+
+.test-note {
+  background: #FFF1EA;
+  color: #9A3F14;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 12px;
+  padding: 10px;
+}
+
+/* ===== RECEIPT MODAL ===== */
+.receipt-top {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.receipt-tick {
+  display: inline-flex;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--green);
+  color: #fff;
+  font-size: 32px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.receipt-top h2 {
+  font-size: 26px;
+  margin-bottom: 6px;
+}
+
+.receipt-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px dashed #D5DCD4;
+  font-size: 15px;
+}
+
+.receipt-line span:first-child {
+  color: var(--grey);
+}
+
+.receipt-line strong {
+  text-align: right;
+}
+
+.receipt-message {
+  background: #E9F5EC;
+  color: #0F6B31;
+  border-radius: 14px;
+  padding: 14px 16px;
+  margin-top: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+/* Phone: buttons stack, box slides to the bottom */
+@media (max-width: 800px) {
+  .modal-overlay {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .modal-box {
+    max-width: 100%;
+    max-height: 92vh;
+    border-radius: 24px 24px 0 0;
+  }
+
+  .modal-foot {
+    flex-direction: column;
+  }
+}
+
+/* ===== DESKTOP ONLY: wider, shorter boxes so nothing needs scrolling ===== */
+@media (min-width: 801px) {
+
+  /* Payment box: two columns */
+  #payment-modal .modal-box {
+    max-width: 860px;
+  }
+
+  #payment-modal .modal-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 28px;
+    padding: 20px 24px;
+  }
+
+  #payment-modal .pay-room {
+    grid-column: 1;
+    grid-row: 1;
+    margin-bottom: 8px;
+  }
+
+  #payment-modal .pay-row {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  #payment-modal .pay-row.total {
+    grid-row: 3;
+  }
+
+  #payment-modal .pay-notes {
+    grid-column: 2;
+    grid-row: 1 / 4;
+    margin: 0 0 16px;
+  }
+
+  #payment-modal .use-credit {
+    grid-column: 2;
+    grid-row: 4;
+    margin-bottom: 0;
+  }
+
+  #payment-modal .test-note {
+    grid-column: 1;
+    grid-row: 4;
+    align-self: end;
+  }
+
+  /* Receipt box: a bit wider and tighter */
+  #receipt-modal .modal-box {
+    max-width: 600px;
+  }
+
+  #receipt-modal .modal-body {
+    padding: 16px 24px;
+  }
+
+  #receipt-modal .receipt-top {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-align: left;
+    margin-bottom: 8px;
+  }
+
+  #receipt-modal .receipt-tick {
+    width: 52px;
+    height: 52px;
+    font-size: 26px;
+    margin-bottom: 0;
+    flex: none;
+  }
+
+  #receipt-modal .receipt-top h2 {
+    font-size: 22px;
+    margin-bottom: 2px;
+  }
+
+  #receipt-modal .receipt-line {
+    padding: 8px 0;
+    font-size: 14px;
+  }
+
+  #receipt-modal .receipt-message {
+    padding: 10px 14px;
+    margin-top: 12px;
+    font-size: 13px;
+  }
+
+  #receipt-modal .modal-foot {
+    padding-bottom: 20px;
+  }
+
+  #receipt-modal .modal-foot .btn {
+    padding: 14px 10px;
+  }
+}
+
+/* ===== PHONE ONLY: shorter receipt so nothing needs scrolling ===== */
+@media (max-width: 800px) {
+
+  #receipt-modal .modal-head {
+    padding: 14px 20px;
+  }
+
+  #receipt-modal .modal-body {
+    padding: 14px 20px 8px;
+  }
+
+  #receipt-modal .receipt-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-align: left;
+    margin-bottom: 6px;
+  }
+
+  #receipt-modal .receipt-tick {
+    width: 44px;
+    height: 44px;
+    font-size: 22px;
+    margin-bottom: 0;
+    flex: none;
+  }
+
+  #receipt-modal .receipt-top h2 {
+    font-size: 19px;
+    margin-bottom: 2px;
+  }
+
+  /* The green message below already says this, so hide it here */
+  #receipt-modal .receipt-top p {
+    display: none;
+  }
+
+  #receipt-modal .receipt-line {
+    padding: 6px 0;
+    font-size: 13px;
+  }
+
+  #receipt-modal .receipt-message {
+    padding: 10px 12px;
+    margin-top: 10px;
+    font-size: 12px;
+  }
+
+  /* Message button on top, the other two side by side */
+  #receipt-modal .modal-foot {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 8px 20px 16px;
+  }
+
+  #receipt-modal .modal-foot .btn-whatsapp {
+    grid-column: 1 / 3;
+  }
+
+  #receipt-modal .modal-foot .btn {
+    padding: 12px 8px;
+    font-size: 14px;
+  }
+}

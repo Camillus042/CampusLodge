@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign up | CampusLodge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="modal.css">
+</head>
+<body>
+
+  <div class="auth">
+  <div class="auth-card">
+
+    <!-- Green side (hidden on phones) -->
+    <div class="auth-art">
+      <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="CampusLodge logo">
+        CampusLodge
+      </a>
+      <div>
+        <h2>Your next <span class="orange-word">home</span> is a few taps away.</h2>
+        <ul class="auth-points">
+          <li>Search hostels and apartments near AKSU</li>
+          <li>Save the rooms you like</li>
+          <li>Reserve safely through the platform</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Form side -->
+    <div class="auth-form-side">
+      <div class="auth-box">
+        <a href="index.html" class="logo auth-logo">
+          <img src="images/logo.png" alt="CampusLodge logo">
+          CampusLodge
+        </a>
+
+        <h1>Create your <span class="green-word">account</span></h1>
+        <p class="muted">Join CampusLodge to search, save and reserve rooms near AKSU.</p>
+
+        <form action="check-email.html">
+          <!-- <p class="auth-label">I am a</p> -->
+          <div class="account-type">
+            <label><input type="radio" name="account-type" value="student" checked><span>Student</span></label>
+            <label><input type="radio" name="account-type" value="landlord"><span>Landlord / Agent</span></label>
+            <label><input type="radio" name="account-type" value="hostel"><span>Hostel manager</span></label>
+          </div>
+
+          <!-- Student -->
+          <div class="type-fields" data-type="student">
+            <div class="field-row">
+              <div class="field">
+                <label for="s-name">Full name</label>
+                <input type="text" id="s-name" placeholder="Your full name">
+                <p class="error-text" id="s-name-error" hidden>Enter your full name.</p>
+              </div>
+              <div class="field">
+                <label for="s-phone">Phone number</label>
+                <input type="tel" id="s-phone" placeholder="080 0000 0000">
+                <p class="error-text" id="s-phone-error" hidden>Enter a valid phone number.</p>
+              </div>
+            </div>
+            <div class="field">
+              <label for="s-email">Email</label>
+              <input type="email" id="s-email" placeholder="you@example.com">
+              <p class="error-text" id="s-email-error" hidden>Enter a valid email address.</p>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="s-password">Password</label>
+                <input type="password" id="s-password" placeholder="At least 8 characters">
+                <p class="error-text" id="s-password-error" hidden>Use at least 8 characters.</p>
+              </div>
+              <div class="field">
+                <label for="s-confirm">Confirm password</label>
+                <input type="password" id="s-confirm" placeholder="Repeat it">
+                <p class="error-text" id="s-confirm-error" hidden>The passwords do not match.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Landlord / Agent -->
+          <div class="type-fields" data-type="landlord">
+            <div class="field-row">
+              <div class="field">
+                <label for="l-name">Full name</label>
+                <input type="text" id="l-name" placeholder="Your full name">
+                <p class="error-text" id="l-name-error" hidden>Enter your full name.</p>
+              </div>
+              <div class="field">
+                <label for="l-phone">Phone / WhatsApp number</label>
+                <input type="tel" id="l-phone" placeholder="080 0000 0000">
+                <p class="error-text" id="l-phone-error" hidden>Enter a valid phone number.</p>
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="l-email">Email</label>
+                <input type="email" id="l-email" placeholder="you@example.com">
+                <p class="error-text" id="l-email-error" hidden>Enter a valid email address.</p>
+              </div>
+              <div class="field">
+                <label for="l-role">I am a</label>
+                <select id="l-role">
+                  <option>Landlord</option>
+                  <option>Agent</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label for="l-id">Photo of your ID or proof of ownership</label>
+              <input type="file" id="l-id">
+              <p class="error-text" id="l-id-error" hidden>Add a photo of your ID or proof of ownership.</p>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="l-password">Password</label>
+                <input type="password" id="l-password" placeholder="At least 8 characters">
+                <p class="error-text" id="l-password-error" hidden>Use at least 8 characters.</p>
+              </div>
+              <div class="field">
+                <label for="l-confirm">Confirm password</label>
+                <input type="password" id="l-confirm" placeholder="Repeat it">
+                <p class="error-text" id="l-confirm-error" hidden>The passwords do not match.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hostel manager -->
+          <div class="type-fields" data-type="hostel">
+            <div class="field-row">
+              <div class="field">
+                <label for="h-name">Full name</label>
+                <input type="text" id="h-name" placeholder="Your full name">
+                <p class="error-text" id="h-name-error" hidden>Enter your full name.</p>
+              </div>
+              <div class="field">
+                <label for="h-phone">Phone / WhatsApp number</label>
+                <input type="tel" id="h-phone" placeholder="080 0000 0000">
+                <p class="error-text" id="h-phone-error" hidden>Enter a valid phone number.</p>
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="h-email">Email</label>
+                <input type="email" id="h-email" placeholder="you@example.com">
+                <p class="error-text" id="h-email-error" hidden>Enter a valid email address.</p>
+              </div>
+              <div class="field">
+                <label for="h-hostel">Hostel name</label>
+                <input type="text" id="h-hostel" placeholder="e.g. Block B Hostel">
+                <p class="error-text" id="h-hostel-error" hidden>Enter the hostel name.</p>
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="h-gender">Hostel for</label>
+                <select id="h-gender">
+                  <option>Male students</option>
+                  <option>Female students</option>
+                  <option>Mixed</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="h-proof">Letter or ID showing you manage it</label>
+                <input type="file" id="h-proof">
+                <p class="error-text" id="h-proof-error" hidden>Add a letter or ID showing you manage the hostel.</p>
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="h-password">Password</label>
+                <input type="password" id="h-password" placeholder="At least 8 characters">
+                <p class="error-text" id="h-password-error" hidden>Use at least 8 characters.</p>
+              </div>
+              <div class="field">
+                <label for="h-confirm">Confirm password</label>
+                <input type="password" id="h-confirm" placeholder="Repeat it">
+                <p class="error-text" id="h-confirm-error" hidden>The passwords do not match.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Agreement tick box -->
+          <div class="agree">
+            <label class="agree-row">
+              <input type="checkbox" id="agree">
+              <span>I agree to the <a href="terms.html">Terms</a> and the <button type="button" class="agree-link" id="open-agreement">Fair Use Agreement</button>.</span>
+            </label>
+            <p class="error-text" id="agree-error" hidden>Tick the box to agree before you create your account.</p>
+          </div>
+
+          <button type="submit" class="btn btn-green">Create account</button>
+        </form>
+
+        <p class="auth-switch">Already have an account? <a href="login.html">Login</a></p>
+      </div>
+    </div>
+
+  </div>
+  </div>
+
+   <!-- FAIR USE AGREEMENT POP-UP -->
+  <div class="modal-overlay" id="agreement-modal">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h2>Fair Use Agreement</h2>
+        <button type="button" class="modal-close" data-close="agreement-modal" aria-label="Close">&times;</button>
+      </div>
+
+      <div class="modal-body agreement-body">
+        <h3>Everyone promises</h3>
+        <ul>
+          <li>The details I give are true.</li>
+          <li>I will only upload real receipts and real photos.</li>
+          <li>I will not make false claims or false reports.</li>
+          <li>I will use one account only.</li>
+        </ul>
+
+        <h3>Landlords, agents and hostel managers also promise</h3>
+        <ul>
+          <li>I own the room or I have the owner's permission to rent it.</li>
+          <li>My photos and details are real.</li>
+          <li>I will not give a held room to someone else.</li>
+          <li>I will hand over the key on the agreed day and give a receipt for the rent.</li>
+          <li>My ID and phone number may be given to the police if I commit fraud.</li>
+        </ul>
+
+        <p class="agreement-note">Cheating can lead to a warning, frozen credit or a ban. Serious fraud may be reported to the police and can lead to legal action.</p>
+      </div>
+
+      <div class="modal-foot">
+        <button type="button" class="btn btn-green" data-close="agreement-modal">I understand</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Show only the fields for the chosen account type
+    var radios = document.querySelectorAll('input[name="account-type"]');
+    var groups = document.querySelectorAll(".type-fields");
+
+    function showFields() {
+      var chosen = document.querySelector('input[name="account-type"]:checked').value;
+      groups.forEach(function (group) {
+        group.hidden = group.dataset.type !== chosen;
+      });
+    }
+
+    radios.forEach(function (radio) {
+      radio.addEventListener("change", showFields);
+    });
+    showFields();
+
+    // Fair Use Agreement pop-up
+    var agreementModal = document.getElementById("agreement-modal");
+
+    document.getElementById("open-agreement").addEventListener("click", function () {
+      agreementModal.classList.add("open");
+    });
+
+    // The X and "I understand" buttons close the box
+    document.querySelectorAll("[data-close]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        document.getElementById(button.dataset.close).classList.remove("open");
+      });
+    });
+
+    // Clicking the dark area outside the box also closes it
+    agreementModal.addEventListener("click", function (event) {
+      if (event.target === agreementModal) {
+        agreementModal.classList.remove("open");
+      }
+    });
+  </script>
+
+</body>
+</html>

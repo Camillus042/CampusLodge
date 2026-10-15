@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add listing | CampusLodge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="dash.css">
+  <link rel="stylesheet" href="lister.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a href="lister.html" class="logo">
+        <img src="images/logo.png" alt="CampusLodge logo">
+        CampusLodge
+      </a>
+
+      <!-- Menu button for phones (hidden on bigger screens) -->
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="menu-button">&#9776;</label>
+
+      <nav class="navbar-links dashboard-nav">
+        <a href="lister.html" class="nav-link">My listings</a>
+        <a href="add-listing.html" class="nav-link nav-active">Add listing</a>
+        <a href="lister.html#verify" class="nav-link">Verification</a>
+        <a href="profile.html" class="nav-user"><span class="avatar avatar-orange">U</span>[Business name]</a>
+        <a href="index.html" class="btn btn-white">Log out</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container lister-page">
+    <a href="lister.html" class="back-link">&larr; Back to my listings</a>
+    <h1 class="title">Add a <span class="green-word">listing</span></h1>
+
+    <div class="add-layout">
+
+      <!-- THE FORM (action is temporary, JavaScript replaces it later) -->
+      <form class="add-form" action="lister.html">
+
+        <p class="error-banner" id="form-error" hidden>Fix 3 things before you submit: the price, at least one photo and the map pin.</p>
+
+        <div class="form-section">
+          <h2>The basics</h2>
+          <p class="field-title">This is a</p>
+          <div class="account-type type-choice">
+            <label><input type="radio" name="listing-type" value="apartment" checked><span>Apartment</span></label>
+            <label><input type="radio" name="listing-type" value="hostel"><span>Campus hostel</span></label>
+          </div>
+
+          <div class="field">
+            <label for="title">Listing title</label>
+            <input type="text" id="title" placeholder="e.g. Self-contain, Back Gate">
+            <p class="error-text" id="title-error" hidden>Enter a title for the listing.</p>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="room-type">Room type</label>
+              <select id="room-type">
+                <option>Single room</option>
+                <option>Self-contain</option>
+                <option>Shared room</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="area">Area</label>
+              <select id="area">
+                <option>Back Gate</option>
+                <option>Ekim</option>
+                <option>Eket Road</option>
+                <option>Ikot Ekong</option>
+                <option>Ikot Enin</option>
+                <option>Ikot Oyoro</option>
+                <option>Mansion</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h2>Price and distance</h2>
+          <div class="field-row">
+            <div class="field">
+              <label for="price">Price per year (&#8358;)</label>
+              <input type="text" id="price" placeholder="e.g. 230000">
+              <p class="error-text" id="price-error" hidden>Enter the yearly price as a number.</p>
+            </div>
+            <div class="field">
+              <label for="distance">Distance from campus (minutes)</label>
+              <input type="text" id="distance" placeholder="e.g. 5">
+            </div>
+          </div>
+        </div>
+
+        <!-- Only shown when "Campus hostel" is chosen -->
+        <div class="form-section" id="hostel-section" hidden>
+          <h2>Hostel details <span class="section-note">(campus hostels only)</span></h2>
+          <div class="field-row">
+            <div class="field">
+              <p class="field-title">Hostel gender</p>
+              <div class="account-type type-choice">
+                <label><input type="radio" name="hostel-gender" value="male" checked><span>Male</span></label>
+                <label><input type="radio" name="hostel-gender" value="female"><span>Female</span></label>
+                <label><input type="radio" name="hostel-gender" value="mixed"><span>Mixed</span></label>
+              </div>
+            </div>
+            <div class="field">
+              <label for="beds">Beds available</label>
+              <input type="text" id="beds" placeholder="e.g. 4">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h2>Amenities</h2>
+          <div class="amenity-picks">
+            <label class="amenity-pick"><input type="checkbox">Water</label>
+            <label class="amenity-pick"><input type="checkbox">Light</label>
+            <label class="amenity-pick"><input type="checkbox">Security</label>
+            <label class="amenity-pick"><input type="checkbox">WiFi</label>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h2>Description</h2>
+          <div class="field">
+            <label for="description">Tell students about the room</label>
+            <textarea id="description" rows="5" placeholder="Condition of the room, rules of the house, what is nearby..."></textarea>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h2>Photos</h2>
+          <label class="upload-area">
+            <input type="file" accept="image/*" multiple hidden>
+            <span class="upload-icon">&uarr;</span>
+            <strong>Add photos</strong>
+            <span class="muted">Add several clear photos of the room, the bathroom and the outside.</span>
+          </label>
+          <p class="error-text" id="photo-error" hidden>Add at least one photo.</p>
+          <div class="thumb-row">
+            <div class="photo-box thumb"><img src="images/room-1.svg" alt="Photo 1"></div>
+            <div class="photo-box thumb"><img src="images/room-2.svg" alt="Photo 2"></div>
+            <div class="photo-box thumb"><img src="images/room-3.svg" alt="Photo 3"></div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h2>Location</h2>
+          <p class="muted location-text">Many addresses do not show up in searches, so drop a pin where the property is.</p>
+          <!-- The real map (Leaflet) is added in the JavaScript stage -->
+          <div class="pick-map" id="pick-map">
+            <span class="pin"></span>
+            <span class="map-hint">Tap the map to move the pin</span>
+          </div>
+          <p class="error-text" id="pin-error" hidden>Drop a pin on the map.</p>
+        </div>
+
+        <div class="form-section">
+          <h2>Contact</h2>
+          <div class="field-row">
+            <div class="field">
+              <label for="whatsapp">WhatsApp number</label>
+              <input type="tel" id="whatsapp" placeholder="080 0000 0000">
+            </div>
+            <div class="field">
+              <label for="call-number">Phone number for calls</label>
+              <input type="tel" id="call-number" placeholder="080 0000 0000">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-buttons">
+          <button type="submit" class="btn btn-green">Submit for approval</button>
+          <a href="lister.html" class="btn btn-white">Save as draft</a>
+        </div>
+      </form>
+
+      <!-- WHAT HAPPENS NEXT -->
+      <aside class="next-box">
+        <h3>What happens next</h3>
+        <div class="next-step">
+          <span class="next-number">1</span>
+          <p><strong>You submit</strong><br>Your listing is saved as Pending.</p>
+        </div>
+        <div class="next-step">
+          <span class="next-number">2</span>
+          <p><strong>An admin reviews it</strong><br>Nothing goes live before it is approved.</p>
+        </div>
+        <div class="next-step">
+          <span class="next-number">3</span>
+          <p><strong>It goes live</strong><br>Students can find it, message you and reserve the room.</p>
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <script>
+    // Show the "Hostel details" part only for campus hostels
+    var typeRadios = document.querySelectorAll('input[name="listing-type"]');
+    var hostelSection = document.getElementById("hostel-section");
+
+    function showHostelPart() {
+      var chosen = document.querySelector('input[name="listing-type"]:checked').value;
+      hostelSection.hidden = chosen !== "hostel";
+    }
+
+    typeRadios.forEach(function (radio) {
+      radio.addEventListener("change", showHostelPart);
+    });
+    showHostelPart();
+  </script>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-about">
+          <a href="lister.html" class="logo">
+            <img src="images/logo.png" alt="CampusLodge logo">
+            CampusLodge
+          </a>
+          <p>Find conducive hostels and very affordable apartments around AKSU.</p>
+        </div>
+        <div class="footer-columns">
+          <div>
+            <h4>Lister</h4>
+            <a href="lister.html">My listings</a>
+            <a href="add-listing.html">Add listing</a>
+            <a href="contact.html">Contact</a>
+          </div>
+          <div>
+            <h4>Company</h4>
+            <a href="about.html">About</a>
+            <a href="terms.html">Terms</a>
+            <a href="privacy.html">Privacy</a>
+          </div>
+        </div>
+      </div>
+      <p class="copyright">&copy; 2026 CampusLodge. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

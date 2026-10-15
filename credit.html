@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My credit | CampusLodge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="dash.css">
+  <link rel="stylesheet" href="credit.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a href="dashboard.html" class="logo">
+        <img src="images/logo.png" alt="CampusLodge logo">
+        CampusLodge
+      </a>
+      <!-- Credit balance for phones (hidden on bigger screens) -->
+      <a href="credit.html" class="credit-chip phone-credit">₦5,000 credit</a>
+
+      <!-- Menu button for phones (hidden on bigger screens) -->
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="menu-button">&#9776;</label>
+
+      <nav class="navbar-links dashboard-nav">
+        <a href="dashboard.html" class="nav-link">Home</a>
+        <a href="search.html" class="nav-link">Search</a>
+        <a href="dashboard.html#saved" class="nav-link">Saved</a>
+        <a href="reservation.html" class="nav-link">Reservations</a>
+        <a href="notifications.html" class="nav-link">Notifications<span class="nav-dot"></span></a>
+        <a href="credit.html" class="credit-chip nav-credit">₦5,000 credit</a>
+        <a href="profile.html" class="nav-user"><span class="avatar">E</span>Ekaette</a>
+        <a href="index.html" class="btn btn-white">Log out</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container credit-page">
+    <div class="credit-inner">
+      <h1 class="title">My <span class="green-word">credit</span></h1>
+      <p class="big-text credit-intro">Credit comes from a booking fee you did not use. It is taken off your next booking fee.</p>
+
+      <!-- BALANCE -->
+      <div class="balance-card">
+        <div>
+          <p class="balance-label">Available credit</p>
+          <p class="balance-amount">₦5,000</p>
+        </div>
+        <a href="search.html" class="btn btn-white">Find a room to use it on</a>
+      </div>
+
+      <!-- HISTORY -->
+      <div class="card history">
+        <h3>History</h3>
+
+        <div class="history-row">
+          <span class="history-icon icon-plus">+</span>
+          <div class="history-info">
+            <strong>Credit added</strong>
+            <p class="muted">Self-contain, Back Gate. Your reasons were approved on 14 Oct.</p>
+          </div>
+          <strong class="amount-plus">+₦5,000</strong>
+        </div>
+
+        <div class="history-row">
+          <span class="history-icon icon-minus">&minus;</span>
+          <div class="history-info">
+            <strong>Credit used</strong>
+            <p class="muted">Applied to Single room, Ekim. Not used yet.</p>
+          </div>
+          <strong class="amount-minus">&minus;₦0</strong>
+        </div>
+      </div>
+
+      <!-- HOW IT WORKS -->
+      <div class="credit-note">
+        <strong>How credit works.</strong> It never expires during the semester, it cannot be withdrawn as cash, and it is used when you tick &ldquo;Use my credit&rdquo; on the payment pop-up. You can get credit up to 3 times each semester, and it cannot be used on a room from the same owner.
+      </div>
+
+      <!-- SHOWN INSTEAD OF THE ABOVE WHEN THERE IS NO CREDIT (JavaScript will switch it on later) -->
+      <div class="card no-credit" hidden>
+        <h3>You have no credit</h3>
+        <p class="muted">Credit appears here when a booking fee is returned to you as credit.</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-about">
+          <a href="dashboard.html" class="logo">
+            <img src="images/logo.png" alt="CampusLodge logo">
+            CampusLodge
+          </a>
+          <p>Find conducive hostels and very affordable apartments around AKSU.</p>
+        </div>
+        <div class="footer-columns">
+          <div>
+            <h4>Student</h4>
+            <a href="dashboard.html">Home</a>
+            <a href="search.html">Search</a>
+            <a href="how-booking-works.html">How booking works</a>
+          </div>
+          <div>
+            <h4>Company</h4>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="terms.html">Terms</a>
+            <a href="privacy.html">Privacy</a>
+          </div>
+        </div>
+      </div>
+      <p class="copyright">&copy; 2026 CampusLodge. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

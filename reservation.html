@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My reservation | CampusLodge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="dash.css">
+  <link rel="stylesheet" href="reservation.css">
+  <link rel="stylesheet" href="modal.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a href="dashboard.html" class="logo">
+        <img src="images/logo.png" alt="CampusLodge logo">
+        CampusLodge
+      </a>
+      <!-- Credit balance for phones (hidden on bigger screens) -->
+      <a href="credit.html" class="credit-chip phone-credit">₦5,000 credit</a>
+
+      <!-- Menu button for phones (hidden on bigger screens) -->
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="menu-button">&#9776;</label>
+
+      <nav class="navbar-links dashboard-nav">
+        <a href="dashboard.html" class="nav-link">Home</a>
+        <a href="search.html" class="nav-link">Search</a>
+        <a href="dashboard.html#saved" class="nav-link">Saved</a>
+        <a href="reservation.html" class="nav-link nav-active">Reservations</a>
+        <a href="notifications.html" class="nav-link">Notifications<span class="nav-dot"></span></a>
+        <a href="credit.html" class="credit-chip nav-credit">₦5,000 credit</a>
+        <a href="profile.html" class="nav-user"><span class="avatar">E</span>Ekaette</a>
+        <a href="index.html" class="btn btn-white">Log out</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container res-page">
+    <h1 class="title">My <span class="green-word">reservation</span></h1>
+    <p class="big-text res-intro">The 48-hour hold, your decision, and paying the owner.</p>
+
+    <div class="res-layout">
+
+      <!-- THE ROOM -->
+      <aside class="res-room card">
+        <div class="photo-box">
+          <img src="images/room-1.svg" alt="Room photo">
+        </div>
+        <div class="card-body">
+          <div class="res-tags">
+            <span class="badge badge-verified">Trusted</span>
+            <span class="badge tag-grey">Self-contain</span>
+          </div>
+          <h3>Self-contain, Back Gate</h3>
+          <p class="muted">5 mins to campus</p>
+          <p class="price">₦230,000 <span>/ year</span></p>
+
+          <div class="res-owner">
+            <p class="small-label">Owner</p>
+            <strong>Mr. Etim Udoh</strong>
+            <p class="muted">Plot 12, Back Gate Road</p>
+          </div>
+
+          <div class="card-buttons">
+            <a href="#" class="btn btn-whatsapp">WhatsApp</a>
+            <a href="#" class="btn btn-white">Call</a>
+          </div>
+        </div>
+      </aside>
+
+      <div class="res-side">
+
+        <!-- THE HOLD AND THE STEPS -->
+        <div class="res-card">
+          <div class="res-head">
+            <div>
+              <span class="hold-chip">Room held for you</span>
+              <h2>Go and <span class="green-word">see it</span></h2>
+            </div>
+            <div class="timer">
+              <span>Hold ends in</span>
+              <strong>41h 12m</strong>
+            </div>
+          </div>
+
+          <div class="res-step">
+            <span class="step-dot dot-done">&#10003;</span>
+            <div>
+              <strong>Room reserved</strong>
+              <p class="muted">₦5,000 paid. Receipt ref CL-48213.</p>
+            </div>
+          </div>
+
+          <div class="res-step">
+            <span class="step-dot dot-now">2</span>
+            <div>
+              <strong>Visit the room</strong>
+              <p class="muted">Message the owner to agree a time. Check the room, water, light and security before you decide.</p>
+            </div>
+          </div>
+
+          <div class="res-step">
+            <span class="step-dot dot-next">3</span>
+            <div class="step-wide">
+              <strong>Tell us what you decided</strong>
+                <div class="res-step">
+                  <span class="step-dot dot-next">4</span>
+                  <div class="step-wide">
+                    <strong>Get your key</strong>
+                    <p class="muted">Pay the rent only when you are at the house and the owner gives you the key. Then tell us how it went.</p>
+                    <div class="decision">
+                      <button type="button" class="btn btn-green" id="got-key">I got my key</button>
+                      <button type="button" class="btn btn-white" id="open-problem">There is a problem</button>
+                    </div>
+                  </div>
+                </div>
+              <div class="decision">
+                <a href="#pay-rent" class="btn btn-green">I like it, pay rent to the owner</a>
+                <button type="button" class="btn btn-white" id="open-dislike">I did not like it</button>
+              </div>
+              <p class="muted decision-note">If you do not like it, the owner is asked to confirm you did not take the room before your ₦5,000 becomes credit. If you do nothing, the room reopens after 48 hours and the fee becomes credit anyway.</p>
+              <div class="res-links">
+                <a href="#" class="link-red">Owner did not show up?</a>
+                <a href="#" class="link-grey">Cancel reservation</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PAYING THE RENT (after "I like it") -->
+        <div class="res-card" id="pay-rent">
+          <p class="small-label">After "I like it"</p>
+          <h3>Pay your rent to the owner</h3>
+          <p class="muted rent-text">Rent is paid directly to the owner, not through CampusLodge. Pay only when you are at the house and the owner gives you the key. Use a bank transfer so you have a receipt. Use a bank transfer so you have a receipt.</p>
+
+          <div class="rent-boxes">
+            <div class="rent-box">
+              <p class="small-label">Rent to pay</p>
+              <strong>₦230,000</strong>
+            </div>
+            <div class="rent-box">
+              <p class="small-label">Owner's account</p>
+              <strong>[Bank name and number, given by the owner]</strong>
+            </div>
+          </div>
+
+          <p class="field-label">Upload your transfer receipt</p>
+          <label class="upload-box">
+            <input type="file" accept="image/*" hidden>
+            Tap to add a screenshot or photo of the receipt
+          </label>
+          <button type="button" class="btn btn-green">I have paid the rent</button>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- "I DID NOT LIKE IT" MODAL -->
+  <div class="modal-overlay" id="dislike-modal">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h2>What went wrong?</h2>
+        <button type="button" class="modal-close" data-close="dislike-modal" aria-label="Close">&times;</button>
+      </div>
+
+      <div class="modal-body dislike-body">
+        <div class="dislike-left">
+          <p class="muted dislike-intro">The owner confirms you did not take the room, then your ₦5,000 becomes credit. Credits used this semester: 1 of 3.</p>
+          <div class="reason-list">
+            <label class="reason"><input type="checkbox">The room was not as it looked in the photos</label>
+            <label class="reason"><input type="checkbox">The room was smaller than described</label>
+            <label class="reason"><input type="checkbox">The room was dirty or in poor condition</label>
+            <label class="reason"><input type="checkbox">Water, light or security was not as promised</label>
+            <label class="reason"><input type="checkbox">The owner did not show up or was not helpful</label>
+            <label class="reason"><input type="checkbox">I have a safety concern about the area</label>
+            <label class="reason"><input type="checkbox">Something else</label>
+          </div>
+        </div>
+
+        <div class="dislike-right">
+          <p class="error-banner" id="dislike-error" hidden>Choose at least one reason and write a short explanation before you send.</p>
+
+          <label class="field-label" for="more-info">Tell us more <span class="required">(required)</span></label>
+          <textarea id="more-info" class="more-info" rows="3" placeholder="What did you see when you visited?"></textarea>
+          <p class="error-text" id="more-error" hidden>Write a few words about what you saw.</p>
+
+          <p class="field-label photo-label">Add a photo <span class="optional">(optional)</span></p>
+          <label class="upload-box small-upload">
+            <input type="file" accept="image/*" hidden>
+            Tap to add a photo of the problem
+          </label>
+        </div>
+      </div>
+
+      <div class="modal-foot">
+        <button type="button" class="btn btn-white" data-close="dislike-modal">Cancel</button>
+        <button type="button" class="btn btn-dark" id="send-dislike">Send and request credit</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- "SENT" MODAL -->
+  <div class="modal-overlay" id="sent-modal">
+    <div class="modal-box sent-box">
+      <div class="modal-body">
+        <span class="receipt-tick">&#10003;</span>
+        <h2>Sent to the <span class="green-word">owner</span></h2>
+        <p class="muted">We asked the owner to confirm you did not take the room. When they agree, your ₦5,000 is added as credit. The room is released for others now.</p>
+      </div>
+      <div class="modal-foot">
+        <a href="dashboard.html#reservations" class="btn btn-dark">Back to my reservations</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- "THERE IS A PROBLEM" MODAL (key not given) -->
+  <div class="modal-overlay" id="problem-modal">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h2>What happened?</h2>
+        <button type="button" class="modal-close" data-close="problem-modal" aria-label="Close">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <p class="error-banner" id="problem-error" hidden>Choose what happened and write a short explanation before you send.</p>
+
+        <div class="reason-list">
+          <label class="reason"><input type="radio" name="problem">The owner refused to give me the key</label>
+          <label class="reason"><input type="radio" name="problem">The room was given to someone else</label>
+          <label class="reason"><input type="radio" name="problem">The owner is not answering me</label>
+          <label class="reason"><input type="radio" name="problem">Something else</label>
+        </div>
+
+        <label class="field-label problem-label" for="problem-info">Tell us more <span class="required">(required)</span></label>
+        <textarea id="problem-info" class="more-info" rows="3" placeholder="Where did you meet? What did the owner say?"></textarea>
+        <p class="error-text" id="problem-info-error" hidden>Write a few words about what happened.</p>
+      </div>
+
+      <div class="modal-foot">
+        <button type="button" class="btn btn-white" data-close="problem-modal">Cancel</button>
+        <button type="button" class="btn btn-dark" id="send-problem">Send to the admin</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- "PROBLEM SENT" MODAL -->
+  <div class="modal-overlay" id="problem-sent-modal">
+    <div class="modal-box sent-box">
+      <div class="modal-body">
+        <span class="receipt-tick">&#10003;</span>
+        <h2>Case <span class="green-word">opened</span></h2>
+        <p class="muted">The admin will check your receipt, your chats and the owner's ID. Your ₦5,000 becomes credit, and it does not count toward your limit of 3.</p>
+      </div>
+      <div class="modal-foot">
+        <button type="button" class="btn btn-dark" data-close="problem-sent-modal">Okay</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- "I GOT MY KEY" MODAL -->
+  <div class="modal-overlay" id="key-modal">
+    <div class="modal-box sent-box">
+      <div class="modal-body">
+        <span class="receipt-tick">&#10003;</span>
+        <h2>Enjoy your new <span class="green-word">home</span></h2>
+        <p class="muted">Thank you for confirming. Keep your rent receipt safe, in case you need it later.</p>
+      </div>
+      <div class="modal-foot">
+        <button type="button" class="btn btn-dark" data-close="key-modal">Okay</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var dislikeModal = document.getElementById("dislike-modal");
+    var sentModal = document.getElementById("sent-modal");
+
+    // Open the "I did not like it" box
+    document.getElementById("open-dislike").addEventListener("click", function () {
+      dislikeModal.classList.add("open");
+    });
+
+    // Every X and Cancel button closes the box it belongs to
+    document.querySelectorAll("[data-close]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        document.getElementById(button.dataset.close).classList.remove("open");
+      });
+    });
+
+    // Clicking the dark area outside the box also closes it
+    document.querySelectorAll(".modal-overlay").forEach(function (overlay) {
+      overlay.addEventListener("click", function (event) {
+        if (event.target === overlay) {
+          overlay.classList.remove("open");
+        }
+      });
+    });
+
+    // Send: at least one reason and some words are needed
+    var moreInfo = document.getElementById("more-info");
+    var bannerError = document.getElementById("dislike-error");
+    var moreError = document.getElementById("more-error");
+
+    document.getElementById("send-dislike").addEventListener("click", function () {
+      var reasonChosen = document.querySelectorAll(".reason input:checked").length > 0;
+      var wordsWritten = moreInfo.value.trim() !== "";
+
+      bannerError.hidden = reasonChosen && wordsWritten;
+      moreError.hidden = wordsWritten;
+      moreInfo.classList.toggle("input-error", !wordsWritten);
+
+      // TEMPORARY: the real saving is added in the Supabase stage
+      if (reasonChosen && wordsWritten) {
+        dislikeModal.classList.remove("open");
+        sentModal.classList.add("open");
+      }
+    });
+
+    // "I got my key" and "There is a problem"
+    document.getElementById("got-key").addEventListener("click", function () {
+      document.getElementById("key-modal").classList.add("open");
+    });
+
+    document.getElementById("open-problem").addEventListener("click", function () {
+      document.getElementById("problem-modal").classList.add("open");
+    });
+
+    var problemInfo = document.getElementById("problem-info");
+    var problemBanner = document.getElementById("problem-error");
+    var problemInfoError = document.getElementById("problem-info-error");
+
+    document.getElementById("send-problem").addEventListener("click", function () {
+      var problemChosen = document.querySelector('input[name="problem"]:checked') !== null;
+      var wordsWritten = problemInfo.value.trim() !== "";
+
+      problemBanner.hidden = problemChosen && wordsWritten;
+      problemInfoError.hidden = wordsWritten;
+      problemInfo.classList.toggle("input-error", !wordsWritten);
+
+      // TEMPORARY: the real saving is added in the Supabase stage
+      if (problemChosen && wordsWritten) {
+        document.getElementById("problem-modal").classList.remove("open");
+        document.getElementById("problem-sent-modal").classList.add("open");
+      }
+    });
+  </script>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-about">
+          <a href="dashboard.html" class="logo">
+            <img src="images/logo.png" alt="CampusLodge logo">
+            CampusLodge
+          </a>
+          <p>Find conducive hostels and very affordable apartments around AKSU.</p>
+        </div>
+        <div class="footer-columns">
+          <div>
+            <h4>Student</h4>
+            <a href="dashboard.html">Home</a>
+            <a href="search.html">Search</a>
+            <a href="how-booking-works.html">How booking works</a>
+          </div>
+          <div>
+            <h4>Company</h4>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="terms.html">Terms</a>
+            <a href="privacy.html">Privacy</a>
+          </div>
+        </div>
+      </div>
+      <p class="copyright">&copy; 2026 CampusLodge. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

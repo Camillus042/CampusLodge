@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search | CampusLodge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="dash.css">
+  <link rel="stylesheet" href="search.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a href="dashboard.html" class="logo">
+        <img src="images/logo.png" alt="CampusLodge logo">
+        CampusLodge
+      </a>
+      <!-- Credit balance for phones (hidden on bigger screens) -->
+      <a href="credit.html" class="credit-chip phone-credit">₦5,000 credit</a>
+
+      <!-- Menu button for phones (hidden on bigger screens) -->
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="menu-button">&#9776;</label>
+
+      <nav class="navbar-links dashboard-nav">
+        <a href="dashboard.html" class="nav-link">Home</a>
+        <a href="search.html" class="nav-link nav-active">Search</a>
+        <a href="dashboard.html#saved" class="nav-link">Saved</a>
+        <a href="dashboard.html#reservations" class="nav-link">Reservations</a>
+        <a href="notifications.html" class="nav-link">Notifications<span class="nav-dot"></span></a>
+        <a href="credit.html" class="credit-chip nav-credit">₦5,000 credit</a>
+        <a href="profile.html" class="nav-user"><span class="avatar">E</span>Ekaette</a>
+        <a href="index.html" class="btn btn-white">Log out</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container search-page">
+    <a href="dashboard.html" class="back-link">&larr; Back to home</a>
+
+    <div class="search-top">
+      <div>
+        <h1>Find your <span class="green-word">room</span></h1>
+        <p class="muted">6 listings found near AKSU</p>
+      </div>
+      <div class="search-tools">
+        <div class="view-toggle">
+          <a href="search.html" class="view-on">Grid</a>
+          <a href="#">Map</a>
+        </div>
+        <select class="search-select" aria-label="Sort">
+          <option>Newest first</option>
+          <option>Price: low to high</option>
+          <option>Price: high to low</option>
+          <option>Closest to campus</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="search-layout">
+
+      <!-- Filters button for phones (hidden on bigger screens) -->
+      <input type="checkbox" id="filter-toggle" class="filter-toggle">
+      <label for="filter-toggle" class="filter-button">Filters</label>
+
+      <!-- FILTERS -->
+      <aside class="filters">
+        <div class="filters-top">
+          <h2>Filters</h2>
+          <a href="search.html">Clear all</a>
+        </div>
+
+        <form>
+          <div class="filter-group">
+            <label class="filter-label" for="area">Area</label>
+            <select class="search-select filter-select" id="area">
+              <option>Any area</option>
+              <option>Back Gate</option>
+              <option>Ekim</option>
+              <option>Eket Road</option>
+              <option>Ikot Ekong</option>
+              <option>Ikot Enin</option>
+              <option>Ikot Oyoro</option>
+              <option>Mansion</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <span class="filter-label">Room type</span>
+            <div class="pill-row">
+            <label class="pill"><input type="radio" name="room-type" checked><span>Any</span></label>
+            <label class="pill"><input type="radio" name="room-type"><span>Single room</span></label>
+            <label class="pill"><input type="radio" name="room-type"><span>Self-contain</span></label>
+            <label class="pill"><input type="radio" name="room-type"><span>Shared room</span></label>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <span class="filter-label">Maximum price / year</span>
+            <div class="pill-row">
+            <label class="pill"><input type="radio" name="price" checked><span>Any</span></label>
+            <label class="pill"><input type="radio" name="price"><span>₦150,000</span></label>
+            <label class="pill"><input type="radio" name="price"><span>₦250,000</span></label>
+            <label class="pill"><input type="radio" name="price"><span>₦350,000</span></label>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <span class="filter-label">Distance from campus</span>
+            <div class="pill-row">
+            <label class="pill"><input type="radio" name="distance" checked><span>Any</span></label>
+            <label class="pill"><input type="radio" name="distance"><span>On campus</span></label>
+            <label class="pill"><input type="radio" name="distance"><span>Under 10 mins</span></label>
+            <label class="pill"><input type="radio" name="distance"><span>10 to 20 mins</span></label>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <span class="filter-label">Hostel gender</span>
+            <div class="pill-row">
+            <label class="pill"><input type="radio" name="gender" checked><span>Any</span></label>
+            <label class="pill"><input type="radio" name="gender"><span>Male</span></label>
+            <label class="pill"><input type="radio" name="gender"><span>Female</span></label>
+            <label class="pill"><input type="radio" name="gender"><span>Mixed</span></label>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <span class="filter-label">Amenities</span>
+            <label class="amenity"><input type="checkbox">Water</label>
+            <label class="amenity"><input type="checkbox">Light</label>
+            <label class="amenity"><input type="checkbox">Security</label>
+            <label class="amenity"><input type="checkbox">WiFi</label>
+          </div>
+
+          <button type="button" class="btn btn-green">Apply filters</button>
+        </form>
+      </aside>
+
+      <!-- RESULTS -->
+      <div class="results">
+        <div class="results-grid">
+        <article class="card">
+          <div class="photo-box">
+            <img src="images/room-1.png" alt="Self-contain, Back Gate">
+          <span class="badge badge-trusted">Trusted</span>
+            <button class="save-button" aria-label="Save listing">&#9825;</button>
+          </div>
+          <div class="card-body">
+            <h3>Self-contain, Back Gate</h3>
+            <p class="muted">5 mins to campus</p>
+            <div class="tags"><span>Water</span><span>Light</span><span>Security</span></div>
+            <p class="price">₦230,000 <span>/ year</span></p>
+            <div class="card-buttons">
+              <a href="listing.html" class="btn btn-dark">Details</a>
+              <a href="#" class="btn btn-whatsapp">WhatsApp</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="photo-box">
+            <img src="images/room-2.png" alt="Single room, Ekim">
+          <span class="badge badge-trusted">Trusted</span>
+            <button class="save-button" aria-label="Save listing">&#9825;</button>
+          </div>
+          <div class="card-body">
+            <h3>Single room, Ekim</h3>
+            <p class="muted">10 mins to campus</p>
+            <div class="tags"><span>Water</span><span>Light</span><span>Security</span></div>
+            <p class="price">₦120,000 <span>/ year</span></p>
+            <div class="card-buttons">
+              <a href="listing.html" class="btn btn-dark">Details</a>
+              <a href="#" class="btn btn-whatsapp">WhatsApp</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="photo-box">
+            <img src="images/room-3.png" alt="Hostel room, Block B">
+          <span class="badge badge-verified">Verified</span>
+            <button class="save-button" aria-label="Save listing">&#9825;</button>
+          </div>
+          <div class="card-body">
+            <h3>Hostel room, Block B</h3>
+            <p class="muted">On campus</p>
+            <div class="tags"><span>Water</span><span>Light</span><span>Security</span></div>
+            <p class="price">₦250,000 <span>/ year</span></p>
+            <div class="card-buttons">
+              <a href="listing.html" class="btn btn-dark">Details</a>
+              <a href="#" class="btn btn-whatsapp">WhatsApp</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="photo-box">
+            <img src="images/room-4.png" alt="Self-contain, Eket Road">
+            <button class="save-button" aria-label="Save listing">&#9825;</button>
+          </div>
+          <div class="card-body">
+            <h3>Self-contain, Eket Road</h3>
+            <p class="muted">8 mins to campus</p>
+            <div class="tags"><span>Water</span><span>Light</span><span>Security</span></div>
+            <p class="price">₦220,000 <span>/ year</span></p>
+            <div class="card-buttons">
+              <a href="listing.html" class="btn btn-dark">Details</a>
+              <a href="#" class="btn btn-whatsapp">WhatsApp</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="photo-box">
+            <img src="images/room-5.png" alt="Shared room, Ikot Enin">
+          <span class="badge badge-trusted">Trusted</span>
+            <button class="save-button" aria-label="Save listing">&#9825;</button>
+          </div>
+          <div class="card-body">
+            <h3>Shared room, Ikot Enin</h3>
+            <p class="muted">12 mins to campus</p>
+            <div class="tags"><span>Water</span><span>Light</span><span>Security</span></div>
+            <p class="price">₦100,000 <span>/ year</span></p>
+            <div class="card-buttons">
+              <a href="listing.html" class="btn btn-dark">Details</a>
+              <a href="#" class="btn btn-whatsapp">WhatsApp</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="photo-box">
+            <img src="images/room-6.png" alt="Hostel room, Female hostel">
+          <span class="badge badge-verified">Verified</span>
+            <button class="save-button" aria-label="Save listing">&#9825;</button>
+          </div>
+          <div class="card-body">
+            <h3>Hostel room, Female hostel</h3>
+            <p class="muted">On campus</p>
+            <div class="tags"><span>Water</span><span>Light</span><span>Security</span></div>
+            <p class="price">₦180,000 <span>/ year</span></p>
+            <div class="card-buttons">
+              <a href="listing.html" class="btn btn-dark">Details</a>
+              <a href="#" class="btn btn-whatsapp">WhatsApp</a>
+            </div>
+          </div>
+        </article>
+        </div>
+
+        <div class="pagination">
+          <a href="#" class="page-on">1</a>
+          <a href="#">2</a>
+          <a href="#">3</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-about">
+          <a href="dashboard.html" class="logo">
+            <img src="images/logo.png" alt="CampusLodge logo">
+            CampusLodge
+          </a>
+          <p>Find conducive hostels and very affordable apartments around AKSU.</p>
+        </div>
+        <div class="footer-columns">
+          <div>
+            <h4>Student</h4>
+            <a href="dashboard.html">Home</a>
+            <a href="search.html">Search</a>
+            <a href="how-booking-works.html">How booking works</a>
+          </div>
+          <div>
+            <h4>Company</h4>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="terms.html">Terms</a>
+            <a href="privacy.html">Privacy</a>
+          </div>
+        </div>
+      </div>
+      <p class="copyright">&copy; 2026 CampusLodge. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

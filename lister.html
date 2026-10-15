@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lister dashboard | CampusLodge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="dash.css">
+  <link rel="stylesheet" href="lister.css">
+  <link rel="stylesheet" href="modal.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a href="lister.html" class="logo">
+        <img src="images/logo.png" alt="CampusLodge logo">
+        CampusLodge
+      </a>
+
+      <!-- Menu button for phones (hidden on bigger screens) -->
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="menu-button">&#9776;</label>
+
+      <nav class="navbar-links dashboard-nav">
+        <a href="lister.html" class="nav-link nav-active">My listings</a>
+        <a href="add-listing.html" class="nav-link">Add listing</a>
+        <a href="lister.html#verify" class="nav-link">Verification</a>
+        <a href="profile.html" class="nav-user"><span class="avatar avatar-orange">U</span>[Business name]</a>
+        <a href="index.html" class="btn btn-white">Log out</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container lister-page">
+
+    <!-- WELCOME -->
+    <div class="lister-head">
+      <div>
+        <h1 class="title">Welcome, <span class="green-word">[Name]</span></h1>
+        <p class="big-text">Manage your rooms and see what students are looking at.</p>
+      </div>
+      <a href="add-listing.html" class="btn btn-green">+ Add new listing</a>
+    </div>
+
+    <!-- NUMBERS -->
+    <div class="stat-row">
+      <div class="stat"><strong>4</strong><span>Total listings</span></div>
+      <div class="stat"><strong class="stat-green">2</strong><span>Live</span></div>
+      <div class="stat"><strong class="stat-orange">1</strong><span>Waiting for approval</span></div>
+      <div class="stat"><strong class="stat-grey">1</strong><span>Taken</span></div>
+    </div>
+
+    <!-- MY LISTINGS -->
+    <h2 class="lister-title">My <span class="green-word">listings</span></h2>
+    <div class="listing-rows">
+
+      <div class="listing-row">
+        <div class="photo-box row-photo">
+          <img src="images/room-1.svg" alt="Room photo">
+        </div>
+        <div class="row-info">
+          <h3>Self-contain, Back Gate</h3>
+          <p class="muted">5 mins to campus</p>
+        </div>
+        <p class="row-price">₦230,000</p>
+        <span class="status status-live">Live</span>
+        <div class="row-buttons">
+          <a href="add-listing.html" class="small-btn">Edit</a>
+          <button type="button" class="small-btn mark-taken" data-title="Self-contain, Back Gate">Mark as taken</button>
+          <button type="button" class="small-btn delete-btn">Delete</button>
+        </div>
+      </div>
+
+      <div class="listing-row">
+        <div class="photo-box row-photo">
+          <img src="images/room-2.svg" alt="Room photo">
+        </div>
+        <div class="row-info">
+          <h3>Single room, Ekim</h3>
+          <p class="muted">10 mins to campus</p>
+        </div>
+        <p class="row-price">₦120,000</p>
+        <span class="status status-live">Live</span>
+        <div class="row-buttons">
+          <a href="add-listing.html" class="small-btn">Edit</a>
+          <button type="button" class="small-btn mark-taken" data-title="Single room, Ekim">Mark as taken</button>
+          <button type="button" class="small-btn delete-btn">Delete</button>
+        </div>
+      </div>
+
+      <div class="listing-row">
+        <div class="photo-box row-photo">
+          <img src="images/room-3.svg" alt="Room photo">
+        </div>
+        <div class="row-info">
+          <h3>Self-contain, Ikot Enin</h3>
+          <p class="muted">14 mins to campus</p>
+          <p class="reject-note" hidden>Reason: [admin's note on what to fix]</p>
+        </div>
+        <p class="row-price">₦310,000</p>
+        <span class="status status-pending">Pending</span>
+        <div class="row-buttons">
+          <a href="add-listing.html" class="small-btn">Edit</a>
+          <button type="button" class="small-btn withdraw-btn" data-title="Self-contain, Ikot Enin">Withdraw</button>
+          <button type="button" class="small-btn delete-btn">Delete</button>
+        </div>
+      </div>
+
+      <div class="listing-row">
+        <div class="photo-box row-photo">
+          <img src="images/room-4.svg" alt="Room photo">
+        </div>
+        <div class="row-info">
+          <h3>Shared room, Ikot Oyoro</h3>
+          <p class="muted">7 mins to campus</p>
+        </div>
+        <p class="row-price">₦100,000</p>
+        <span class="status status-taken">Taken</span>
+        <div class="row-buttons">
+          <a href="add-listing.html" class="small-btn">Edit</a>
+          <button type="button" class="small-btn reopen-btn" data-title="Shared room, Ikot Oyoro">Reopen</button>
+          <button type="button" class="small-btn delete-btn">Delete</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRUSTED BADGE -->
+    <div class="verify-box" id="verify">
+      <div class="verify-text">
+        <span class="verify-icon">ID</span>
+        <div>
+          <h3>Get the Trusted badge</h3>
+          <p class="muted">Upload your ID or proof of ownership. Once an admin has checked it, every listing you post carries the Trusted badge and students notice.</p>
+        </div>
+      </div>
+      <div class="verify-action">
+        <span class="status status-pending">Not submitted yet</span>
+        <label class="btn btn-dark upload-id">
+          Upload ID or proof
+          <input type="file" accept="image/*,.pdf" hidden>
+        </label>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- "MARK AS TAKEN" MODAL -->
+  <div class="modal-overlay" id="taken-modal">
+    <div class="modal-box confirm-box">
+      <div class="modal-body">
+        <span class="confirm-icon">&#9873;</span>
+        <h2>Mark this room as taken?</h2>
+        <p class="muted"><strong id="taken-title">This room</strong> will no longer show up in search results. You can reopen it any time.</p>
+      </div>
+      <div class="modal-foot">
+        <button type="button" class="btn btn-white" data-close="taken-modal">Cancel</button>
+        <button type="button" class="btn btn-dark" id="confirm-taken">Mark as taken</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var takenModal = document.getElementById("taken-modal");
+    var takenTitle = document.getElementById("taken-title");
+    var chosenRow = null;
+
+    // Every "Mark as taken" button opens the box and remembers its row
+    document.querySelectorAll(".mark-taken").forEach(function (button) {
+      button.addEventListener("click", function () {
+        chosenRow = button.closest(".listing-row");
+        takenTitle.textContent = button.dataset.title;
+        takenModal.classList.add("open");
+      });
+    });
+
+    // Confirm: the row now shows Taken
+    // TEMPORARY: the real saving is added in the Supabase stage
+    document.getElementById("confirm-taken").addEventListener("click", function () {
+      var status = chosenRow.querySelector(".status");
+      status.textContent = "Taken";
+      status.className = "status status-taken";
+
+      var button = chosenRow.querySelector(".mark-taken");
+      button.textContent = "Reopen";
+      button.classList.remove("mark-taken");
+
+      takenModal.classList.remove("open");
+    });
+
+    // The Cancel button closes the box
+    document.querySelectorAll("[data-close]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        document.getElementById(button.dataset.close).classList.remove("open");
+      });
+    });
+
+    // Clicking the dark area outside the box also closes it
+    takenModal.addEventListener("click", function (event) {
+      if (event.target === takenModal) {
+        takenModal.classList.remove("open");
+      }
+    });
+  </script>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-about">
+          <a href="lister.html" class="logo">
+            <img src="images/logo.png" alt="CampusLodge logo">
+            CampusLodge
+          </a>
+          <p>Find conducive hostels and very affordable apartments around AKSU.</p>
+        </div>
+        <div class="footer-columns">
+          <div>
+            <h4>Lister</h4>
+            <a href="lister.html">My listings</a>
+            <a href="add-listing.html">Add listing</a>
+            <a href="contact.html">Contact</a>
+          </div>
+          <div>
+            <h4>Company</h4>
+            <a href="about.html">About</a>
+            <a href="terms.html">Terms</a>
+            <a href="privacy.html">Privacy</a>
+          </div>
+        </div>
+      </div>
+      <p class="copyright">&copy; 2026 CampusLodge. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

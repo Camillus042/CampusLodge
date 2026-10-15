@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student dashboard | CampusLodge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="dash.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a href="dashboard.html" class="logo">
+        <img src="images/logo.png" alt="CampusLodge logo">
+        CampusLodge
+      </a>
+
+      <a href="credit.html" class="credit-chip phone-credit">₦5,000 credit</a>
+
+      <!-- Menu button for phones (hidden on bigger screens) -->
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="menu-button">&#9776;</label>
+
+      <nav class="navbar-links dashboard-nav">
+        <a href="dashboard.html" class="nav-link nav-active">Home</a>
+        <a href="search.html" class="nav-link">Search</a>
+        <a href="#saved" class="nav-link">Saved</a>
+        <a href="#reservations" class="nav-link">Reservations</a>
+        <a href="notifications.html" class="nav-link">Notifications<span class="nav-dot"></span></a>
+        <a href="credit.html" class="credit-chip nav-credit">₦5,000 credit</a>
+        <a href="profile.html" class="nav-user"><span class="avatar">E</span>Ekaette</a>
+        <a href="index.html" class="btn btn-white">Log out</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- GREETING + SEARCH -->
+  <section class="container">
+    <div class="hero">
+      <div class="hero-text">
+        <h1>Hello, <span class="orange-word">Ekaette</span></h1>
+        <p>Where do you want to live this year?</p>
+
+        <form class="search-bar" action="search.html">
+          <label class="search-field">
+            <span>Area</span>
+            <select>
+              <option>Any area</option>
+              <option>Back Gate</option>
+              <option>Ekim</option>
+              <option>Eket Road</option>
+              <option>Ikot Ekong</option>
+              <option>Ikot Enin</option>
+              <option>Ikot Oyoro</option>
+              <option>Mansion</option>
+            </select>
+          </label>
+          <label class="search-field">
+            <span>Room type</span>
+            <select>
+              <option>Any room type</option>
+              <option>Single room</option>
+              <option>Self-contain</option>
+              <option>Shared room</option>
+            </select>
+          </label>
+          <label class="search-field">
+            <span>Max price / year</span>
+            <select>
+              <option>Any price</option>
+              <option>Up to ₦150,000</option>
+              <option>Up to ₦250,000</option>
+              <option>Up to ₦350,000</option>
+            </select>
+          </label>
+          <button type="submit" class="btn btn-dark">Search</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- BROWSE BY AREA -->
+  <section class="container section">
+    <h2 class="title">Browse by <span class="green-word">area</span></h2>
+    <div class="area-list">
+      <a href="search.html" class="area-tag">Back Gate</a>
+      <a href="search.html" class="area-tag">Ekim</a>
+      <a href="search.html" class="area-tag">Eket Road</a>
+      <a href="search.html" class="area-tag">Ikot Ekong</a>
+      <a href="search.html" class="area-tag">Ikot Enin</a>
+      <a href="search.html" class="area-tag">Ikot Oyoro</a>
+      <a href="search.html" class="area-tag">Mansion</a>
+    </div>
+  </section>
+
+  <!-- RECOMMENDED -->
+  <section class="container section">
+    <div class="section-head">
+      <h2 class="title">Recommended <span class="green-word">for you</span></h2>
+      <a href="search.html" class="btn btn-white">See all listings &rarr;</a>
+    </div>
+    <div class="grid-3">
+      <article class="card">
+        <div class="photo-box">
+          <img src="images/room-1.png" alt="Self-contain, Back Gate">
+          <span class="badge badge-trusted">Trusted</span>
+          <button class="save-button" aria-label="Save listing">&#9825;</button>
+        </div>
+        <div class="card-body">
+          <h3>Self-contain, Back Gate</h3>
+          <p class="muted">5 mins to campus</p>
+          <p class="price">₦230,000 <span>/ year</span></p>
+          <div class="card-buttons">
+            <a href="listing.html" class="btn btn-dark">Details</a>
+            <a href="#" class="btn btn-whatsapp">WhatsApp</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="photo-box">
+          <img src="images/room-3.png" alt="Hostel room, Block B">
+          <span class="badge badge-verified">Verified</span>
+          <button class="save-button" aria-label="Save listing">&#9825;</button>
+        </div>
+        <div class="card-body">
+          <h3>Hostel room, Block B</h3>
+          <p class="muted">On campus</p>
+          <p class="price">₦250,000 <span>/ year</span></p>
+          <div class="card-buttons">
+            <a href="listing.html" class="btn btn-dark">Details</a>
+            <a href="#" class="btn btn-whatsapp">WhatsApp</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="photo-box">
+          <img src="images/room-2.png" alt="Single room, Ekim">
+          <span class="badge badge-trusted">Trusted</span>
+          <button class="save-button" aria-label="Save listing">&#9825;</button>
+        </div>
+        <div class="card-body">
+          <h3>Single room, Ekim</h3>
+          <p class="muted">10 mins to campus</p>
+          <p class="price">₦120,000 <span>/ year</span></p>
+          <div class="card-buttons">
+            <a href="listing.html" class="btn btn-dark">Details</a>
+            <a href="#" class="btn btn-whatsapp">WhatsApp</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card extra-card">
+        <div class="photo-box">
+          <img src="images/room-4.png" alt="Hostel room, Female hostel">
+          <span class="badge badge-verified">Verified</span>
+          <button class="save-button" aria-label="Save listing">&#9825;</button>
+        </div>
+        <div class="card-body">
+          <h3>Hostel room, Female hostel</h3>
+          <p class="muted">On campus</p>
+          <p class="price">₦180,000 <span>/ year</span></p>
+          <div class="card-buttons">
+            <a href="listing.html" class="btn btn-dark">Details</a>
+            <a href="#" class="btn btn-whatsapp">WhatsApp</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card extra-card">
+        <div class="photo-box">
+          <img src="images/room-5.png" alt="Self-contain, Ikot Enin">
+          <span class="badge badge-trusted">Trusted</span>
+          <button class="save-button" aria-label="Save listing">&#9825;</button>
+        </div>
+        <div class="card-body">
+          <h3>Self-contain, Ikot Enin</h3>
+          <p class="muted">14 mins to campus</p>
+          <p class="price">₦310,000 <span>/ year</span></p>
+          <div class="card-buttons">
+            <a href="listing.html" class="btn btn-dark">Details</a>
+            <a href="#" class="btn btn-whatsapp">WhatsApp</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card extra-card">
+        <div class="photo-box">
+          <img src="images/room-6.png" alt="Shared room, Ikot Oyoro">
+          <button class="save-button" aria-label="Save listing">&#9825;</button>
+        </div>
+        <div class="card-body">
+          <h3>Shared room, Ikot Oyoro</h3>
+          <p class="muted">7 mins to campus</p>
+          <p class="price">₦100,000 <span>/ year</span></p>
+          <div class="card-buttons">
+            <a href="listing.html" class="btn btn-dark">Details</a>
+            <a href="#" class="btn btn-whatsapp">WhatsApp</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- CREDIT -->
+  <section class="container section">
+    <a href="credit.html" class="credit-strip">
+      <span class="credit-icon">&#8358;</span>
+      <div class="credit-text">
+        <h3>You have ₦5,000 credit</h3>
+        <p class="muted">It comes off the booking fee of your next room.</p>
+      </div>
+      <span class="btn btn-white">View my credit</span>
+    </a>
+  </section>
+
+  <!-- SAVED ROOMS -->
+  <section id="saved" class="container section">
+    <h2 class="title">Saved <span class="green-word">rooms</span></h2>
+    <div class="grid-3 saved-list">
+      <a href="listing.html" class="card saved-card">
+        <div class="photo-box"><img src="images/room-2.png" alt="Single room, Ekim"></div>
+        <div>
+          <h3>Single room, Ekim</h3>
+          <p class="muted">10 mins to campus</p>
+          <p class="price">₦120,000 <span>/ year</span></p>
+        </div>
+        <span class="saved-heart">&#9829;</span>
+      </a>
+
+      <a href="listing.html" class="card saved-card">
+        <div class="photo-box"><img src="images/room-4.png" alt="Hostel room, Female hostel"></div>
+        <div>
+          <h3>Hostel room, Female hostel</h3>
+          <p class="muted">On campus</p>
+          <p class="price">₦180,000 <span>/ year</span></p>
+        </div>
+        <span class="saved-heart">&#9829;</span>
+      </a>
+
+      <a href="listing.html" class="card saved-card">
+        <div class="photo-box"><img src="images/room-6.png" alt="Shared room, Ikot Oyoro"></div>
+        <div>
+          <h3>Shared room, Ikot Oyoro</h3>
+          <p class="muted">7 mins to campus</p>
+          <p class="price">₦100,000 <span>/ year</span></p>
+        </div>
+        <span class="saved-heart">&#9829;</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- MY RESERVATIONS -->
+  <section id="reservations" class="container section dashboard-end">
+    <h2 class="title">My <span class="green-word">reservations</span></h2>
+    <div class="reservation-list">
+      <div class="reservation">
+        <div class="photo-box"><img src="images/room-1.png" alt="Self-contain, Back Gate"></div>
+        <div class="reservation-info">
+          <h3>Self-contain, Back Gate</h3>
+          <p class="muted">Paid on [date] &middot; Ref [reference number]</p>
+        </div>
+        <div class="fee">₦5,000<span>Booking fee</span></div>
+        <span class="status">Held, 41h left</span>
+        <a href="receipt.html" class="btn btn-white">View receipt</a>
+        <a href="reservation.html" class="btn btn-green">Open</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-about">
+          <a href="dashboard.html" class="logo">
+            <img src="images/logo.png" alt="CampusLodge logo">
+            CampusLodge
+          </a>
+          <p>Find conducive hostels and very affordable apartments around AKSU.</p>
+        </div>
+        <div class="footer-columns">
+          <div>
+            <h4>Student</h4>
+            <a href="dashboard.html">Home</a>
+            <a href="search.html">Search</a>
+            <a href="how-booking-works.html">How booking works</a>
+          </div>
+          <div>
+            <h4>Company</h4>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="terms.html">Terms</a>
+            <a href="privacy.html">Privacy</a>
+          </div>
+        </div>
+      </div>
+      <p class="copyright">&copy; 2026 CampusLodge. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

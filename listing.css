@@ -1,0 +1,304 @@
+/* ===== Listing details page (also uses dash.css for the navbar) ===== */
+.listing-page {
+  padding-top: 32px;
+  padding-bottom: 90px;
+}
+
+/* Photos: one big and four small */
+.gallery {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 200px 200px;
+  gap: 14px;
+  margin-bottom: 32px;
+}
+.gallery .photo-box {
+  height: 100%;
+  border-radius: 20px;
+}
+.gallery .gallery-main {
+  grid-row: span 2;
+  border-radius: 24px;
+}
+.view-all {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  padding: 7px 13px;
+  border-radius: 30px;
+  background: #fff;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* Title */
+.listing-title {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.listing-title h1 {
+  margin-bottom: 10px;
+  font-size: 46px;
+  line-height: 1.08;
+}
+.listing-place {
+  font-size: 16px;
+  color: var(--grey);
+}
+.save-big {
+  flex: none;
+  width: 48px;
+  height: 48px;
+  border: 1.5px solid #D5DCD4;
+  border-radius: 50%;
+  background: #fff;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* Details on the left, booking card on the right */
+.listing-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 56px;
+}
+.listing-main {
+  flex: 1;
+  min-width: 0;
+}
+.listing-main h2 {
+  margin-bottom: 14px;
+  font-size: 24px;
+}
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 14px;
+  margin-bottom: 40px;
+}
+.fact {
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+}
+.fact span {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--grey);
+}
+.fact strong {
+  display: block;
+  margin-top: 6px;
+  font-size: 18px;
+}
+.fact .fact-green {
+  color: var(--green);
+}
+.about {
+  max-width: 680px;
+  margin-bottom: 40px;
+  font-size: 17px;
+  line-height: 1.75;
+  color: #33403A;
+}
+.amenity-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  max-width: 680px;
+  margin-bottom: 44px;
+}
+.amenity-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  font-weight: 600;
+}
+.tick {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: #E9F5EC;
+  font-weight: 800;
+  color: var(--green);
+}
+.map-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: #E4EDE3;
+  font-weight: 600;
+  color: var(--grey);
+}
+
+/* Booking card */
+.booking {
+  position: sticky;
+  top: 100px;
+  flex: none;
+  width: 380px;
+}
+.booking-card {
+  padding: 30px 28px;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  box-shadow: 0 24px 50px -30px rgba(13, 27, 20, 0.3);
+}
+.rent-label {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--grey);
+}
+.rent {
+  margin: 4px 0 22px;
+  font-size: 38px;
+  font-weight: 800;
+}
+.rent span {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--grey);
+}
+.fee-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  padding: 16px 18px;
+  border-radius: 16px;
+  background: var(--light);
+}
+.fee-box .muted {
+  margin-top: 2px;
+  font-size: 13px;
+}
+.fee-amount {
+  font-size: 20px;
+  font-weight: 800;
+}
+.credit-note {
+  margin-bottom: 14px;
+  padding: 12px 14px;
+  border: 1px solid #FAD9C3;
+  border-radius: 14px;
+  background: #FFF8F3;
+  font-size: 13px;
+  font-weight: 600;
+  color: #9A3F14;
+}
+.reserve {
+  display: block;
+  width: 100%;
+  padding: 17px;
+  font-size: 16px;
+  text-align: center;
+}
+.booking-note {
+  margin: 12px 0 22px;
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: center;
+  color: var(--grey);
+}
+.booking-note a {
+  font-weight: 700;
+  color: var(--green);
+}
+.contact-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 26px;
+}
+.contact-buttons .btn {
+  flex: 1;
+  padding: 14px 10px;
+  text-align: center;
+}
+.owner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+}
+.owner-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--orange);
+  font-size: 18px;
+  font-weight: 800;
+}
+.owner-info {
+  flex: 1;
+}
+.owner-info .muted {
+  margin-top: 3px;
+  font-size: 13px;
+}
+.report-link {
+  display: block;
+  margin-top: 18px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--grey);
+}
+
+/* Listing on phones: the booking card comes right after the title */
+@media (max-width: 800px) {
+  .listing-page {
+    padding-bottom: 56px;
+  }
+  .gallery {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 240px 110px 110px;
+    gap: 10px;
+  }
+  .gallery .gallery-main {
+    grid-column: span 2;
+    grid-row: auto;
+  }
+  .listing-title h1 {
+    font-size: 32px;
+  }
+  .listing-layout {
+    flex-direction: column;
+    gap: 28px;
+  }
+  .listing-main,
+  .booking {
+    width: 100%;
+  }
+  .booking {
+    order: -1;
+    position: static;
+  }
+  .booking-card {
+    padding: 24px 20px;
+  }
+  .rent {
+    font-size: 32px;
+  }
+  .amenity-item {
+    padding: 14px;
+  }
+}
