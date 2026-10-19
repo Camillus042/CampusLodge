@@ -1,0 +1,40 @@
+/* ===== Appeal page (uses the sign-in layout from style.css) ===== */
+#appeal-form[hidden],
+#appeal-sent[hidden] {
+  display: none;
+}
+
+.ban-reason {
+  margin: 20px 0;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: var(--light);
+}
+
+.small-label {
+  margin-bottom: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--grey);
+}
+
+.field textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid #D5DCD4;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 16px;
+  resize: none;
+}
+
+.field textarea:focus {
+  outline: none;
+  border-color: var(--green);
+}
+
+.field textarea.input-error {
+  border-color: #B3261E;
+}

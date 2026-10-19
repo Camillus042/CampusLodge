@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | CampusLodge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="info.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="CampusLodge logo">
+        CampusLodge
+      </a>
+
+      <!-- Menu button for phones (hidden on bigger screens) -->
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="menu-button">&#9776;</label>
+
+      <nav class="navbar-links">
+        <a href="login.html" class="nav-link">Login</a>
+        <a href="signup.html" class="btn btn-dark">Sign up</a>
+        <a href="signup.html" class="btn btn-green">List a property</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container info-page">
+    <div class="contact-split">
+
+      <div class="contact-info">
+        <h1 class="title">Get in <span class="green-word">touch.</span></h1>
+        <p class="big-text">Question about a listing, a payment or your account? Send us a message.</p>
+
+        <div class="contact-list">
+          <div class="contact-item">
+            <span class="contact-icon">@</span>
+            <div>
+              <span class="small-label">Email</span>
+              <p>support@campuslodge.com</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">W</span>
+            <div>
+              <span class="small-label">WhatsApp</span>
+              <p>[WhatsApp number]</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">&#9906;</span>
+            <div>
+              <span class="small-label">Where</span>
+              <p>Near AKSU main campus</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <!-- Before sending -->
+        <div id="contact-form">
+          <div class="field">
+            <label for="c-name">Your name</label>
+            <input type="text" id="c-name" placeholder="Your full name">
+          </div>
+          <div class="field">
+            <label for="c-email">Email</label>
+            <input type="email" id="c-email" placeholder="you@example.com">
+          </div>
+          <div class="field">
+            <label for="c-message">Message</label>
+            <textarea id="c-message" rows="5" placeholder="How can we help?"></textarea>
+          </div>
+          <p class="error-text" id="contact-error" hidden>Please fill in your name, email and message.</p>
+          <button type="button" class="btn btn-green" id="send-contact">Send message</button>
+        </div>
+
+        <!-- After sending -->
+        <div class="contact-sent" id="contact-sent" hidden>
+          <h2>Message <span class="green-word">sent</span></h2>
+          <p class="muted">Thank you. We will reply by email, usually within 24 hours.</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-about">
+          <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="CampusLodge logo">
+            CampusLodge
+          </a>
+          <p>Find conducive hostels and very affordable apartments around AKSU.</p>
+        </div>
+        <div class="footer-columns">
+          <div>
+            <h4>Account</h4>
+            <a href="login.html">Login</a>
+            <a href="signup.html">Sign up</a>
+            <a href="signup.html">List a property</a>
+          </div>
+          <div>
+            <h4>Company</h4>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="terms.html">Terms</a>
+            <a href="privacy.html">Privacy</a>
+          </div>
+        </div>
+      </div>
+      <p class="copyright">&copy; 2026 CampusLodge. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // TEMPORARY: the real sending is added in the Supabase stage
+    document.getElementById("send-contact").addEventListener("click", function () {
+      var name = document.getElementById("c-name");
+      var email = document.getElementById("c-email");
+      var message = document.getElementById("c-message");
+      var error = document.getElementById("contact-error");
+
+      var missing = false;
+      [name, email, message].forEach(function (box) {
+        var empty = box.value.trim() === "";
+        box.classList.toggle("input-error", empty);
+        if (empty) {
+          missing = true;
+        }
+      });
+
+      error.hidden = !missing;
+      if (!missing) {
+        document.getElementById("contact-form").hidden = true;
+        document.getElementById("contact-sent").hidden = false;
+      }
+    });
+  </script>
+</body>
+</html>

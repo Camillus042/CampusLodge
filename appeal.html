@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Appeal | CampusLodge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="appeal.css">
+</head>
+<body>
+
+  <div class="auth">
+  <div class="auth-card">
+
+    <!-- Green side (hidden on phones) -->
+    <div class="auth-art">
+      <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="CampusLodge logo">
+        CampusLodge
+      </a>
+      <div>
+        <h2>Think this is a <span class="orange-word">mistake?</span></h2>
+        <p>Tell us what happened. An admin reads every appeal.</p>
+      </div>
+    </div>
+
+    <!-- Form side -->
+    <div class="auth-form-side">
+      <div class="auth-box">
+        <a href="index.html" class="logo auth-logo">
+          <img src="images/logo.png" alt="CampusLodge logo">
+          CampusLodge
+        </a>
+
+        <!-- Before sending -->
+        <div id="appeal-form">
+          <h1>Your account is <span class="green-word">banned</span></h1>
+          <p class="muted">You cannot reserve rooms or use credit right now. If you think this was a mistake, write to an admin below.</p>
+
+          <div class="ban-reason">
+            <span class="small-label">Reason given by the admin</span>
+            <p>[Admin's reason]</p>
+          </div>
+
+          <div class="field">
+            <label for="appeal-text">What happened?</label>
+            <textarea id="appeal-text" rows="5" placeholder="Explain in your own words."></textarea>
+            <p class="error-text" id="appeal-error" hidden>Please write a few words first.</p>
+          </div>
+
+          <button type="button" class="btn btn-green" id="send-appeal">Send appeal</button>
+          <p class="auth-switch"><a href="index.html">Log out</a></p>
+        </div>
+
+        <!-- After sending -->
+        <div class="auth-center" id="appeal-sent" hidden>
+          <h1>Appeal <span class="green-word">sent</span></h1>
+          <p class="muted">An admin will read it and reply by email. This can take up to 24 hours.</p>
+          <a href="index.html" class="btn btn-green">Back to home</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  </div>
+
+  <script>
+    var appealText = document.getElementById("appeal-text");
+    var appealError = document.getElementById("appeal-error");
+
+    // TEMPORARY: the real sending is added in the Supabase stage
+    document.getElementById("send-appeal").addEventListener("click", function () {
+      if (appealText.value.trim() === "") {
+        appealError.hidden = false;
+        appealText.classList.add("input-error");
+        return;
+      }
+      document.getElementById("appeal-form").hidden = true;
+      document.getElementById("appeal-sent").hidden = false;
+    });
+  </script>
+</body>
+</html>

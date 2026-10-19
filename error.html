@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of use | CampusLodge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="info.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="CampusLodge logo">
+        CampusLodge
+      </a>
+
+      <!-- Menu button for phones (hidden on bigger screens) -->
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="menu-button">&#9776;</label>
+
+      <nav class="navbar-links">
+        <a href="login.html" class="nav-link">Login</a>
+        <a href="signup.html" class="btn btn-dark">Sign up</a>
+        <a href="signup.html" class="btn btn-green">List a property</a>
+      </nav>
+    </div>
+  </header>
+
+
+  <main class="container error-page">
+    <p class="error-code" id="error-code">404</p>
+    <h1 id="error-title">We cannot find that page</h1>
+    <p class="muted" id="error-text">The link may be old, or the room may have been removed.</p>
+    <div class="error-buttons">
+      <a href="index.html" class="btn btn-green" id="error-main">Back to home</a>
+      <a href="search.html" class="btn btn-white" id="error-second">Search rooms</a>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-about">
+          <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="CampusLodge logo">
+            CampusLodge
+          </a>
+          <p>Find conducive hostels and very affordable apartments around AKSU.</p>
+        </div>
+        <div class="footer-columns">
+          <div>
+            <h4>Account</h4>
+            <a href="login.html">Login</a>
+            <a href="signup.html">Sign up</a>
+            <a href="signup.html">List a property</a>
+          </div>
+          <div>
+            <h4>Company</h4>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="terms.html">Terms</a>
+            <a href="privacy.html">Privacy</a>
+          </div>
+        </div>
+      </div>
+      <p class="copyright">&copy; 2026 CampusLodge. All rights reserved.</p>
+    </div>
+  </footer>
+
+
+  <script>
+    // One page, three messages. error.html = 404, error.html#oops, error.html#session
+    var messages = {
+      "404": {
+        code: "404",
+        title: "We cannot find that page",
+        text: "The link may be old, or the room may have been removed.",
+        main: ["Back to home", "index.html"],
+        second: ["Search rooms", "search.html"]
+      },
+      "oops": {
+        code: "Oops",
+        title: "Something went wrong",
+        text: "It is not you. Please try again in a moment.",
+        main: ["Try again", "javascript:history.back()"],
+        second: ["Back to home", "index.html"]
+      },
+      "session": {
+        code: "Session",
+        title: "Your session has ended",
+        text: "For your safety you were logged out. Login again to carry on.",
+        main: ["Login", "login.html"],
+        second: null
+      }
+    };
+
+    var chosen = messages[location.hash.replace("#", "")] || messages["404"];
+
+    document.getElementById("error-code").textContent = chosen.code;
+    document.getElementById("error-title").textContent = chosen.title;
+    document.getElementById("error-text").textContent = chosen.text;
+
+    var mainButton = document.getElementById("error-main");
+    mainButton.textContent = chosen.main[0];
+    mainButton.href = chosen.main[1];
+
+    var secondButton = document.getElementById("error-second");
+    if (chosen.second) {
+      secondButton.textContent = chosen.second[0];
+      secondButton.href = chosen.second[1];
+    } else {
+      secondButton.hidden = true;
+    }
+  </script>
+</body>
+</html>

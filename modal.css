@@ -390,3 +390,102 @@
     font-size: 14px;
   }
 }
+
+/* ===== Red button, and the "Report this listing" pop-up ===== */
+.btn-red {
+  background: #B3261E;
+  color: #fff;
+}
+
+.report-intro {
+  margin-bottom: 14px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.report-options {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.report-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border: 1.5px solid #D5DCD4;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.report-option input {
+  accent-color: var(--green);
+}
+
+.report-option:has(input:checked) {
+  border-color: var(--green);
+  background: #F1FAF4;
+}
+
+.report-label {
+  display: block;
+  margin: 14px 0 8px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.report-details {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid #D5DCD4;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 14px;
+  resize: none;
+}
+
+#report-modal .error-text {
+  margin-top: 10px;
+}
+
+#report-modal .modal-body {
+  padding: 16px 24px;
+}
+
+#report-sent-modal .modal-box {
+  max-width: 440px;
+  text-align: center;
+}
+
+#report-sent-modal .modal-body {
+  padding: 32px 24px 8px;
+}
+
+#report-sent-modal h2 {
+  margin-bottom: 8px;
+  font-size: 24px;
+}
+
+@media (max-width: 800px) {
+
+  #report-modal .modal-body {
+    padding: 12px 20px;
+  }
+
+  #report-modal .modal-head {
+    padding: 14px 20px;
+  }
+
+  #report-modal .report-option {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  #report-modal .modal-foot {
+    flex-direction: row;
+    padding: 8px 20px 16px;
+  }
+}

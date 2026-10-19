@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notifications | CampusLodge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="dash.css">
+  <link rel="stylesheet" href="modal.css">
+  <link rel="stylesheet" href="account.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a href="dashboard.html" class="logo">
+        <img src="images/logo.png" alt="CampusLodge logo">
+        CampusLodge
+      </a>
+      <!-- Credit balance for phones (hidden on bigger screens) -->
+      <a href="credit.html" class="credit-chip phone-credit">&#8358;5,000 credit</a>
+
+      <!-- Menu button for phones (hidden on bigger screens) -->
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="menu-button">&#9776;</label>
+
+      <nav class="navbar-links dashboard-nav">
+        <a href="dashboard.html" class="nav-link">Home</a>
+        <a href="search.html" class="nav-link">Search</a>
+        <a href="dashboard.html#saved" class="nav-link">Saved</a>
+        <a href="dashboard.html#reservations" class="nav-link">Reservations</a>
+        <a href="notifications.html" class="nav-link nav-active">Notifications</a>
+        <a href="credit.html" class="credit-chip nav-credit">&#8358;5,000 credit</a>
+        <a href="profile.html" class="nav-user"><span class="avatar">E</span>Ekaette</a>
+        <a href="index.html" class="btn btn-white">Log out</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container account-page">
+    <div class="note-head">
+      <div>
+        <h1 class="title"><span class="green-word">Notifications</span></h1>
+        <p class="big-text">Important things about your reservations and credit.</p>
+      </div>
+      <button type="button" class="btn btn-white" id="mark-read">Mark all as read</button>
+    </div>
+
+    <div class="note-list">
+        <a href="reservation.html" class="note unread">
+          <span class="note-icon">&#9201;</span>
+          <span class="note-text">
+            <strong>Your hold ends in 6 hours</strong>
+            <span class="muted">Self-contain, Back Gate. Visit the room and tell us what you decided.</span>
+          </span>
+          <span class="note-time">2h ago</span>
+        </a>
+        <a href="credit.html" class="note unread">
+          <span class="note-icon">&#8358;</span>
+          <span class="note-text">
+            <strong>&#8358;5,000 credit added</strong>
+            <span class="muted">The owner confirmed you did not take the room.</span>
+          </span>
+          <span class="note-time">Yesterday</span>
+        </a>
+        <a href="reservation.html" class="note ">
+          <span class="note-icon">&#10003;</span>
+          <span class="note-text">
+            <strong>Payment confirmed</strong>
+            <span class="muted">Self-contain, Back Gate is held for you for 48 hours.</span>
+          </span>
+          <span class="note-time">2 days ago</span>
+        </a>
+    </div>
+
+    <p class="muted note-foot">We also email you for the important ones: payment confirmed, hold ending soon, owner needs to answer, credit added, listing approved or rejected.</p>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-about">
+          <a href="dashboard.html" class="logo">
+            <img src="images/logo.png" alt="CampusLodge logo">
+            CampusLodge
+          </a>
+          <p>Find conducive hostels and very affordable apartments around AKSU.</p>
+        </div>
+        <div class="footer-columns">
+          <div>
+            <h4>Student</h4>
+            <a href="dashboard.html">Home</a>
+            <a href="search.html">Search</a>
+            <a href="how-booking-works.html">How booking works</a>
+          </div>
+          <div>
+            <h4>Company</h4>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="terms.html">Terms</a>
+            <a href="privacy.html">Privacy</a>
+          </div>
+        </div>
+      </div>
+      <p class="copyright">&copy; 2026 CampusLodge. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // "Mark all as read" removes the green background and the dot in the menu
+    // TEMPORARY: the real saving is added in the Supabase stage
+    document.getElementById("mark-read").addEventListener("click", function () {
+      document.querySelectorAll(".note.unread").forEach(function (note) {
+        note.classList.remove("unread");
+      });
+      document.querySelectorAll(".nav-dot").forEach(function (dot) {
+        dot.remove();
+      });
+    });
+  </script>
+</body>
+</html>

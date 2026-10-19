@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin | CampusLodge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="dash.css">
+  <link rel="stylesheet" href="modal.css">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a href="admin.html" class="logo">
+        <img src="images/logo.png" alt="CampusLodge logo">
+        CampusLodge
+      </a>
+
+      <!-- Menu button for phones (hidden on bigger screens) -->
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="menu-button">&#9776;</label>
+
+      <nav class="navbar-links dashboard-nav">
+        <a href="#review" class="nav-link nav-active" data-tab="review">Review</a>
+        <a href="#credits" class="nav-link" data-tab="credits">Credits</a>
+        <a href="#users" class="nav-link" data-tab="users">Users</a>
+        <a href="#fees" class="nav-link" data-tab="fees">Fees</a>
+        <span class="nav-user"><span class="avatar avatar-dark">A</span>Admin</span>
+        <a href="index.html" class="btn btn-white">Log out</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container admin-page">
+
+    <!-- WELCOME -->
+    <h1 class="title">Admin <span class="green-word">overview</span></h1>
+    <p class="big-text">Review what is waiting for you.</p>
+
+    <!-- NUMBERS -->
+    <div class="stat-row">
+      <div class="stat"><strong>3</strong><span>Listings to review</span></div>
+      <div class="stat"><strong>2</strong><span>IDs to check</span></div>
+      <div class="stat"><strong>1</strong><span>Hostel managers waiting</span></div>
+      <div class="stat"><strong class="stat-red">1</strong><span>Reported listings</span></div>
+    </div>
+
+    <!-- TABS (the same four as the navbar) -->
+    <div class="tab-bar">
+      <button type="button" class="tab-btn tab-on" data-tab="review">Review</button>
+      <button type="button" class="tab-btn" data-tab="credits">Credits and disputes</button>
+      <button type="button" class="tab-btn" data-tab="users">Users</button>
+      <button type="button" class="tab-btn" data-tab="fees">Fees</button>
+    </div>
+
+    <!-- ================= TAB 1: REVIEW ================= -->
+    <div class="tab-panel" id="tab-review">
+
+      <section class="panel">
+        <h2>Listings to <span class="green-word">review</span></h2>
+        <p class="muted panel-sub">Nothing goes live until you approve it.</p>
+
+        <div class="admin-list">
+          <div class="admin-row">
+            <div class="row-main">
+              <h3>Self-contain, Ikot Enin</h3>
+              <p class="muted">Ikot Enin &middot; 14 mins to campus</p>
+            </div>
+            <div class="row-mid">
+              <p>[Lister name]</p>
+              <p class="muted">&#8358;310,000 / year</p>
+            </div>
+            <span class="chip chip-orange">Waiting</span>
+            <div class="row-actions">
+              <a href="listing.html" class="small-btn">Preview</a>
+              <button type="button" class="small-btn small-green act" data-title="Approve this listing?" data-text="Self-contain, Ikot Enin will go live and students can see it." data-button="Approve" data-result="Approved" data-chip="chip-green">Approve</button>
+              <button type="button" class="small-btn small-red act" data-title="Reject this listing?" data-text="Self-contain, Ikot Enin stays hidden. The lister sees your note and can fix it." data-label="Note to the lister" data-button="Reject" data-result="Rejected" data-chip="chip-red" data-reason="yes" data-danger="yes">Reject</button>
+            </div>
+          </div>
+
+          <div class="admin-row">
+            <div class="row-main">
+              <h3>Single room, Ekim</h3>
+              <p class="muted">Ekim &middot; 10 mins to campus</p>
+            </div>
+            <div class="row-mid">
+              <p>[Lister name]</p>
+              <p class="muted">&#8358;120,000 / year</p>
+            </div>
+            <span class="chip chip-orange">Waiting</span>
+            <div class="row-actions">
+              <a href="listing.html" class="small-btn">Preview</a>
+              <button type="button" class="small-btn small-green act" data-title="Approve this listing?" data-text="Single room, Ekim will go live and students can see it." data-button="Approve" data-result="Approved" data-chip="chip-green">Approve</button>
+              <button type="button" class="small-btn small-red act" data-title="Reject this listing?" data-text="Single room, Ekim stays hidden. The lister sees your note and can fix it." data-label="Note to the lister" data-button="Reject" data-result="Rejected" data-chip="chip-red" data-reason="yes" data-danger="yes">Reject</button>
+            </div>
+          </div>
+
+          <div class="admin-row">
+            <div class="row-main">
+              <h3>Hostel room, Block B</h3>
+              <p class="muted">On campus &middot; Male</p>
+            </div>
+            <div class="row-mid">
+              <p>[Hostel manager]</p>
+              <p class="muted">&#8358;250,000 / year</p>
+            </div>
+            <span class="chip chip-orange">Waiting</span>
+            <div class="row-actions">
+              <a href="listing.html" class="small-btn">Preview</a>
+              <button type="button" class="small-btn small-green act" data-title="Approve this listing?" data-text="Hostel room, Block B will go live and students can see it." data-button="Approve" data-result="Approved" data-chip="chip-green">Approve</button>
+              <button type="button" class="small-btn small-red act" data-title="Reject this listing?" data-text="Hostel room, Block B stays hidden. The manager sees your note and can fix it." data-label="Note to the manager" data-button="Reject" data-result="Rejected" data-chip="chip-red" data-reason="yes" data-danger="yes">Reject</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Landlords and agents: <span class="green-word">Trusted</span> badge</h2>
+        <p class="muted panel-sub">Check the ID or proof of ownership, then switch the Trusted badge on.</p>
+
+        <div class="admin-list">
+          <div class="admin-row">
+            <div class="row-main">
+              <h3>[Lister name]</h3>
+              <p class="muted">Landlord</p>
+            </div>
+            <div class="row-mid">
+              <label class="switch-line"><span class="switch"><input type="checkbox" aria-label="Trusted badge"><span class="switch-dot"></span></span>Trusted</label>
+            </div>
+            <span class="chip chip-orange">ID submitted</span>
+            <div class="row-actions">
+              <button type="button" class="small-btn act" data-title="ID of [Lister name]" data-text="The uploaded ID picture shows here. It is added in the Supabase stage." data-button="Close">View ID</button>
+              <button type="button" class="small-btn small-red act" data-title="Reject this ID?" data-text="The lister is asked to upload a clearer ID or proof." data-label="Note to the lister" data-button="Reject ID" data-result="ID rejected" data-chip="chip-red" data-reason="yes" data-danger="yes">Reject</button>
+            </div>
+          </div>
+
+          <div class="admin-row">
+            <div class="row-main">
+              <h3>[Lister name]</h3>
+              <p class="muted">Agent</p>
+            </div>
+            <div class="row-mid">
+              <label class="switch-line"><span class="switch"><input type="checkbox" checked aria-label="Trusted badge"><span class="switch-dot"></span></span>Trusted</label>
+            </div>
+            <span class="chip chip-green">Proof checked</span>
+            <div class="row-actions">
+              <button type="button" class="small-btn act" data-title="ID of [Lister name]" data-text="The uploaded ID picture shows here. It is added in the Supabase stage." data-button="Close">View ID</button>
+              <button type="button" class="small-btn small-red act" data-title="Reject this ID?" data-text="The lister is asked to upload a clearer ID or proof." data-label="Note to the lister" data-button="Reject ID" data-result="ID rejected" data-chip="chip-red" data-reason="yes" data-danger="yes">Reject</button>
+            </div>
+          </div>
+
+          <div class="admin-row">
+            <div class="row-main">
+              <h3>[Lister name]</h3>
+              <p class="muted">Landlord</p>
+            </div>
+            <div class="row-mid">
+              <label class="switch-line"><span class="switch"><input type="checkbox" aria-label="Trusted badge"><span class="switch-dot"></span></span>Trusted</label>
+            </div>
+            <span class="chip chip-grey">Nothing submitted</span>
+            <div class="row-actions"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Hostel managers and <span class="green-word">Verified</span> hostels</h2>
+        <p class="muted panel-sub">Approve a manager once. Their hostel listings then go live directly. Switch Verified on for hostels you have confirmed.</p>
+
+        <div class="admin-list">
+          <div class="admin-row">
+            <div class="row-main">
+              <h3>[Hostel name]</h3>
+              <p class="muted">[Manager name]</p>
+            </div>
+            <div class="row-mid">
+              <label class="switch-line"><span class="switch"><input type="checkbox" aria-label="Verified badge"><span class="switch-dot"></span></span>Verified</label>
+            </div>
+            <span class="chip chip-orange">Waiting for approval</span>
+            <div class="row-actions">
+              <button type="button" class="small-btn small-green act" data-title="Approve this manager?" data-text="Their hostel listings will go live directly from now on." data-button="Approve" data-result="Approved" data-chip="chip-green">Approve</button>
+              <button type="button" class="small-btn small-red act" data-title="Reject this manager?" data-text="The manager cannot post listings until you approve them." data-label="Note to the manager" data-button="Reject" data-result="Rejected" data-chip="chip-red" data-reason="yes" data-danger="yes">Reject</button>
+            </div>
+          </div>
+
+          <div class="admin-row">
+            <div class="row-main">
+              <h3>[Hostel name]</h3>
+              <p class="muted">[Manager name]</p>
+            </div>
+            <div class="row-mid">
+              <label class="switch-line"><span class="switch"><input type="checkbox" checked aria-label="Verified badge"><span class="switch-dot"></span></span>Verified</label>
+            </div>
+            <span class="chip chip-green">Approved</span>
+            <div class="row-actions"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Reported <span class="green-word">listings</span></h2>
+        <p class="muted panel-sub">Students can report a listing from its page.</p>
+
+        <div class="admin-list">
+          <div class="admin-row">
+            <div class="row-main">
+              <h3>Self-contain, Back Gate</h3>
+              <p class="muted">[Lister name]</p>
+            </div>
+            <div class="row-mid">
+              <p>[What the student reported]</p>
+              <p class="muted">1 report</p>
+            </div>
+            <span class="chip chip-red">Reported</span>
+            <div class="row-actions">
+              <a href="listing.html" class="small-btn">Open</a>
+              <button type="button" class="small-btn small-red act" data-title="Take this listing down?" data-text="It disappears from search at once. The lister sees your note." data-label="Note to the lister" data-button="Take down" data-result="Taken down" data-chip="chip-grey" data-reason="yes" data-danger="yes">Take down</button>
+              <button type="button" class="small-btn act" data-title="Dismiss this report?" data-text="The listing stays live and the report is closed." data-button="Dismiss" data-result="Dismissed" data-chip="chip-grey">Dismiss</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ================= TAB 2: CREDITS AND DISPUTES ================= -->
+    <div class="tab-panel" id="tab-credits" hidden>
+
+      <section class="panel">
+        <h2>Credit <span class="green-word">requests</span></h2>
+        <p class="muted panel-sub">Credit is released only after the owner confirms the student did not take the room. Rows below are waiting on you.</p>
+
+        <div class="admin-list">
+          <div class="admin-row">
+            <div class="row-main">
+              <h3>Ekaette Okon</h3>
+              <p class="muted">Self-contain, Back Gate</p>
+            </div>
+            <div class="row-mid">
+              <p>Not as in photos. Dirty or poor condition.</p>
+              <p class="muted">&ldquo;The wall is damp and the bathroom door does not lock.&rdquo;</p>
+            </div>
+            <span class="chip chip-orange">Waiting</span>
+            <div class="row-actions">
+              <button type="button" class="small-btn small-green act" data-title="Approve this credit?" data-text="Ekaette Okon gets &#8358;5,000 credit. It counts as 1 of her 3 credits this semester." data-button="Approve credit" data-result="Credit approved" data-chip="chip-green">Approve credit</button>
+              <button type="button" class="small-btn small-red act" data-title="Decline this credit?" data-text="No credit is given. The student sees your note." data-label="Note to the student" data-button="Decline" data-result="Declined" data-chip="chip-red" data-reason="yes" data-danger="yes">Decline</button>
+            </div>
+          </div>
+
+          <div class="admin-row">
+            <div class="row-main">
+              <h3>Ubong Effiong</h3>
+              <p class="muted">Single room, Ikot Oyoro</p>
+            </div>
+            <div class="row-mid">
+              <p>Owner did not show up.</p>
+              <p class="muted">&ldquo;Waited two hours and he stopped answering.&rdquo;</p>
+            </div>
+            <span class="chip chip-orange">Waiting</span>
+            <div class="row-actions">
+              <button type="button" class="small-btn small-green act" data-title="Approve this credit?" data-text="Ubong Effiong gets &#8358;5,000 credit. It counts as 1 of his 3 credits this semester." data-button="Approve credit" data-result="Credit approved" data-chip="chip-green">Approve credit</button>
+              <button type="button" class="small-btn small-red act" data-title="Decline this credit?" data-text="No credit is given. The student sees your note." data-label="Note to the student" data-button="Decline" data-result="Declined" data-chip="chip-red" data-reason="yes" data-danger="yes">Decline</button>
+            </div>
+          </div>
+
+          <div class="admin-row">
+            <div class="row-main">
+              <h3>Mfon Bassey</h3>
+              <p class="muted">Shared room, Ekim</p>
+            </div>
+            <div class="row-mid">
+              <p>Hold ended.</p>
+              <p class="muted">No visit and no reply within 48 hours. Credit added automatically.</p>
+            </div>
+            <span class="chip chip-green">Auto-credited</span>
+            <div class="row-actions"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Rent <span class="green-word">disputes</span></h2>
+        <p class="muted panel-sub">Rent not received, or the owner and student disagree about whether the room was taken. Compare both sides and decide.</p>
+
+        <div class="admin-list">
+          <div class="admin-row">
+            <div class="row-main">
+              <h3>Ekaette Okon vs Mr. Etim Udoh</h3>
+              <p class="muted">Self-contain, Back Gate &middot; &#8358;230,000</p>
+            </div>
+            <div class="row-mid">
+              <p><strong>Student says:</strong> Paid by transfer on 12 Oct. Receipt attached.</p>
+              <p><strong>Owner says:</strong> Money has not reached my account.</p>
+            </div>
+            <span class="chip chip-orange">Under review</span>
+            <div class="row-actions">
+              <button type="button" class="small-btn act" data-title="Receipt" data-text="The receipt picture shows here. It is added in the Supabase stage." data-button="Close">View receipt</button>
+              <button type="button" class="small-btn small-green act" data-title="Side with the student?" data-text="The room stays with Ekaette. The owner is told to confirm the rent." data-label="Note for both sides" data-button="Side with student" data-result="Sided with student" data-chip="chip-green" data-reason="yes">Side with student</button>
+              <button type="button" class="small-btn act" data-title="Side with the owner?" data-text="The room goes back to the owner. The student is told why." data-label="Note for both sides" data-button="Side with owner" data-result="Sided with owner" data-chip="chip-grey" data-reason="yes">Side with owner</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Key <span class="green-word">problems</span></h2>
+        <p class="muted panel-sub">The student paid, the owner confirmed, but the key was not handed over. The owner's other listings are paused while you check.</p>
+
+        <div class="admin-list">
+          <div class="admin-row">
+            <div class="row-main">
+              <h3>Idara Umoh vs Mrs. Grace Akpan</h3>
+              <p class="muted">Self-contain, Mansion</p>
+            </div>
+            <div class="row-mid">
+              <p><strong>Student says:</strong> The owner refused to give me the key.</p>
+              <p class="muted">Owner's other listings: paused</p>
+            </div>
+            <span class="chip chip-orange">Under review</span>
+            <div class="row-actions">
+              <button type="button" class="small-btn small-green act" data-title="Give the credit?" data-text="Idara gets &#8358;5,000 credit. It does NOT count toward her 3 credits this semester." data-label="Note for the student" data-button="Give credit" data-result="Credit given" data-chip="chip-green" data-reason="yes">Give credit</button>
+              <button type="button" class="small-btn act" data-title="Restore the listings?" data-text="The owner's paused listings go live again." data-button="Restore listings" data-result="Owner cleared" data-chip="chip-grey">Owner is fine</button>
+              <button type="button" class="small-btn small-red act" data-title="Ban this owner?" data-text="The owner is logged out and all listings are removed. Students who reserved their rooms get &#8358;5,000 back as credit." data-label="Reason (only admins see this)" data-button="Ban and remove listings" data-result="Owner banned" data-chip="chip-red" data-reason="yes" data-danger="yes">Ban owner</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Flagged <span class="green-word">accounts</span></h2>
+        <p class="muted panel-sub">Students who claim credit often (limit: 3 credits per semester) and owners whose answers are often overruled.</p>
+
+        <div class="admin-list">
+          <div class="admin-row">
+            <div class="row-main">
+              <h3>Ubong Effiong</h3>
+              <p class="muted">Student &middot; 3 of 3 credits used</p>
+            </div>
+            <div class="row-mid">
+              <p>4 reservations, 3 &ldquo;did not like it&rdquo; claims</p>
+              <p class="muted">Owners disagreed on 2 of them.</p>
+            </div>
+            <span class="chip chip-orange">Flagged</span>
+            <div class="row-actions">
+              <a href="#users" class="small-btn" data-tab="users">View history</a>
+              <button type="button" class="small-btn small-red act" data-title="Freeze credit for Ubong Effiong?" data-text="He cannot use or earn credit. He can still reserve rooms by paying." data-label="Reason (only admins see this)" data-button="Freeze credit" data-result="Credit frozen" data-chip="chip-red" data-reason="yes" data-danger="yes">Freeze credit</button>
+            </div>
+          </div>
+
+          <div class="admin-row">
+            <div class="row-main">
+              <h3>Mr. Etim Udoh</h3>
+              <p class="muted">Trusted owner, Back Gate</p>
+            </div>
+            <div class="row-mid">
+              <p>5 of 6 confirmations went to the same 2 students</p>
+              <p class="muted">3 of his answers were later overruled by an admin.</p>
+            </div>
+            <span class="chip chip-orange">Flagged</span>
+            <div class="row-actions">
+              <a href="#users" class="small-btn" data-tab="users">View history</a>
+              <button type="button" class="small-btn small-red act" data-title="Remove the Trusted badge?" data-text="Mr. Etim Udoh loses the Trusted badge on all his listings." data-label="Reason (only admins see this)" data-button="Remove badge" data-result="Badge removed" data-chip="chip-grey" data-reason="yes" data-danger="yes">Remove Trusted badge</button>
+            </div>
+          </div>
+
+          <div class="admin-row">
+            <div class="row-main">
+              <h3>Mrs. Grace Akpan</h3>
+              <p class="muted">Landlord, Ikot Oyoro</p>
+            </div>
+            <div class="row-mid">
+              <p>Never answers confirmation requests</p>
+              <p class="muted">4 of 4 requests went unanswered and ended in admin review.</p>
+            </div>
+            <span class="chip chip-orange">Flagged</span>
+            <div class="row-actions">
+              <a href="#users" class="small-btn" data-tab="users">View history</a>
+              <button type="button" class="small-btn act" data-title="Send a warning to Mrs. Grace Akpan?" data-text="She gets a message saying that repeated problems can lead to a ban." data-label="Message to her" data-button="Send warning" data-result="Warned" data-chip="chip-orange" data-reason="yes">Send a warning</button>
+            </div>
+          </div>
+        </div>
+
+        <p class="rule-note"><strong>Rule:</strong> an owner with repeated disputes loses the Trusted badge. Approved credit is taken off the student's next booking fee.</p>
+      </section>
+
+    </div>
+
+    <!-- ================= TAB 3: USERS ================= -->
+    <div class="tab-panel" id="tab-users" hidden>
+
+      <section class="panel">
+        <h2>Ban <span class="green-word">appeals</span></h2>
+        <p class="muted panel-sub">Banned people can write to you from their account. Read what they say, then restore or reject.</p>
+
+        <div class="admin-list">
+          <div class="admin-row">
+            <div class="row-main">
+              <h3>Idara Umoh</h3>
+              <p class="muted">Student &middot; Banned 9 Oct</p>
+            </div>
+            <div class="row-mid">
+              <p>&ldquo;I did not take the credit on purpose. The owner never answered me.&rdquo;</p>
+              <p class="muted">Sent 11 Oct</p>
+            </div>
+            <span class="chip chip-orange">Waiting</span>
+            <div class="row-actions">
+              <button type="button" class="small-btn small-green act" data-title="Restore Idara Umoh?" data-text="She can log in again and use the site as before. She is told by email." data-button="Restore account" data-result="Restored" data-chip="chip-green">Restore account</button>
+              <button type="button" class="small-btn small-red act" data-title="Reject this appeal?" data-text="The ban stays. She is told your reason by email." data-label="Reply to her" data-button="Reject appeal" data-result="Rejected" data-chip="chip-red" data-reason="yes" data-danger="yes">Reject appeal</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Manage <span class="green-word">users</span></h2>
+        <p class="muted panel-sub">Find any account. Students: warning first, then credit frozen, then ban. For serious fraud you can skip steps.</p>
+
+        <div class="filter-bar">
+          <button type="button" class="filter-chip active" data-list="users-list" data-filter="all">All 312</button>
+          <button type="button" class="filter-chip" data-list="users-list" data-filter="student">Students 270</button>
+          <button type="button" class="filter-chip" data-list="users-list" data-filter="lister">Landlords and agents 32</button>
+          <button type="button" class="filter-chip" data-list="users-list" data-filter="hostel">Hostel managers 10</button>
+          <button type="button" class="filter-chip" data-list="users-list" data-filter="banned">Banned 4</button>
+        </div>
+        <input type="text" class="search-box" data-search="users-list" placeholder="Search name or email">
+
+        <div class="admin-list" id="users-list">
+
+          <div class="admin-row user-row" data-kind="student" data-status="active">
+            <div class="row-main">
+              <h3>Ekaette Okon</h3>
+              <p class="muted">ekaette@example.com</p>
+            </div>
+            <div class="row-mid">
+              <p>Student &middot; Joined 2 Oct</p>
+              <p class="muted">Warnings: 0 &middot; Credits used: 1 of 3</p>
+            </div>
+            <span class="chip chip-green">Active</span>
+            <div class="row-actions">
+              <button type="button" class="small-btn act" data-title="Warn Ekaette Okon?" data-text="She gets a warning message. This is the first step." data-label="Message to her" data-button="Send warning" data-result="Warned" data-chip="chip-orange" data-reason="yes">Warn</button>
+              <button type="button" class="small-btn act" data-title="Freeze credit for Ekaette Okon?" data-text="She cannot use or earn credit. She can still reserve rooms by paying." data-label="Reason (only admins see this)" data-button="Freeze credit" data-result="Credit frozen" data-chip="chip-orange" data-reason="yes">Freeze credit</button>
+              <button type="button" class="small-btn small-red act" data-title="Ban Ekaette Okon?" data-text="She is logged out and cannot reserve rooms or use credit. Her data is kept. You can restore her any time." data-label="Reason (only admins see this)" data-button="Ban account" data-result="Banned" data-chip="chip-red" data-reason="yes" data-danger="yes">Ban</button>
+            </div>
+          </div>
+
+          <div class="admin-row user-row" data-kind="student" data-status="active">
+            <div class="row-main">
+              <h3>Ubong Effiong</h3>
+              <p class="muted">ubong@example.com</p>
+            </div>
+            <div class="row-mid">
+              <p>Student &middot; 3 &ldquo;did not like it&rdquo; claims</p>
+              <p class="muted">Warnings: 1 &middot; Credits used: 3 of 3</p>
+            </div>
+            <span class="chip chip-orange">Flagged</span>
+            <div class="row-actions">
+              <button type="button" class="small-btn act" data-title="Warn Ubong Effiong?" data-text="He gets a warning message. This is the first step." data-label="Message to him" data-button="Send warning" data-result="Warned" data-chip="chip-orange" data-reason="yes">Warn</button>
+              <button type="button" class="small-btn act" data-title="Freeze credit for Ubong Effiong?" data-text="He cannot use or earn credit. He can still reserve rooms by paying." data-label="Reason (only admins see this)" data-button="Freeze credit" data-result="Credit frozen" data-chip="chip-orange" data-reason="yes">Freeze credit</button>
+              <button type="button" class="small-btn small-red act" data-title="Ban Ubong Effiong?" data-text="He is logged out and cannot reserve rooms or use credit. His data is kept. You can restore him any time." data-label="Reason (only admins see this)" data-button="Ban account" data-result="Banned" data-chip="chip-red" data-reason="yes" data-danger="yes">Ban</button>
+            </div>
+          </div>
+
+          <div class="admin-row user-row" data-kind="lister" data-status="active">
+            <div class="row-main">
+              <h3>Mr. Etim Udoh</h3>
+              <p class="muted">etim@example.com</p>
+            </div>
+            <div class="row-mid">
+              <p>Landlord &middot; Trusted &middot; 4 listings</p>
+              <p class="muted">Warnings: 0 &middot; 3 answers overruled</p>
+            </div>
+            <span class="chip chip-green">Active</span>
+            <div class="row-actions">
+              <button type="button" class="small-btn act" data-title="Warn Mr. Etim Udoh?" data-text="He gets a warning message." data-label="Message to him" data-button="Send warning" data-result="Warned" data-chip="chip-orange" data-reason="yes">Warn</button>
+              <button type="button" class="small-btn small-red act" data-title="Ban Mr. Etim Udoh?" data-text="He is logged out and all his listings are removed. Students who reserved his rooms get &#8358;5,000 back as credit." data-label="Reason (only admins see this)" data-button="Ban and remove listings" data-result="Banned" data-chip="chip-red" data-reason="yes" data-danger="yes">Ban and remove listings</button>
+            </div>
+          </div>
+
+          <div class="admin-row user-row" data-kind="hostel" data-status="active">
+            <div class="row-main">
+              <h3>Block B Hostel</h3>
+              <p class="muted">hostel@aksu.edu</p>
+            </div>
+            <div class="row-mid">
+              <p>Hostel manager &middot; Verified &middot; 12 rooms</p>
+              <p class="muted">Warnings: 0</p>
+            </div>
+            <span class="chip chip-green">Active</span>
+            <div class="row-actions">
+              <button type="button" class="small-btn act" data-title="Warn Block B Hostel?" data-text="The manager gets a warning message." data-label="Message to the manager" data-button="Send warning" data-result="Warned" data-chip="chip-orange" data-reason="yes">Warn</button>
+              <button type="button" class="small-btn small-red act" data-title="Ban Block B Hostel?" data-text="The manager is logged out and all listings are removed. Students who reserved rooms get &#8358;5,000 back as credit." data-label="Reason (only admins see this)" data-button="Ban and remove listings" data-result="Banned" data-chip="chip-red" data-reason="yes" data-danger="yes">Ban and remove listings</button>
+            </div>
+          </div>
+
+          <div class="admin-row user-row" data-kind="student" data-status="banned">
+            <div class="row-main">
+              <h3>Idara Umoh</h3>
+              <p class="muted">idara@example.com</p>
+            </div>
+            <div class="row-mid">
+              <p>Student &middot; Banned 9 Oct</p>
+              <p class="muted">3 reports &middot; Warnings: 2</p>
+            </div>
+            <span class="chip chip-red">Banned</span>
+            <div class="row-actions">
+              <button type="button" class="small-btn small-green act" data-title="Restore Idara Umoh?" data-text="She can log in again and use the site as before." data-button="Restore" data-result="Active" data-chip="chip-green">Restore</button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ================= TAB 4: FEES ================= -->
+    <div class="tab-panel" id="tab-fees" hidden>
+
+      <section class="panel">
+        <h2>Fee <span class="green-word">records</span></h2>
+        <p class="muted panel-sub">Every &#8358;5,000 booking fee and where it stands.</p>
+
+        <div class="fee-cards">
+          <div class="fee-card"><span>Received</span><strong>&#8358;1,240,000</strong><p class="muted">248 booking fees</p></div>
+          <div class="fee-card"><span>Held now</span><strong>&#8358;85,000</strong><p class="muted">17 active holds</p></div>
+          <div class="fee-card"><span>Kept</span><strong>&#8358;620,000</strong><p class="muted">124 rooms taken</p></div>
+          <div class="fee-card"><span>Credited</span><strong>&#8358;435,000</strong><p class="muted">87 credits given</p></div>
+          <div class="fee-card"><span>Credit used</span><strong>&#8358;210,000</strong><p class="muted">42 credits spent</p></div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>All <span class="green-word">fees</span></h2>
+
+        <div class="fee-tools">
+          <input type="text" class="search-box" data-search="fees-list" placeholder="Search by name or reference">
+          <button type="button" class="btn btn-dark" id="export-csv">Export CSV</button>
+        </div>
+
+        <div class="fee-head">
+          <span>Reference</span>
+          <span>Student</span>
+          <span>Room</span>
+          <span>Date</span>
+          <span>Fee</span>
+          <span>Status</span>
+        </div>
+
+        <div class="admin-list" id="fees-list">
+          <div class="admin-row fee-row">
+            <span data-label="Reference"><strong>CL-48213</strong></span>
+            <span data-label="Student">Ekaette Okon</span>
+            <span data-label="Room">Self-contain, Back Gate</span>
+            <span data-label="Date">12 Oct</span>
+            <span data-label="Fee">&#8358;5,000</span>
+            <span data-label="Status"><span class="chip chip-orange">Held (48h)</span></span>
+          </div>
+          <div class="admin-row fee-row">
+            <span data-label="Reference"><strong>CL-48190</strong></span>
+            <span data-label="Student">Ubong Effiong</span>
+            <span data-label="Room">Single room, Ikot Oyoro</span>
+            <span data-label="Date">11 Oct</span>
+            <span data-label="Fee">&#8358;5,000</span>
+            <span data-label="Status"><span class="chip chip-green">Kept (room taken)</span></span>
+          </div>
+          <div class="admin-row fee-row">
+            <span data-label="Reference"><strong>CL-48177</strong></span>
+            <span data-label="Student">Mfon Bassey</span>
+            <span data-label="Room">Shared room, Ekim</span>
+            <span data-label="Date">10 Oct</span>
+            <span data-label="Fee">&#8358;5,000</span>
+            <span data-label="Status"><span class="chip chip-grey">Credited</span></span>
+          </div>
+          <div class="admin-row fee-row">
+            <span data-label="Reference"><strong>CL-48140</strong></span>
+            <span data-label="Student">Idara Umoh</span>
+            <span data-label="Room">Self-contain, Mansion</span>
+            <span data-label="Date">9 Oct</span>
+            <span data-label="Fee">&#8358;5,000</span>
+            <span data-label="Status"><span class="chip chip-grey">Credit used</span></span>
+          </div>
+          <div class="admin-row fee-row">
+            <span data-label="Reference"><strong>CL-48102</strong></span>
+            <span data-label="Student">Nsikak Ita</span>
+            <span data-label="Room">Hostel room, Block B</span>
+            <span data-label="Date">8 Oct</span>
+            <span data-label="Fee">&#8358;5,000</span>
+            <span data-label="Status"><span class="chip chip-red">Under review</span></span>
+          </div>
+        </div>
+
+        <p class="rule-note"><strong>Status meaning.</strong> Held: waiting for the visit. Kept: student took the room. Credited: turned into credit. Credit used: credit spent on a new booking. Under review: waiting on an admin.</p>
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- ONE POP-UP USED BY EVERY ADMIN BUTTON -->
+  <div class="modal-overlay" id="action-modal">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h2 id="action-title">Are you sure?</h2>
+        <button type="button" class="modal-close" data-close="action-modal" aria-label="Close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="muted" id="action-text"></p>
+        <div class="field action-reason" id="action-reason-box" hidden>
+          <label for="action-reason" id="action-label">Reason</label>
+          <textarea id="action-reason" rows="3"></textarea>
+          <p class="error-text" id="action-error" hidden>Please write a short note first.</p>
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button type="button" class="btn btn-white" data-close="action-modal">Cancel</button>
+        <button type="button" class="btn btn-green" id="action-confirm">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-about">
+          <a href="admin.html" class="logo">
+            <img src="images/logo.png" alt="CampusLodge logo">
+            CampusLodge
+          </a>
+          <p>Find conducive hostels and very affordable apartments around AKSU.</p>
+        </div>
+        <div class="footer-columns">
+          <div>
+            <h4>Admin</h4>
+            <a href="#review" data-tab="review">Review</a>
+            <a href="#credits" data-tab="credits">Credits</a>
+            <a href="#users" data-tab="users">Users</a>
+            <a href="#fees" data-tab="fees">Fees</a>
+          </div>
+          <div>
+            <h4>Company</h4>
+            <a href="about.html">About</a>
+            <a href="terms.html">Terms</a>
+            <a href="privacy.html">Privacy</a>
+          </div>
+        </div>
+      </div>
+      <p class="copyright">&copy; 2026 CampusLodge. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // ----- TABS: Review / Credits / Users / Fees -----
+    var tabNames = ["review", "credits", "users", "fees"];
+
+    function showTab(name) {
+      tabNames.forEach(function (tab) {
+        document.getElementById("tab-" + tab).hidden = (tab !== name);
+      });
+      document.querySelectorAll(".tab-btn").forEach(function (button) {
+        button.classList.toggle("tab-on", button.dataset.tab === name);
+      });
+      document.querySelectorAll(".nav-link").forEach(function (link) {
+        link.classList.toggle("nav-active", link.dataset.tab === name);
+      });
+      document.getElementById("menu-toggle").checked = false;
+      window.scrollTo(0, 0);
+    }
+
+    document.querySelectorAll("[data-tab]").forEach(function (item) {
+      item.addEventListener("click", function (event) {
+        event.preventDefault();
+        showTab(item.dataset.tab);
+      });
+    });
+
+    // Opening admin.html#users goes straight to the Users tab
+    var startTab = location.hash.replace("#", "");
+    if (tabNames.indexOf(startTab) !== -1) {
+      showTab(startTab);
+    }
+
+    // ----- SEARCH AND FILTER (Users and Fees) -----
+    function filterList(listId) {
+      var box = document.querySelector('[data-search="' + listId + '"]');
+      var chip = document.querySelector('.filter-chip.active[data-list="' + listId + '"]');
+      var text = box.value.toLowerCase();
+      var kind = chip ? chip.dataset.filter : "all";
+
+      document.querySelectorAll("#" + listId + " .admin-row").forEach(function (row) {
+        var kindOk = kind === "all" || row.dataset.kind === kind;
+        if (kind === "banned") {
+          kindOk = row.dataset.status === "banned";
+        }
+        var textOk = row.textContent.toLowerCase().indexOf(text) !== -1;
+        row.hidden = !(kindOk && textOk);
+      });
+    }
+
+    document.querySelectorAll("[data-search]").forEach(function (box) {
+      box.addEventListener("input", function () {
+        filterList(box.dataset.search);
+      });
+    });
+
+    document.querySelectorAll(".filter-chip").forEach(function (chip) {
+      chip.addEventListener("click", function () {
+        document.querySelectorAll('.filter-chip[data-list="' + chip.dataset.list + '"]').forEach(function (other) {
+          other.classList.remove("active");
+        });
+        chip.classList.add("active");
+        filterList(chip.dataset.list);
+      });
+    });
+
+    // ----- THE POP-UP -----
+    var modal = document.getElementById("action-modal");
+    var reasonBox = document.getElementById("action-reason-box");
+    var reasonInput = document.getElementById("action-reason");
+    var reasonError = document.getElementById("action-error");
+    var confirmButton = document.getElementById("action-confirm");
+    var chosenButton = null;
+
+    // Every button with class "act" opens the pop-up with its own words
+    document.querySelectorAll(".act").forEach(function (button) {
+      button.addEventListener("click", function () {
+        chosenButton = button;
+        document.getElementById("action-title").textContent = button.dataset.title;
+        document.getElementById("action-text").textContent = button.dataset.text;
+        document.getElementById("action-label").textContent = button.dataset.label || "Reason";
+        reasonBox.hidden = button.dataset.reason !== "yes";
+        reasonInput.value = "";
+        reasonError.hidden = true;
+        reasonInput.classList.remove("input-error");
+        confirmButton.textContent = button.dataset.button;
+        confirmButton.className = button.dataset.danger ? "btn btn-red" : "btn btn-green";
+        modal.classList.add("open");
+      });
+    });
+
+    // Confirm: the row shows the new status
+    // TEMPORARY: the real saving is added in the Supabase stage
+    confirmButton.addEventListener("click", function () {
+      if (chosenButton.dataset.reason === "yes" && reasonInput.value.trim() === "") {
+        reasonError.hidden = false;
+        reasonInput.classList.add("input-error");
+        return;
+      }
+
+      var row = chosenButton.closest(".admin-row");
+      if (chosenButton.dataset.result) {
+        var chip = row.querySelector(".chip");
+        chip.textContent = chosenButton.dataset.result;
+        chip.className = "chip " + chosenButton.dataset.chip;
+
+        if (chosenButton.dataset.result === "Banned") {
+          row.dataset.status = "banned";
+        }
+        // Review rows are finished, so their buttons go away. User rows keep theirs.
+        if (!row.classList.contains("user-row")) {
+          row.querySelector(".row-actions").hidden = true;
+        }
+      }
+      modal.classList.remove("open");
+    });
+
+    // Cancel and X close the pop-up
+    document.querySelectorAll("[data-close]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        document.getElementById(button.dataset.close).classList.remove("open");
+      });
+    });
+
+    // Clicking the dark area outside the box also closes it
+    modal.addEventListener("click", function (event) {
+      if (event.target === modal) {
+        modal.classList.remove("open");
+      }
+    });
+
+    // TEMPORARY: Export CSV is connected in the Supabase stage
+    document.getElementById("export-csv").addEventListener("click", function () {
+      alert("Export CSV works after Supabase is connected.");
+    });
+  </script>
+</body>
+</html>
