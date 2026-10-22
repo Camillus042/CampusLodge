@@ -1,0 +1,548 @@
+/* ===== Admin dashboard (also uses dash.css and modal.css) ===== */
+.admin-page {
+  padding-top: 44px;
+  padding-bottom: 100px;
+}
+
+.avatar-dark {
+  background: var(--dark);
+  color: #fff;
+}
+
+.admin-page > .title {
+  margin-bottom: 10px;
+  font-size: 54px;
+}
+
+.admin-page > .big-text {
+  margin-bottom: 30px;
+}
+
+/* The four numbers */
+.stat-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-bottom: 30px;
+}
+
+.stat {
+  flex: 1 1 200px;
+  padding: 22px 24px;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+}
+
+.stat strong {
+  display: block;
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.stat span {
+  display: block;
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--grey);
+}
+
+.stat-red {
+  color: #B3261E;
+}
+
+/* Tabs */
+.tab-bar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 28px;
+  overflow-x: auto;
+}
+
+.tab-btn {
+  flex: none;
+  padding: 12px 20px;
+  border: 1.5px solid #D5DCD4;
+  border-radius: 30px;
+  background: #fff;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--dark);
+  cursor: pointer;
+}
+
+.tab-on {
+  border-color: var(--dark);
+  background: var(--dark);
+  color: #fff;
+}
+
+.tab-panel[hidden] {
+  display: none;
+}
+
+/* White boxes that hold each list */
+.panel {
+  margin-bottom: 28px;
+  padding: 30px 32px;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+}
+
+.panel h2 {
+  font-size: 26px;
+}
+
+.panel-sub {
+  margin: 6px 0 20px;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+/* One row per item */
+.admin-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 16px 0;
+  border-top: 1px solid #EEF1ED;
+}
+
+.admin-row[hidden] {
+  display: none;
+}
+
+.row-main {
+  flex: 2 1 0;
+  min-width: 0;
+}
+
+.row-main h3 {
+  font-size: 17px;
+}
+
+.row-main .muted,
+.row-mid .muted {
+  margin-top: 3px;
+  font-size: 14px;
+}
+
+.row-mid {
+  flex: 2 1 0;
+  min-width: 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.row-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+  flex: none;
+  width: 300px;
+}
+
+.row-actions[hidden] {
+  display: none;
+}
+
+/* Small status label */
+.chip {
+  display: inline-block;
+  flex: none;
+  width: 150px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.chip-green {
+  background: #E9F5EC;
+  color: #0F6B31;
+}
+
+.chip-orange {
+  background: #FFF1E8;
+  color: #B4540A;
+}
+
+.chip-grey {
+  background: #EEF1ED;
+  color: var(--grey);
+}
+
+.chip-red {
+  background: #FCEAE8;
+  color: #B3261E;
+}
+
+/* Small buttons (also works on links) */
+.small-btn {
+  display: inline-block;
+  padding: 9px 14px;
+  border: 1.5px solid #D5DCD4;
+  border-radius: 10px;
+  background: #fff;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+  color: var(--dark);
+  cursor: pointer;
+}
+
+.small-green {
+  border-color: var(--green);
+  background: var(--green);
+  color: #fff;
+}
+
+.small-red {
+  color: #B3261E;
+}
+
+.btn-red {
+  background: #B3261E;
+  color: #fff;
+}
+
+/* On / off switch for Trusted and Verified (no JavaScript needed) */
+.switch-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 26px;
+}
+
+.switch input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.switch-dot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background: #C5CEC4;
+}
+
+.switch-dot::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.switch input:checked + .switch-dot {
+  background: var(--green);
+}
+
+.switch input:checked + .switch-dot::after {
+  left: 21px;
+}
+
+.rule-note {
+  margin-top: 20px;
+  padding: 16px 18px;
+  border-radius: 14px;
+  background: var(--light);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+/* Users: filter buttons and search */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.filter-chip {
+  padding: 9px 16px;
+  border: 1.5px solid #D5DCD4;
+  border-radius: 30px;
+  background: #fff;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--dark);
+  cursor: pointer;
+}
+
+.filter-chip.active {
+  border-color: var(--dark);
+  background: var(--dark);
+  color: #fff;
+}
+
+.search-box {
+  width: 100%;
+  max-width: 420px;
+  margin-bottom: 14px;
+  padding: 12px 14px;
+  border: 1.5px solid #D5DCD4;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 16px;
+}
+
+.search-box:focus {
+  outline: none;
+  border-color: var(--green);
+}
+
+/* Fees */
+.fee-cards {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+}
+
+.fee-card {
+  padding: 18px 20px;
+  border-radius: 18px;
+  background: var(--light);
+}
+
+.fee-card span {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--grey);
+}
+
+.fee-card strong {
+  display: block;
+  margin: 6px 0 2px;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.fee-card .muted {
+  font-size: 13px;
+}
+
+.fee-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 16px 0 6px;
+}
+
+.fee-tools .search-box {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.fee-tools .btn {
+  padding: 12px 22px;
+}
+
+.fee-head {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1.6fr 0.7fr 0.7fr 1.2fr;
+  gap: 14px;
+  padding: 14px 0 10px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--grey);
+}
+
+.fee-row {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1.6fr 0.7fr 0.7fr 1.2fr;
+  gap: 14px;
+  font-size: 14px;
+}
+
+.fee-row .chip {
+  width: auto;
+}
+
+/* The one pop-up */
+.action-reason {
+  margin: 18px 0 0;
+}
+
+.action-reason textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid #D5DCD4;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 16px;
+  resize: none;
+}
+
+.action-reason textarea:focus {
+  outline: none;
+  border-color: var(--green);
+}
+
+.action-reason textarea.input-error {
+  border-color: #B3261E;
+}
+
+/* Desktop hover */
+@media (min-width: 801px) {
+
+  .small-btn:hover,
+  .filter-chip:hover,
+  .tab-btn:hover {
+    border-color: var(--green);
+  }
+
+  .small-green:hover {
+    background: #12702F;
+  }
+}
+
+/* ===== PHONE ===== */
+@media (max-width: 800px) {
+
+  .admin-page {
+    padding-top: 28px;
+  }
+
+  .admin-page > .title {
+    font-size: 34px;
+  }
+
+  .stat-row {
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .stat {
+    flex: 1 1 140px;
+    padding: 16px 18px;
+  }
+
+  .stat strong {
+    font-size: 32px;
+  }
+
+  .tab-btn {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+
+  .panel {
+    padding: 22px 18px;
+  }
+
+  .panel h2 {
+    font-size: 22px;
+  }
+
+  /* Each row becomes a small card: info on top, buttons underneath */
+  .admin-row {
+    flex-wrap: wrap;
+    gap: 8px 12px;
+  }
+
+  .row-main {
+    flex: 1 1 calc(100% - 150px);
+  }
+
+  .row-mid {
+    flex: 1 1 100%;
+    order: 3;
+  }
+
+  .chip {
+    width: auto;
+    order: 2;
+  }
+
+  .row-actions {
+    order: 4;
+    justify-content: stretch;
+    width: 100%;
+  }
+
+  .row-actions .small-btn {
+    flex: 1 1 auto;
+    padding: 11px 10px;
+  }
+
+  .row-actions:empty {
+    display: none;
+  }
+
+  .fee-cards {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .fee-card:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .fee-tools .btn {
+    width: 100%;
+  }
+
+  .search-box {
+    max-width: none;
+  }
+
+  .fee-head {
+    display: none;
+  }
+
+  /* Fee rows: label on the left, value on the right */
+  .fee-row {
+    display: block;
+  }
+
+  .fee-row > span {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 4px 0;
+    text-align: right;
+  }
+
+  .fee-row > span::before {
+    content: attr(data-label);
+    flex: none;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--grey);
+  }
+}

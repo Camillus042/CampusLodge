@@ -432,13 +432,13 @@ img {
 
 .copyright-footer {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .copyright {
   margin-top: 50px;
   padding-top: 22px;
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  /* border-top: 1px solid rgba(255, 255, 255, 0.15); */
   font-size: 14px;
   /* text-align: center; */
 }
@@ -549,7 +549,8 @@ img {
     text-align: center;
   }
   .footer-columns {
-    gap: 40px;
+    justify-content: space-between;
+    /* gap: 160px; */
   }
 }
 

@@ -41,7 +41,8 @@
         <h1>Create your <span class="green-word">account</span></h1>
         <p class="muted">Join CampusLodge to search, save and reserve rooms near AKSU.</p>
 
-        <form action="check-email.html">
+        <form>
+          <p class="error-banner" id="signup-error" hidden></p>
           <!-- <p class="auth-label">I am a</p> -->
           <div class="account-type">
             <label><input type="radio" name="account-type" value="student" checked><span>Student</span></label>
@@ -276,6 +277,9 @@
       }
     });
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+  <script src="config.js"></script>
+  <script src="signup.js"></script>
 
 </body>
 </html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How booking works | CampusLodge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="dash.css">
+  <link rel="stylesheet" href="modal.css">
+  <link rel="stylesheet" href="info.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a href="dashboard.html" class="logo">
+        <img src="images/logo.png" alt="CampusLodge logo">
+        CampusLodge
+      </a>
+      <!-- Credit balance for phones (hidden on bigger screens) -->
+      <a href="credit.html" class="credit-chip phone-credit">&#8358;5,000 credit</a>
+
+      <!-- Menu button for phones (hidden on bigger screens) -->
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="menu-button">&#9776;</label>
+
+      <nav class="navbar-links dashboard-nav">
+        <a href="dashboard.html" class="nav-link">Home</a>
+        <a href="search.html" class="nav-link">Search</a>
+        <a href="dashboard.html#saved" class="nav-link">Saved</a>
+        <a href="dashboard.html#reservations" class="nav-link">Reservations</a>
+        <a href="notifications.html" class="nav-link">Notifications<span class="nav-dot"></span></a>
+        <a href="credit.html" class="credit-chip nav-credit">&#8358;5,000 credit</a>
+        <a href="profile.html" class="nav-user"><span class="avatar">E</span>Ekaette</a>
+        <a href="index.html" class="btn btn-white">Log out</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container info-page">
+    <h1 class="title">How booking <span class="green-word">works</span></h1>
+    <p class="big-text">Five steps, one small fee, and clear rules if things do not go to plan.</p>
+
+    <div class="how-steps">
+      <div class="how-step">
+        <span class="how-number">1</span>
+        <h3>Find a room</h3>
+        <p class="muted">Search or browse and contact the owner on WhatsApp or by phone.</p>
+      </div>
+      <div class="how-step">
+        <span class="how-number">2</span>
+        <h3>Reserve it</h3>
+        <p class="muted">Pay the &#8358;5,000 booking fee. The room is held for you for 48 hours.</p>
+      </div>
+      <div class="how-step">
+        <span class="how-number">3</span>
+        <h3>Visit it</h3>
+        <p class="muted">Go and see the room. Check the water, light and security.</p>
+      </div>
+      <div class="how-step">
+        <span class="how-number">4</span>
+        <h3>Decide</h3>
+        <p class="muted">Like it: pay the rent directly to the owner. Do not like it: tell us why.</p>
+      </div>
+      <div class="how-step">
+        <span class="how-number">5</span>
+        <h3>Move in</h3>
+        <p class="muted">The owner confirms your rent and the room is yours.</p>
+      </div>
+    </div>
+
+    <h2 class="how-title">What happens to the &#8358;5,000</h2>
+    <div class="how-table">
+      <div class="how-row how-head">
+        <span>If</span>
+        <span>Then</span>
+        <span>Details</span>
+      </div>
+        <div class="how-row">
+          <strong>You take the room</strong>
+          <span class="how-then">Fee is kept</span>
+          <span class="muted">The &#8358;5,000 pays for the hold and the service. Rent goes to the owner.</span>
+        </div>
+        <div class="how-row">
+          <strong>You do not like it</strong>
+          <span class="how-then">&#8358;5,000 becomes credit</span>
+          <span class="muted">The owner confirms you did not take it. Up to 3 credits a semester.</span>
+        </div>
+        <div class="how-row">
+          <strong>The owner does not show up</strong>
+          <span class="how-then">&#8358;5,000 becomes credit</span>
+          <span class="muted">Straight away. It does not count toward your 3 credits.</span>
+        </div>
+        <div class="how-row">
+          <strong>You cancel</strong>
+          <span class="how-then">&#8358;5,000 becomes credit</span>
+          <span class="muted">Counts as 1 of your 3 credits. The room reopens.</span>
+        </div>
+        <div class="how-row">
+          <strong>You do nothing for 48 hours</strong>
+          <span class="how-then">&#8358;5,000 becomes credit</span>
+          <span class="muted">The room reopens for other students.</span>
+        </div>
+    </div>
+
+    <h2 class="how-title">Credit, in short</h2>
+    <div class="how-faqs">
+        <div class="how-faq">
+          <strong>Can I withdraw credit as cash?</strong>
+          <p class="muted">No. It can only be used as the booking fee for another room.</p>
+        </div>
+        <div class="how-faq">
+          <strong>Does credit expire?</strong>
+          <p class="muted">Not during the semester.</p>
+        </div>
+        <div class="how-faq">
+          <strong>Can I use it on the same owner?</strong>
+          <p class="muted">No, credit cannot be used on a room from the owner you got it from.</p>
+        </div>
+        <div class="how-faq">
+          <strong>Where do I see my credit?</strong>
+          <p class="muted">In the navbar, on your dashboard and on the My credit page.</p>
+        </div>
+    </div>
+
+    <div class="how-warning">
+      <div>
+        <h3>Never pay rent through CampusLodge</h3>
+        <p class="muted">Rent is paid directly to the owner. We only ever take the &#8358;5,000 booking fee.</p>
+      </div>
+      <a href="search.html" class="btn btn-green">Find a room</a>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-about">
+          <a href="dashboard.html" class="logo">
+            <img src="images/logo.png" alt="CampusLodge logo">
+            CampusLodge
+          </a>
+          <p>Find conducive hostels and very affordable apartments around AKSU.</p>
+        </div>
+        <div class="footer-columns">
+          <div>
+            <h4>Student</h4>
+            <a href="dashboard.html">Home</a>
+            <a href="search.html">Search</a>
+            <a href="how-booking-works.html">How booking works</a>
+          </div>
+          <div>
+            <h4>Company</h4>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="terms.html">Terms</a>
+            <a href="privacy.html">Privacy</a>
+          </div>
+        </div>
+      </div>
+      <div class="copyright-footer">
+      <p class="copyright">CampusLodge. An AKSU IT Defense Project by Egwuatu Camillus Onyedika</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
