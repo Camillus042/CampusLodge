@@ -82,7 +82,8 @@ signupForm.addEventListener("submit", async function (event) {
         full_name: name,
         phone: phone,
         hostel_name: hostelName,
-        hostel_gender: hostelGender
+        hostel_gender: hostelGender,
+        agreed: "true"
       }
     }
   });
