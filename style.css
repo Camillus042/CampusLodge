@@ -884,3 +884,28 @@ img {
   line-height: 1.5;
   color: #9A3F14;
 }
+
+/* ----- Eye button on password boxes ----- */
+.pw-wrap {
+  position: relative;
+}
+
+.pw-wrap input {
+  padding-right: 48px;
+}
+
+.pw-eye {
+  position: absolute;
+  top: 50%;
+  right: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  color: var(--grey);
+  cursor: pointer;
+}
