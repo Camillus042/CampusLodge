@@ -42,7 +42,7 @@
   <section class="container">
     <div class="hero">
       <div class="hero-text">
-        <h1>Hello, <span class="orange-word">Ekaette</span></h1>
+        <h1>Hello, <span class="orange-word" data-user="first">Ekaette</span></h1>
         <p>Where do you want to live this year?</p>
 
         <form class="search-bar" action="search.html">
@@ -305,6 +305,10 @@
       </div>
     </div>
   </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+  <script src="config.js"></script>
+  <script>protectPage(["student"]);</script>
 
 </body>
 </html>

@@ -65,3 +65,64 @@ document.querySelectorAll('input[type="password"]').forEach(function (box) {
     eye.setAttribute("aria-label", isHidden ? "Hide password" : "Show password");
   });
 });
+
+// ===== Protect a page =====
+// Use at the bottom of a page, for example protectPage(["student"])
+async function protectPage(allowedRoles) {
+  // Hide the page until we know the person is allowed in
+  document.body.style.visibility = "hidden";
+
+  var userResult = await db.auth.getUser();
+  var user = userResult.data.user;
+  if (!user) {
+    window.location.href = "login.html";
+    return;
+  }
+
+  var profileResult = await db
+    .from("profiles")
+    .select("role, status, full_name, hostel_name")
+    .eq("id", user.id)
+    .single();
+  var profile = profileResult.data;
+
+  if (!profile) {
+    window.location.href = "error.html#oops";
+    return;
+  }
+  if (profile.status === "banned") {
+    window.location.href = "appeal.html";
+    return;
+  }
+  if (allowedRoles && allowedRoles.indexOf(profile.role) === -1) {
+    goHome();
+    return;
+  }
+
+  // Names: first name for greetings, hostel name for hostels
+  var firstName = (profile.full_name || "there").split(" ")[0];
+  var shownName = profile.hostel_name || firstName;
+
+  document.querySelectorAll('[data-user="first"]').forEach(function (spot) {
+    spot.textContent = firstName;
+  });
+
+  document.querySelectorAll(".nav-user").forEach(function (link) {
+    link.querySelector(".avatar").textContent = shownName.charAt(0).toUpperCase();
+    link.lastChild.textContent = shownName;
+  });
+
+  // Log out buttons
+  document.querySelectorAll("a").forEach(function (link) {
+    if (link.textContent.trim() !== "Log out") {
+      return;
+    }
+    link.addEventListener("click", async function (event) {
+      event.preventDefault();
+      await db.auth.signOut();
+      window.location.href = "index.html";
+    });
+  });
+
+  document.body.style.visibility = "visible";
+}

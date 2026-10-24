@@ -40,7 +40,7 @@
     <!-- WELCOME -->
     <div class="lister-head">
       <div>
-        <h1 class="title">Welcome, <span class="green-word">[Name]</span></h1>
+        <h1 class="title">Welcome, <span class="green-word" data-user="first">[Name]</span></h1>
         <p class="big-text">Manage your rooms and see what students are looking at.</p>
       </div>
       <a href="add-listing.html" class="btn btn-green">+ Add new listing</a>
@@ -237,6 +237,10 @@
       </div>
     </div>
   </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+  <script src="config.js"></script>
+  <script>protectPage(["landlord", "agent", "hostel"]);</script>
 
 </body>
 </html>
