@@ -44,7 +44,7 @@
 
     <!-- NUMBERS -->
     <div class="stat-row">
-      <div class="stat"><strong>3</strong><span>Listings to review</span></div>
+      <div class="stat"><strong id="stat-listings">0</strong><span>Listings to review</span></div>
       <div class="stat"><strong>2</strong><span>IDs to check</span></div>
       <div class="stat"><strong>1</strong><span>Hostel managers waiting</span></div>
       <div class="stat"><strong class="stat-red">1</strong><span>Reported listings</span></div>
@@ -65,7 +65,7 @@
         <h2>Listings to <span class="green-word">review</span></h2>
         <p class="muted panel-sub">Nothing goes live until you approve it.</p>
 
-        <div class="admin-list">
+        <!-- <div class="admin-list">
           <div class="admin-row">
             <div class="row-main">
               <h3>Self-contain, Ikot Enin</h3>
@@ -116,7 +116,9 @@
               <button type="button" class="small-btn small-red act" data-title="Reject this listing?" data-text="Hostel room, Block B stays hidden. The manager sees your note and can fix it." data-label="Note to the manager" data-button="Reject" data-result="Rejected" data-chip="chip-red" data-reason="yes" data-danger="yes">Reject</button>
             </div>
           </div>
-        </div>
+        </div> -->
+
+        <div class="admin-list" id="review-list"></div>
       </section>
 
       <section class="panel">
@@ -727,30 +729,53 @@
     var confirmButton = document.getElementById("action-confirm");
     var chosenButton = null;
 
+        // Open the pop-up with the words of the button that was tapped
+    function openAction(button) {
+      chosenButton = button;
+      document.getElementById("action-title").textContent = button.dataset.title;
+      document.getElementById("action-text").textContent = button.dataset.text;
+      document.getElementById("action-label").textContent = button.dataset.label || "Reason";
+      reasonBox.hidden = button.dataset.reason !== "yes";
+      reasonInput.value = "";
+      reasonError.hidden = true;
+      reasonInput.classList.remove("input-error");
+      confirmButton.textContent = button.dataset.button;
+      confirmButton.className = button.dataset.danger ? "btn btn-red" : "btn btn-green";
+      modal.classList.add("open");
+    }
+
     // Every button with class "act" opens the pop-up with its own words
     document.querySelectorAll(".act").forEach(function (button) {
       button.addEventListener("click", function () {
-        chosenButton = button;
-        document.getElementById("action-title").textContent = button.dataset.title;
-        document.getElementById("action-text").textContent = button.dataset.text;
-        document.getElementById("action-label").textContent = button.dataset.label || "Reason";
-        reasonBox.hidden = button.dataset.reason !== "yes";
-        reasonInput.value = "";
-        reasonError.hidden = true;
-        reasonInput.classList.remove("input-error");
-        confirmButton.textContent = button.dataset.button;
-        confirmButton.className = button.dataset.danger ? "btn btn-red" : "btn btn-green";
-        modal.classList.add("open");
+        openAction(button);
       });
     });
 
     // Confirm: the row shows the new status
     // TEMPORARY: the real saving is added in the Supabase stage
-    confirmButton.addEventListener("click", function () {
+    confirmButton.addEventListener("click", async function () {
       if (chosenButton.dataset.reason === "yes" && reasonInput.value.trim() === "") {
         reasonError.hidden = false;
         reasonInput.classList.add("input-error");
         return;
+      }
+
+      // Real listings: save the decision in Supabase first
+      if (chosenButton.dataset.listingId) {
+        var change = { status: "live", reject_note: null };
+        if (chosenButton.dataset.result === "Rejected") {
+          change = { status: "rejected", reject_note: reasonInput.value.trim().slice(0, 300) };
+        }
+        var saved = await db
+          .from("listings")
+          .update(change)
+          .eq("id", chosenButton.dataset.listingId);
+        if (saved.error) {
+          alert("We could not save that. Please try again.");
+          return;
+        }
+        reviewCount = reviewCount - 1;
+        showReviewCount();
       }
 
       var row = chosenButton.closest(".admin-row");
@@ -793,6 +818,106 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
   <script src="config.js"></script>
   <script>protectPage(["admin"]);</script>
+
+    <script>
+    // ----- LISTINGS TO REVIEW (real ones from Supabase) -----
+    var reviewCount = 0;
+    var roleNames = { landlord: "Landlord", agent: "Agent", hostel: "Hostel manager" };
+
+    function showReviewCount() {
+      document.getElementById("stat-listings").textContent = reviewCount;
+    }
+
+    function makeReviewRow(item) {
+      var owner = item.profiles || {};
+      var row = document.createElement("div");
+      row.className = "admin-row";
+      row.innerHTML =
+        '<div class="row-main"><h3></h3><p class="muted details"></p><p class="muted about"></p><div class="review-photos"></div></div>' +
+        '<div class="row-mid"><p class="who"></p><p class="muted price"></p></div>' +
+        '<span class="chip chip-orange">Waiting</span>' +
+        '<div class="row-actions"></div>';
+
+      row.querySelector("h3").textContent = item.title;
+      var details = [item.room_type, item.area];
+      if (item.distance_min) {
+        details.push(item.distance_min + " mins to campus");
+      }
+      row.querySelector(".details").textContent = details.filter(Boolean).join(" · ");
+      row.querySelector(".about").textContent = item.description || "";
+      row.querySelector(".who").textContent =
+        (owner.hostel_name || owner.full_name || "Unknown") + " (" + (roleNames[owner.role] || "Lister") + ")";
+      row.querySelector(".price").textContent = "₦" + item.price.toLocaleString() + " / year";
+
+      // Small photos: tap one to see it full size
+      (item.photos || []).forEach(function (path) {
+        var url = db.storage.from("listing-photos").getPublicUrl(path).data.publicUrl;
+        var link = document.createElement("a");
+        link.href = url;
+        link.target = "_blank";
+        var picture = document.createElement("img");
+        picture.src = url;
+        picture.alt = "Room photo";
+        link.appendChild(picture);
+        row.querySelector(".review-photos").appendChild(link);
+      });
+
+      // The Approve and Reject buttons
+      var approve = document.createElement("button");
+      approve.type = "button";
+      approve.className = "small-btn small-green act";
+      approve.textContent = "Approve";
+      approve.dataset.listingId = item.id;
+      approve.dataset.title = "Approve this listing?";
+      approve.dataset.text = item.title + " will go live and students can see it.";
+      approve.dataset.button = "Approve";
+      approve.dataset.result = "Approved";
+      approve.dataset.chip = "chip-green";
+
+      var reject = document.createElement("button");
+      reject.type = "button";
+      reject.className = "small-btn small-red act";
+      reject.textContent = "Reject";
+      reject.dataset.listingId = item.id;
+      reject.dataset.title = "Reject this listing?";
+      reject.dataset.text = item.title + " stays hidden. The lister sees your note and can fix it.";
+      reject.dataset.label = "Note to the lister";
+      reject.dataset.button = "Reject";
+      reject.dataset.result = "Rejected";
+      reject.dataset.chip = "chip-red";
+      reject.dataset.reason = "yes";
+      reject.dataset.danger = "yes";
+
+      [approve, reject].forEach(function (button) {
+        button.addEventListener("click", function () {
+          openAction(button);
+        });
+        row.querySelector(".row-actions").appendChild(button);
+      });
+      return row;
+    }
+
+    async function loadReviewList() {
+      var result = await db
+        .from("listings")
+        .select("*, profiles(full_name, hostel_name, role)")
+        .eq("status", "pending")
+        .order("created_at", { ascending: true });
+
+      var items = result.data || [];
+      var list = document.getElementById("review-list");
+      reviewCount = items.length;
+      showReviewCount();
+
+      if (items.length === 0) {
+        list.innerHTML = '<p class="muted">Nothing is waiting for review.</p>';
+      }
+      items.forEach(function (item) {
+        list.appendChild(makeReviewRow(item));
+      });
+    }
+    loadReviewList();
+  </script>
 
 </body>
 </html>

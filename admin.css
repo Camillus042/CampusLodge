@@ -546,3 +546,19 @@
     color: var(--grey);
   }
 }
+
+/* Small room photos in the review list */
+.review-photos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.review-photos img {
+  width: 64px;
+  height: 48px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  object-fit: cover;
+}
