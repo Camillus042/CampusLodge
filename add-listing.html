@@ -138,17 +138,13 @@
         <div class="form-section">
           <h2>Photos</h2>
           <label class="upload-area">
-            <input type="file" accept="image/*" multiple hidden>
+            <input type="file" id="photo-input" accept="image/jpeg,image/png,image/webp" multiple hidden>
             <span class="upload-icon">&uarr;</span>
             <strong>Add photos</strong>
-            <span class="muted">Add several clear photos of the room, the bathroom and the outside.</span>
+            <span class="muted">Add several clear photos of the room, the bathroom and the outside. Up to 5.</span>
           </label>
           <p class="error-text" id="photo-error" hidden>Add at least one photo.</p>
-          <div class="thumb-row">
-            <div class="photo-box thumb"><img src="images/room-1.svg" alt="Photo 1"></div>
-            <div class="photo-box thumb"><img src="images/room-2.svg" alt="Photo 2"></div>
-            <div class="photo-box thumb"><img src="images/room-3.svg" alt="Photo 3"></div>
-          </div>
+          <div class="thumb-row" id="thumb-row"></div>
         </div>
 
         <div class="form-section">

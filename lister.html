@@ -199,6 +199,13 @@
         '<p class="row-price"></p>' +
         '<span class="status"></span>';
 
+            // Use the first photo if the room has one
+      if (item.photos && item.photos.length > 0) {
+        row.querySelector("img").src = db.storage
+          .from("listing-photos")
+          .getPublicUrl(item.photos[0]).data.publicUrl;
+      }  
+
       row.querySelector("h3").textContent = item.title;
       row.querySelector(".muted").textContent = item.distance_min
         ? item.distance_min + " mins to campus"
