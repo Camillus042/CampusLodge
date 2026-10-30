@@ -909,3 +909,54 @@ img {
   color: var(--grey);
   cursor: pointer;
 }
+
+/* ===== Log out pop-up (built by config.js) ===== */
+.logout-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(13, 27, 20, 0.55);
+  z-index: 200;
+}
+
+.logout-overlay.open {
+  display: flex;
+}
+
+.logout-box {
+  width: 100%;
+  max-width: 400px;
+  padding: 28px;
+  border-radius: 24px;
+  background: #fff;
+  text-align: center;
+}
+
+.logout-box h2 {
+  margin-bottom: 8px;
+  font-size: 26px;
+}
+
+.logout-box .muted {
+  margin-bottom: 22px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.logout-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.logout-buttons .btn {
+  flex: 1;
+  font-family: inherit;
+  font-size: 15px;
+  text-align: center;
+}

@@ -112,16 +112,44 @@ async function protectPage(allowedRoles) {
     link.lastChild.textContent = shownName;
   });
 
-  // Log out buttons
+   // The "Do you want to log out?" pop-up
+  var logoutBox = document.createElement("div");
+  logoutBox.className = "logout-overlay";
+  logoutBox.innerHTML =
+    '<div class="logout-box">' +
+    '<h2>Log out?</h2>' +
+    '<p class="muted">You will need to log in again to use your account.</p>' +
+    '<div class="logout-buttons">' +
+    '<button type="button" class="btn btn-white" id="logout-cancel">Cancel</button>' +
+    '<button type="button" class="btn btn-dark" id="logout-yes">Log out</button>' +
+    '</div></div>';
+  document.body.appendChild(logoutBox);
+
+  // Every Log out link opens the pop-up
   document.querySelectorAll("a").forEach(function (link) {
     if (link.textContent.trim() !== "Log out") {
       return;
     }
-    link.addEventListener("click", async function (event) {
+    link.addEventListener("click", function (event) {
       event.preventDefault();
-      await db.auth.signOut();
-      window.location.href = "index.html";
+      logoutBox.classList.add("open");
     });
+  });
+
+  document.getElementById("logout-cancel").addEventListener("click", function () {
+    logoutBox.classList.remove("open");
+  });
+
+  // Clicking the dark area outside the box also closes it
+  logoutBox.addEventListener("click", function (event) {
+    if (event.target === logoutBox) {
+      logoutBox.classList.remove("open");
+    }
+  });
+
+  document.getElementById("logout-yes").addEventListener("click", async function () {
+    await db.auth.signOut();
+    window.location.href = "index.html";
   });
 
   document.body.style.visibility = "visible";

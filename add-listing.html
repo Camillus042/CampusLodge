@@ -41,9 +41,9 @@
     <div class="add-layout">
 
       <!-- THE FORM (action is temporary, JavaScript replaces it later) -->
-      <form class="add-form" action="lister.html">
+      <form class="add-form" id="add-form" novalidate>
 
-        <p class="error-banner" id="form-error" hidden>Fix 3 things before you submit: the price, at least one photo and the map pin.</p>
+        <p class="error-banner" id="form-error" hidden></p>
 
         <div class="form-section">
           <h2>The basics</h2>
@@ -120,10 +120,10 @@
         <div class="form-section">
           <h2>Amenities</h2>
           <div class="amenity-picks">
-            <label class="amenity-pick"><input type="checkbox">Water</label>
-            <label class="amenity-pick"><input type="checkbox">Light</label>
-            <label class="amenity-pick"><input type="checkbox">Security</label>
-            <label class="amenity-pick"><input type="checkbox">WiFi</label>
+            <label class="amenity-pick"><input type="checkbox" name="amenity">Water</label>
+            <label class="amenity-pick"><input type="checkbox" name="amenity">Light</label>
+            <label class="amenity-pick"><input type="checkbox" name="amenity">Security</label>
+            <label class="amenity-pick"><input type="checkbox" name="amenity">WiFi</label>
           </div>
         </div>
 
@@ -152,17 +152,6 @@
         </div>
 
         <div class="form-section">
-          <h2>Location</h2>
-          <p class="muted location-text">Many addresses do not show up in searches, so drop a pin where the property is.</p>
-          <!-- The real map (Leaflet) is added in the JavaScript stage -->
-          <div class="pick-map" id="pick-map">
-            <span class="pin"></span>
-            <span class="map-hint">Tap the map to move the pin</span>
-          </div>
-          <p class="error-text" id="pin-error" hidden>Drop a pin on the map.</p>
-        </div>
-
-        <div class="form-section">
           <h2>Contact</h2>
           <div class="field-row">
             <div class="field">
@@ -178,7 +167,7 @@
 
         <div class="form-buttons">
           <button type="submit" class="btn btn-green">Submit for approval</button>
-          <a href="lister.html" class="btn btn-white">Save as draft</a>
+          <button type="button" class="btn btn-white" id="save-draft">Save as draft</button>
         </div>
       </form>
 
@@ -244,15 +233,14 @@
           </div>
         </div>
       </div>
-      <div class="copyright-footer">
-      <p class="copyright">CampusLodge. An AKSU IT Defense Project by Egwuatu Camillus Onyedika</p>
-      </div>
+      <p class="copyright">&copy; 2026 CampusLodge. All rights reserved.</p>
     </div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
   <script src="config.js"></script>
   <script>protectPage(["landlord", "agent", "hostel"]);</script>
+  <script src="add-listing.js"></script>
 
 </body>
 </html>

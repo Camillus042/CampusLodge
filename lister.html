@@ -48,85 +48,15 @@
 
     <!-- NUMBERS -->
     <div class="stat-row">
-      <div class="stat"><strong>4</strong><span>Total listings</span></div>
-      <div class="stat"><strong class="stat-green">2</strong><span>Live</span></div>
-      <div class="stat"><strong class="stat-orange">1</strong><span>Waiting for approval</span></div>
-      <div class="stat"><strong class="stat-grey">1</strong><span>Taken</span></div>
+      <div class="stat"><strong id="stat-total">0</strong><span>Total listings</span></div>
+      <div class="stat"><strong class="stat-green" id="stat-live">0</strong><span>Live</span></div>
+      <div class="stat"><strong class="stat-orange" id="stat-pending">0</strong><span>Waiting for approval</span></div>
+      <div class="stat"><strong class="stat-grey" id="stat-taken">0</strong><span>Taken</span></div>
     </div>
 
     <!-- MY LISTINGS -->
     <h2 class="lister-title">My <span class="green-word">listings</span></h2>
-    <div class="listing-rows">
-
-      <div class="listing-row">
-        <div class="photo-box row-photo">
-          <img src="images/room-1.svg" alt="Room photo">
-        </div>
-        <div class="row-info">
-          <h3>Self-contain, Back Gate</h3>
-          <p class="muted">5 mins to campus</p>
-        </div>
-        <p class="row-price">₦230,000</p>
-        <span class="status status-live">Live</span>
-        <div class="row-buttons">
-          <a href="add-listing.html" class="small-btn">Edit</a>
-          <button type="button" class="small-btn mark-taken" data-title="Self-contain, Back Gate">Mark as taken</button>
-          <button type="button" class="small-btn delete-btn">Delete</button>
-        </div>
-      </div>
-
-      <div class="listing-row">
-        <div class="photo-box row-photo">
-          <img src="images/room-2.svg" alt="Room photo">
-        </div>
-        <div class="row-info">
-          <h3>Single room, Ekim</h3>
-          <p class="muted">10 mins to campus</p>
-        </div>
-        <p class="row-price">₦120,000</p>
-        <span class="status status-live">Live</span>
-        <div class="row-buttons">
-          <a href="add-listing.html" class="small-btn">Edit</a>
-          <button type="button" class="small-btn mark-taken" data-title="Single room, Ekim">Mark as taken</button>
-          <button type="button" class="small-btn delete-btn">Delete</button>
-        </div>
-      </div>
-
-      <div class="listing-row">
-        <div class="photo-box row-photo">
-          <img src="images/room-3.svg" alt="Room photo">
-        </div>
-        <div class="row-info">
-          <h3>Self-contain, Ikot Enin</h3>
-          <p class="muted">14 mins to campus</p>
-          <p class="reject-note" hidden>Reason: [admin's note on what to fix]</p>
-        </div>
-        <p class="row-price">₦310,000</p>
-        <span class="status status-pending">Pending</span>
-        <div class="row-buttons">
-          <a href="add-listing.html" class="small-btn">Edit</a>
-          <button type="button" class="small-btn withdraw-btn" data-title="Self-contain, Ikot Enin">Withdraw</button>
-          <button type="button" class="small-btn delete-btn">Delete</button>
-        </div>
-      </div>
-
-      <div class="listing-row">
-        <div class="photo-box row-photo">
-          <img src="images/room-4.svg" alt="Room photo">
-        </div>
-        <div class="row-info">
-          <h3>Shared room, Ikot Oyoro</h3>
-          <p class="muted">7 mins to campus</p>
-        </div>
-        <p class="row-price">₦100,000</p>
-        <span class="status status-taken">Taken</span>
-        <div class="row-buttons">
-          <a href="add-listing.html" class="small-btn">Edit</a>
-          <button type="button" class="small-btn reopen-btn" data-title="Shared room, Ikot Oyoro">Reopen</button>
-          <button type="button" class="small-btn delete-btn">Delete</button>
-        </div>
-      </div>
-    </div>
+    <div class="listing-rows" id="listing-rows"></div>
 
     <!-- TRUSTED BADGE -->
     <div class="verify-box" id="verify">
@@ -232,9 +162,7 @@
           </div>
         </div>
       </div>
-      <div class="copyright-footer">
-      <p class="copyright">CampusLodge. An AKSU IT Defense Project by Egwuatu Camillus Onyedika</p>
-      </div>
+      <p class="copyright">&copy; 2026 CampusLodge. All rights reserved.</p>
     </div>
   </footer>
 
@@ -242,5 +170,81 @@
   <script src="config.js"></script>
   <script>protectPage(["landlord", "agent", "hostel"]);</script>
 
+
+  <script>
+    // Show the lister's own rooms from Supabase
+    // TEMPORARY: the Edit, Mark as taken and Delete buttons come in the next steps,
+    // and the photo is a placeholder until photos are added
+    var statusNames = {
+      draft: "Draft",
+      pending: "Pending",
+      live: "Live",
+      rejected: "Rejected",
+      taken: "Taken"
+    };
+    var statusClasses = {
+      draft: "status-draft",
+      pending: "status-pending",
+      live: "status-live",
+      rejected: "status-rejected",
+      taken: "status-taken"
+    };
+
+    function makeRow(item) {
+      var row = document.createElement("div");
+      row.className = "listing-row";
+      row.innerHTML =
+        '<div class="photo-box row-photo"><img src="images/room-1.svg" alt="Room photo"></div>' +
+        '<div class="row-info"><h3></h3><p class="muted"></p><p class="reject-note" hidden></p></div>' +
+        '<p class="row-price"></p>' +
+        '<span class="status"></span>';
+
+      row.querySelector("h3").textContent = item.title;
+      row.querySelector(".muted").textContent = item.distance_min
+        ? item.distance_min + " mins to campus"
+        : item.area || "";
+      row.querySelector(".row-price").textContent = "₦" + item.price.toLocaleString();
+
+      var status = row.querySelector(".status");
+      status.textContent = statusNames[item.status];
+      status.className = "status " + statusClasses[item.status];
+
+      if (item.status === "rejected" && item.reject_note) {
+        var note = row.querySelector(".reject-note");
+        note.textContent = "Reason: " + item.reject_note;
+        note.hidden = false;
+      }
+      return row;
+    }
+
+    async function showMyListings() {
+      var userResult = await db.auth.getUser();
+      var result = await db
+        .from("listings")
+        .select("*")
+        .eq("owner_id", userResult.data.user.id)
+        .order("created_at", { ascending: false });
+
+      var list = document.getElementById("listing-rows");
+      var items = result.data || [];
+
+      if (items.length === 0) {
+        list.innerHTML = '<p class="muted">You have no listings yet. Tap "+ Add new listing" to add your first room.</p>';
+      }
+      items.forEach(function (item) {
+        list.appendChild(makeRow(item));
+      });
+
+      function count(status) {
+        return items.filter(function (item) { return item.status === status; }).length;
+      }
+      document.getElementById("stat-total").textContent = items.length;
+      document.getElementById("stat-live").textContent = count("live");
+      document.getElementById("stat-pending").textContent = count("pending");
+      document.getElementById("stat-taken").textContent = count("taken");
+    }
+
+    showMyListings();
+  </script>
 </body>
 </html>
