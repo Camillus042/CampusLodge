@@ -32,6 +32,12 @@ async function findAccountType() {
     .single();
   isHostel = result.data.role === "hostel";
   hostelSection.hidden = !isHostel;
+  
+  // Hostel rooms are always shared rooms inside the campus
+  if (isHostel) {
+    document.getElementById("room-type").innerHTML = "<option>Shared room</option>";
+    document.getElementById("area").innerHTML = "<option>Inside campus</option>";
+  }
 }
 findAccountType();
 

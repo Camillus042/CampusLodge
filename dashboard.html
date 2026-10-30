@@ -8,6 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="dash.css">
+  <link rel="stylesheet" href="modal.css">
 </head>
 <body>
 
@@ -267,11 +268,41 @@
         </div>
         <div class="fee">₦5,000<span>Booking fee</span></div>
         <span class="status">Held, 41h left</span>
-        <a href="receipt.html" class="btn btn-white">View receipt</a>
+        <button type="button" class="btn btn-white view-receipt" data-ref="[Reference number]" data-date="[Date and time]" data-room="Self-contain, Back Gate" data-owner="[Owner name]">View receipt</button>
         <a href="reservation.html" class="btn btn-green">Open</a>
       </div>
     </div>
   </section>
+
+    <!-- RECEIPT MODAL -->
+  <div class="modal-overlay" id="receipt-modal">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h2>Receipt</h2>
+        <button type="button" class="modal-close" data-close="receipt-modal" aria-label="Close">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="receipt-top">
+          <span class="receipt-tick">&#10003;</span>
+          <h2>Payment <span class="green-word">confirmed</span></h2>
+        </div>
+
+        <div class="receipt-line"><span>Reference</span><strong id="r-ref"></strong></div>
+        <div class="receipt-line"><span>Date</span><strong id="r-date"></strong></div>
+        <div class="receipt-line"><span>Student</span><strong id="r-student"></strong></div>
+        <div class="receipt-line"><span>Room</span><strong id="r-room"></strong></div>
+        <div class="receipt-line"><span>Owner</span><strong id="r-owner"></strong></div>
+        <div class="receipt-line"><span>Booking fee</span><strong>&#8358;5,000</strong></div>
+
+        <p class="receipt-message">Rent is paid directly to the owner, not through CampusLodge. Show this receipt when you meet the owner.</p>
+      </div>
+
+      <div class="modal-foot">
+        <button type="button" class="btn btn-dark" data-close="receipt-modal">Close</button>
+      </div>
+    </div>
+  </div>
 
   <!-- FOOTER -->
   <footer class="footer">
@@ -310,5 +341,35 @@
   <script src="config.js"></script>
   <script>protectPage(["student"]);</script>
 
+    <script>
+    // "View receipt" fills the pop-up from the button's data and opens it
+    // TEMPORARY: the details are sample text until real reservations are saved
+    var receiptModal = document.getElementById("receipt-modal");
+
+    document.querySelectorAll(".view-receipt").forEach(function (button) {
+      button.addEventListener("click", function () {
+        document.getElementById("r-ref").textContent = button.dataset.ref;
+        document.getElementById("r-date").textContent = button.dataset.date;
+        document.getElementById("r-student").textContent = document.querySelector('[data-user="first"]').textContent;
+        document.getElementById("r-room").textContent = button.dataset.room;
+        document.getElementById("r-owner").textContent = button.dataset.owner;
+        receiptModal.classList.add("open");
+      });
+    });
+
+    // The X and Close buttons close the box
+    document.querySelectorAll("[data-close]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        document.getElementById(button.dataset.close).classList.remove("open");
+      });
+    });
+
+    // Clicking the dark area outside the box also closes it
+    receiptModal.addEventListener("click", function (event) {
+      if (event.target === receiptModal) {
+        receiptModal.classList.remove("open");
+      }
+    });
+  </script>
 </body>
 </html>
