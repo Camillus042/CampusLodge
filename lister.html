@@ -93,6 +93,22 @@
     </div>
   </div>
 
+  <!-- "DELETE LISTING" MODAL -->
+  <div class="modal-overlay" id="delete-modal">
+    <div class="modal-box confirm-box">
+      <div class="modal-body">
+        <span class="confirm-icon">&#128465;</span>
+        <h2>Delete this listing?</h2>
+        <p class="muted"><strong id="delete-title">This room</strong> and its photos will be removed for good. You cannot undo this.</p>
+        <p class="error-text" id="delete-error" hidden>We could not delete it. Please try again.</p>
+      </div>
+      <div class="modal-foot">
+        <button type="button" class="btn btn-white" data-close="delete-modal">Cancel</button>
+        <button type="button" class="btn btn-red" id="confirm-delete">Delete</button>
+      </div>
+    </div>
+  </div>
+
   <script>
     var takenModal = document.getElementById("taken-modal");
     var takenTitle = document.getElementById("taken-title");
@@ -197,20 +213,25 @@
         '<div class="photo-box row-photo"><img src="images/room-1.svg" alt="Room photo"></div>' +
         '<div class="row-info"><h3></h3><p class="muted"></p><p class="reject-note" hidden></p></div>' +
         '<p class="row-price"></p>' +
-        '<span class="status"></span>';
+        '<span class="status"></span>' +
+        '<div class="row-buttons"><button type="button" class="small-btn delete-btn">Delete</button></div>';
 
-            // Use the first photo if the room has one
+      // Use the first photo if the room has one
       if (item.photos && item.photos.length > 0) {
         row.querySelector("img").src = db.storage
           .from("listing-photos")
           .getPublicUrl(item.photos[0]).data.publicUrl;
-      }  
+      }
 
       row.querySelector("h3").textContent = item.title;
       row.querySelector(".muted").textContent = item.distance_min
         ? item.distance_min + " mins to campus"
         : item.area || "";
       row.querySelector(".row-price").textContent = "₦" + item.price.toLocaleString();
+
+      row.querySelector(".delete-btn").addEventListener("click", function () {
+        askDelete(item, row);
+      });
 
       var status = row.querySelector(".status");
       status.textContent = statusNames[item.status];
@@ -224,6 +245,23 @@
       return row;
     }
 
+    var myItems = [];
+
+    function showNumbers() {
+      function count(status) {
+        return myItems.filter(function (item) { return item.status === status; }).length;
+      }
+      document.getElementById("stat-total").textContent = myItems.length;
+      document.getElementById("stat-live").textContent = count("live");
+      document.getElementById("stat-pending").textContent = count("pending");
+      document.getElementById("stat-taken").textContent = count("taken");
+
+      if (myItems.length === 0) {
+        document.getElementById("listing-rows").innerHTML =
+          '<p class="muted">You have no listings yet. Tap "+ Add new listing" to add your first room.</p>';
+      }
+    }
+
     async function showMyListings() {
       var userResult = await db.auth.getUser();
       var result = await db
@@ -232,24 +270,51 @@
         .eq("owner_id", userResult.data.user.id)
         .order("created_at", { ascending: false });
 
+      myItems = result.data || [];
       var list = document.getElementById("listing-rows");
-      var items = result.data || [];
-
-      if (items.length === 0) {
-        list.innerHTML = '<p class="muted">You have no listings yet. Tap "+ Add new listing" to add your first room.</p>';
-      }
-      items.forEach(function (item) {
+      myItems.forEach(function (item) {
         list.appendChild(makeRow(item));
       });
-
-      function count(status) {
-        return items.filter(function (item) { return item.status === status; }).length;
-      }
-      document.getElementById("stat-total").textContent = items.length;
-      document.getElementById("stat-live").textContent = count("live");
-      document.getElementById("stat-pending").textContent = count("pending");
-      document.getElementById("stat-taken").textContent = count("taken");
+      showNumbers();
     }
+
+    // ----- Delete a listing -----
+    var deleteModal = document.getElementById("delete-modal");
+    var deleteError = document.getElementById("delete-error");
+    var chosenItem = null;
+    var chosenListingRow = null;
+
+    function askDelete(item, row) {
+      chosenItem = item;
+      chosenListingRow = row;
+      deleteError.hidden = true;
+      document.getElementById("delete-title").textContent = item.title;
+      deleteModal.classList.add("open");
+    }
+
+    document.getElementById("confirm-delete").addEventListener("click", async function () {
+      var result = await db.from("listings").delete().eq("id", chosenItem.id);
+      if (result.error) {
+        deleteError.hidden = false;
+        return;
+      }
+
+      // Remove its photos too
+      if (chosenItem.photos && chosenItem.photos.length > 0) {
+        await db.storage.from("listing-photos").remove(chosenItem.photos);
+      }
+
+      myItems = myItems.filter(function (item) { return item.id !== chosenItem.id; });
+      chosenListingRow.remove();
+      showNumbers();
+      deleteModal.classList.remove("open");
+    });
+
+    deleteModal.addEventListener("click", function (event) {
+      if (event.target === deleteModal) {
+        deleteModal.classList.remove("open");
+      }
+    });
 
     showMyListings();
   </script>

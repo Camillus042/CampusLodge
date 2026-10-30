@@ -47,12 +47,6 @@
 
         <div class="form-section">
           <h2>The basics</h2>
-          <p class="field-title">This is a</p>
-          <div class="account-type type-choice">
-            <label><input type="radio" name="listing-type" value="apartment" checked><span>Apartment</span></label>
-            <label><input type="radio" name="listing-type" value="hostel"><span>Campus hostel</span></label>
-          </div>
-
           <div class="field">
             <label for="title">Listing title</label>
             <input type="text" id="title" placeholder="e.g. Self-contain, Back Gate">
@@ -141,7 +135,7 @@
             <input type="file" id="photo-input" accept="image/jpeg,image/png,image/webp" multiple hidden>
             <span class="upload-icon">&uarr;</span>
             <strong>Add photos</strong>
-            <span class="muted">Add several clear photos of the room, the bathroom and the outside. Up to 5.</span>
+            <span class="muted">Add several clear photos of the room, the bathroom and the outside.</span>
           </label>
           <p class="error-text" id="photo-error" hidden>Add at least one photo.</p>
           <div class="thumb-row" id="thumb-row"></div>
@@ -186,22 +180,6 @@
 
     </div>
   </main>
-
-  <script>
-    // Show the "Hostel details" part only for campus hostels
-    var typeRadios = document.querySelectorAll('input[name="listing-type"]');
-    var hostelSection = document.getElementById("hostel-section");
-
-    function showHostelPart() {
-      var chosen = document.querySelector('input[name="listing-type"]:checked').value;
-      hostelSection.hidden = chosen !== "hostel";
-    }
-
-    typeRadios.forEach(function (radio) {
-      radio.addEventListener("change", showHostelPart);
-    });
-    showHostelPart();
-  </script>
 
   <!-- FOOTER -->
   <footer class="footer">

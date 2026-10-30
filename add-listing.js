@@ -18,6 +18,23 @@ function toNumber(text) {
   return Math.round(number);
 }
 
+// Hostel managers list campus hostels, everyone else lists apartments.
+// The hostel part of the form (gender, beds) only shows for hostel managers.
+var isHostel = false;
+var hostelSection = document.getElementById("hostel-section");
+
+async function findAccountType() {
+  var userResult = await db.auth.getUser();
+  var result = await db
+    .from("profiles")
+    .select("role")
+    .eq("id", userResult.data.user.id)
+    .single();
+  isHostel = result.data.role === "hostel";
+  hostelSection.hidden = !isHostel;
+}
+findAccountType();
+
 // ----- Photos (up to 5) -----
 var MAX_PHOTOS = 5;
 var chosenPhotos = [];
@@ -108,7 +125,7 @@ async function saveListing(status) {
   var title = document.getElementById("title").value.trim();
   var price = toNumber(document.getElementById("price").value);
   var distance = toNumber(document.getElementById("distance").value);
-  var kind = document.querySelector('input[name="listing-type"]:checked').value;
+  var kind = isHostel ? "hostel" : "apartment";
 
   // Check the two things every listing needs
   var titleBad = title.length < 3;
