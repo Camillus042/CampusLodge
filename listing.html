@@ -40,29 +40,21 @@
     </div>
   </header>
 
-  <main class="container listing-page">
+    <main class="container listing-page">
     <a href="search.html" class="back-link">&larr; Back to search results</a>
 
+    <p class="muted" id="listing-missing" hidden>This room is no longer available. <a href="search.html" class="text-link">Back to search</a></p>
+
+    <div id="listing-content" hidden>
+
     <!-- PHOTOS -->
-    <div class="gallery">
-      <div class="photo-box gallery-main">
-        <img src="images/room-1.svg" alt="Room photo 1">
-        <span class="badge badge-trusted">Trusted owner</span>
-      </div>
-      <div class="photo-box"><img src="images/room-2.svg" alt="Room photo 2"></div>
-      <div class="photo-box"><img src="images/room-3.svg" alt="Room photo 3"></div>
-      <div class="photo-box"><img src="images/room-4.svg" alt="Room photo 4"></div>
-      <div class="photo-box">
-        <img src="images/room-5.svg" alt="Room photo 5">
-        <a href="#" class="view-all">View all photos</a>
-      </div>
-    </div>
+    <div class="gallery" id="gallery"></div>
 
     <!-- TITLE -->
     <div class="listing-title">
       <div>
-        <h1>Self-contain, <span class="green-word">Back Gate</span></h1>
-        <p class="listing-place">Back Gate, 5 mins to campus</p>
+        <h1 id="listing-h1"></h1>
+        <p class="listing-place" id="listing-place"></p>
       </div>
       <button class="save-big" aria-label="Save listing">&#9825;</button>
     </div>
@@ -72,22 +64,18 @@
       <!-- DETAILS -->
       <div class="listing-main">
         <div class="facts">
-          <div class="fact"><span>Room type</span><strong>Self-contain</strong></div>
-          <div class="fact"><span>Distance</span><strong>5 mins</strong></div>
+          <div class="fact"><span>Room type</span><strong id="fact-type"></strong></div>
+          <div class="fact"><span>Distance</span><strong id="fact-distance"></strong></div>
+          <div class="fact" id="fact-hostel-box" hidden><span>Hostel for</span><strong id="fact-hostel"></strong></div>
           <div class="fact"><span>Status</span><strong class="fact-green">Available</strong></div>
-          <div class="fact"><span>Posted</span><strong>This week</strong></div>
+          <div class="fact"><span>Posted</span><strong id="fact-posted"></strong></div>
         </div>
 
         <h2>About this room</h2>
-        <p class="about">[Owner's description goes here: the condition of the room, who it suits, what is nearby, rules of the house and anything a student should know before reaching out.]</p>
+        <p class="about" id="about-text"></p>
 
         <h2>Amenities</h2>
-        <div class="amenity-grid">
-        <div class="amenity-item"><span class="tick">&#10003;</span>Water</div>
-        <div class="amenity-item"><span class="tick">&#10003;</span>Light</div>
-        <div class="amenity-item"><span class="tick">&#10003;</span>Security</div>
-        <div class="amenity-item"><span class="tick">&#10003;</span>WiFi</div>
-        </div>
+        <div class="amenity-grid" id="amenity-grid"></div>
 
       </div>
 
@@ -95,7 +83,7 @@
       <aside class="booking">
         <div class="booking-card">
           <p class="rent-label">Rent</p>
-          <p class="rent">₦230,000 <span>/ year</span></p>
+          <p class="rent" id="rent"><span>/ year</span></p>
 
           <div class="fee-box">
             <div>
@@ -111,22 +99,23 @@
           <p class="booking-note">Once you pay, the room is held for you for 48 hours so you can visit it. Rent is paid to the owner, not to CampusLodge. <a href="how-booking-works.html">How booking works</a></p>
 
           <div class="contact-buttons">
-            <a href="#" class="btn btn-whatsapp">WhatsApp</a>
-            <a href="#" class="btn btn-white">Call</a>
+            <a href="#" class="btn btn-whatsapp" id="contact-whatsapp">WhatsApp</a>
+            <a href="#" class="btn btn-white" id="contact-call">Call</a>
           </div>
 
           <div class="owner">
-            <span class="owner-avatar">O</span>
+            <span class="owner-avatar" id="owner-avatar">O</span>
             <div class="owner-info">
-              <strong>[Owner name]</strong>
-              <p class="muted">Landlord, ID and proof shown</p>
+              <strong id="owner-name"></strong>
+              <p class="muted" id="owner-text"></p>
             </div>
-            <span class="badge badge-trusted">Trusted</span>
+            <span class="badge" id="owner-badge" hidden></span>
           </div>
         </div>
         <a href="#" class="report-link" id="open-report">&#9873; Report this listing</a>
       </aside>
 
+    </div>
     </div>
   </main>
 
@@ -352,6 +341,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
   <script src="config.js"></script>
   <script>protectPage(["student"]);</script>
+  <script src="listing.js"></script>
 
 </body>
 </html>

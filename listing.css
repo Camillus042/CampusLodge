@@ -302,3 +302,53 @@
     padding: 14px;
   }
 }
+
+/* Gallery when a room has fewer than 5 photos */
+.gallery.gallery-1 {
+  grid-template-columns: 1fr;
+  grid-template-rows: 380px;
+}
+
+.gallery.gallery-2 {
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 380px;
+}
+
+.gallery.gallery-3 {
+  grid-template-columns: 2fr 1fr;
+}
+
+.gallery.gallery-1 .gallery-main,
+.gallery.gallery-2 .gallery-main {
+  grid-row: auto;
+}
+
+.gallery .photo-box a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 800px) {
+
+  .gallery.gallery-1,
+  .gallery.gallery-2,
+  .gallery.gallery-3,
+  .gallery.gallery-4 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .gallery.gallery-1 {
+    grid-template-rows: 240px;
+  }
+
+  .gallery.gallery-2,
+  .gallery.gallery-3 {
+    grid-template-rows: 240px 110px;
+  }
+
+  .gallery.gallery-2 .photo-box:nth-child(2),
+  .gallery.gallery-4 .photo-box:last-child {
+    grid-column: span 2;
+  }
+}

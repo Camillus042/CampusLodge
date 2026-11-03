@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CampusLodge | Find your next home near AKSU</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -30,8 +30,11 @@
   </header>
 
   <!-- HERO -->
+    <video class="hero-video" autoplay muted loop poster="images/hero-poster.jpg" >
+        <source src="images/hero-clip.mp4" type="video/mp4">
+    </video>
   <section class="container">
-    <div class="hero">
+    <div class="hero"> 
       <div class="hero-inner">
         <div class="hero-text">
           <h1>Find your next <span class="orange-word">home</span> near campus.</h1>
@@ -44,50 +47,12 @@
 
         <!-- Two sample cards, tilted -->
         <div class="hero-cards">
-          <div class="mini-card mini-card-1">
-            <div class="photo-box">
-              <img src="images/room-1.png" alt="Self-contain room in Back Gate">
-              <span class="badge badge-trusted">Trusted</span>
-            </div>
-            <h3>Self-contain, Back Gate</h3>
-            <p class="muted">5 mins to campus</p>
-            <p class="price">₦230,000 <span>/ year</span></p>
-          </div>
-          <div class="mini-card mini-card-2">
-            <div class="photo-box">
-              <img src="images/room-4.png" alt="Hostel room on campus">
-              <span class="badge badge-verified">Verified</span>
-            </div>
-            <h3>Hostel room, on campus</h3>
-            <p class="price">₦180,000 <span>/ year</span></p>
+          <div class="split-images">
+            <img class="fan-photo2" src="images/room-1.png" alt="">
+            <img class="fan-photo1" src="images/room-2.png" alt="">
+            <img class="fan-photo3" src="images/room-3.png" alt="">
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOUR REASONS TO TRUST US -->
-  <section class="container section">
-    <div class="grid-4">
-      <div class="pillar">
-        <span class="pillar-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16803C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg></span>
-        <h3>Every listing approved</h3>
-        <p>Nothing goes live until an admin has reviewed it.</p>
-      </div>
-      <div class="pillar">
-        <span class="pillar-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16803C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Z"/><path d="M9 21v-7h6v7"/></svg></span>
-        <h3>Verified hostels</h3>
-        <p>Campus hostels carry a Verified badge you can rely on.</p>
-      </div>
-      <div class="pillar">
-        <span class="pillar-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16803C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><circle cx="8" cy="12" r="2"/><path d="M14 10h4M14 14h4"/></svg></span>
-        <h3>Trusted owners</h3>
-        <p>Landlords and agents with a Trusted badge showed proof of ownership or ID.</p>
-      </div>
-      <div class="pillar">
-        <span class="pillar-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16803C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
-        <h3>Reserve safely</h3>
-        <p>Pay the booking fee through CampusLodge, not into a stranger's account.</p>
       </div>
     </div>
   </section>
@@ -123,11 +88,10 @@
         <h2 class="title">A look <span class="green-word">inside</span></h2>
         <p class="big-text">A few of the rooms students can find once they sign up.</p>
       </div>
-      <a href="signup.html" class="btn btn-green">Sign up to see all listings</a>
     </div>
 
     <div class="grid-3">
-      <article class="card">
+      <article class="card1">
         <div class="photo-box">
           <img src="images/room-1.png" alt="Self-contain room in Back Gate">
           <span class="badge badge-trusted">Trusted</span>
@@ -140,7 +104,7 @@
         </div>
       </article>
 
-      <article class="card">
+      <article class="card1">
         <div class="photo-box">
           <img src="images/room-2.png" alt="Single room in Ekim">
           <span class="badge badge-trusted">Trusted</span>
@@ -153,7 +117,7 @@
         </div>
       </article>
 
-      <article class="card">
+      <article class="card2">
         <div class="photo-box">
           <img src="images/room-3.png" alt="Hostel room, Block B">
           <span class="badge badge-verified">Verified</span>
@@ -166,7 +130,7 @@
         </div>
       </article>
 
-      <article class="card extra-card">
+      <article class="card2 extra-card">
         <div class="photo-box">
           <img src="images/room-4.png" alt="Hostel room, female hostel">
           <span class="badge badge-verified">Verified</span>
@@ -179,7 +143,7 @@
         </div>
       </article>
 
-      <article class="card extra-card">
+      <article class="card1 extra-card">
         <div class="photo-box">
           <img src="images/room-5.png" alt="Self-contain room in Ikot Enin">
           <span class="badge badge-trusted">Trusted</span>
@@ -258,7 +222,7 @@
   <section class="container section">
     <div class="lister-box">
       <div>
-        <h2 class="title">Own a property or run a hostel near <span class="green-word">AKSU</span>?</h2>
+        <h2 class="title">Own a property or run a hostel near <span class="green-word">AKSU </span> ?</h2>
         <p class="big-text">Create a lister account, add your rooms with photos and a pin on the map, and reach students looking right now.</p>
       </div>
       <div class="lister-buttons">

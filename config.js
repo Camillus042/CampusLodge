@@ -154,3 +154,22 @@ async function protectPage(allowedRoles) {
 
   document.body.style.visibility = "visible";
 }
+
+// ===== Small helpers used by several pages =====
+
+// The web address of a photo saved in Supabase
+function photoUrl(path) {
+  return db.storage.from("listing-photos").getPublicUrl(path).data.publicUrl;
+}
+
+// 0803 000 0000 becomes https://wa.me/2348030000000 (empty if the number is not valid)
+function whatsappLink(number, message) {
+  var digits = (number || "").replace(/\D/g, "");
+  if (digits.indexOf("0") === 0) {
+    digits = "234" + digits.slice(1);
+  }
+  if (digits.length < 12) {
+    return "";
+  }
+  return "https://wa.me/" + digits + "?text=" + encodeURIComponent(message);
+}

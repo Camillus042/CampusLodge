@@ -45,7 +45,7 @@
     <div class="search-top">
       <div>
         <h1>Find your <span class="green-word">room</span></h1>
-        <p class="muted">6 listings found near AKSU</p>
+        <p class="muted" id="result-count">Loading rooms...</p>
       </div>
       <div class="search-tools">
         <div class="view-toggle">
@@ -137,13 +137,14 @@
             <label class="amenity"><input type="checkbox">WiFi</label>
           </div>
 
-          <button type="button" class="btn btn-green">Apply filters</button>
+          <button type="button" class="btn btn-green" id="apply-filters">Apply filters</button>
         </form>
       </aside>
 
       <!-- RESULTS -->
       <div class="results">
-        <div class="results-grid">
+          <div class="results-grid" id="results-grid"></div>
+        <!--<div class="results-grid">
         <article class="card">
           <div class="photo-box">
             <img src="images/room-1.png" alt="Self-contain, Back Gate">
@@ -256,8 +257,8 @@
           <a href="#" class="page-on">1</a>
           <a href="#">2</a>
           <a href="#">3</a>
-        </div>
-      </div>
+        </div>-->
+      </div> 
 
     </div>
   </main>
@@ -298,6 +299,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
   <script src="config.js"></script>
   <script>protectPage(["student"]);</script>
+  <script src="search.js"></script>
 
 </body>
 </html>
