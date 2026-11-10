@@ -55,19 +55,11 @@
 
 .hero-text h1 {
   margin: 0px 0px 10px;
-  font-size: 56px;
-  text-align: left;
 }
 
 .hero-text p {
   margin: 0px 0px 20px;
-  text-align: left;
-  font-size: 16px;
-}
-
-.dash-hero .hero-text {
-  align-items: flex-start;
-  text-align: left;
+  
 }
 
 /* Search bar inside the green box */
@@ -137,15 +129,20 @@
 }
 #recommended-grid .card {
   min-width: 0;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
 }
 #recommended-grid > p {
   grid-column: 1 / -1;
 }
 .tags {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 6px;
   margin-top: 10px;
+  overflow: hidden;
 }
 .tags span {
   padding: 4px 10px;
@@ -153,6 +150,7 @@
   background: var(--light);
   font-size: 12px;
   font-weight: 600;
+  white-space: nowrap;
   color: var(--grey);
 }
 .show-more-row {
@@ -288,7 +286,7 @@
     padding: 22px 16px;
   }
   .hero-text h1 {
-    font-size: 30px;
+    font-size: 28px;
   }
 
   /* Filters: two per row */
@@ -331,13 +329,13 @@
     gap: 12px;
   }
   #recommended-grid .card {
-    padding: 8px;
+    padding: 6px;
   }
   #recommended-grid .photo-box {
     height: 130px;
   }
   #recommended-grid .card-body {
-    padding: 12px 4px 4px;
+    padding: 12px 2px 4px;
   }
   #recommended-grid .card-body h3 {
     font-size: 15px;
@@ -348,9 +346,12 @@
   #recommended-grid .price {
     font-size: 15px;
   }
+  .tags {
+    gap: 3px;
+  }
   .tags span {
-    padding: 3px 8px;
-    font-size: 11px;
+    padding: 3px 5px;
+    font-size: 10px;
   }
   .card-buttons {
     flex-direction: column;
@@ -381,6 +382,12 @@
 }
 
 /* Very small phones */
+@media (max-width: 350px) {
+  .tags span:nth-child(3) {
+    display: none;
+  }
+}
+
 @media (max-width: 400px) {
   .phone-credit {
     margin-right: 6px;
@@ -397,7 +404,7 @@
     font-size: 14px;
   }
   .hero-text h1 {
-    font-size: 36px;
+    font-size: 24px;
   }
 }
 
