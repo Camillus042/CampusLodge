@@ -1035,7 +1035,7 @@ img {
   justify-content: center;
   padding: 16px;
   background: rgba(13, 27, 20, 0.55);
-  z-index: 200;
+  z-index: 2000;
 }
 
 .logout-overlay.open {

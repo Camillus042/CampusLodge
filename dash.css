@@ -46,23 +46,28 @@
 
 .dash-hero{
   width: 100%;
-  height: 300px;
   color: white;
   background: var(--green);
   padding: 30px;
-  align-items: center;
-  justify-content: center;
   margin: 30px 0px 0px 0px;
   border-radius: 10px;
 }
 
 .hero-text h1 {
   margin: 0px 0px 10px;
+  font-size: 56px;
+  text-align: left;
 }
 
 .hero-text p {
   margin: 0px 0px 20px;
-  
+  text-align: left;
+  font-size: 16px;
+}
+
+.dash-hero .hero-text {
+  align-items: flex-start;
+  text-align: left;
 }
 
 /* Search bar inside the green box */
@@ -126,18 +131,33 @@
   margin: 0px 0px 45px;
 }
 
-/* Recommended cards */
-.save-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 38px;
-  height: 38px;
-  border: 0;
-  border-radius: 50%;
-  background: #fff;
-  font-size: 20px;
-  cursor: pointer;
+/* Available lodges */
+#recommended-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+#recommended-grid .card {
+  min-width: 0;
+}
+#recommended-grid > p {
+  grid-column: 1 / -1;
+}
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+.tags span {
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: var(--light);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--grey);
+}
+.show-more-row {
+  margin-top: 32px;
+  text-align: center;
 }
 .card-buttons {
   display: flex;
@@ -184,35 +204,6 @@
 .credit-text h3 {
   margin-bottom: 3px;
   font-size: 18px;
-}
-
-/* Saved rooms */
-.saved-list {
-  margin-top: 24px;
-}
-.saved-card {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 12px;
-}
-.saved-card .photo-box {
-  flex: none;
-  width: 96px;
-  height: 96px;
-}
-.saved-card h3 {
-  margin-bottom: 3px;
-  font-size: 16px;
-}
-.saved-card .price {
-  margin-top: 8px;
-  font-size: 17px;
-}
-.saved-heart {
-  margin-left: auto;
-  font-size: 22px;
-  color: var(--orange);
 }
 
 /* My reservations */
@@ -270,6 +261,13 @@
   padding-bottom: 100px;
 }
 
+/* Dashboard on tablets: 2 lodges per row */
+@media (max-width: 900px) {
+  #recommended-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 /* Dashboard on phones */
 @media (max-width: 800px) {
   .dashboard-nav {
@@ -285,19 +283,84 @@
     display: none;
   }
 
+  .dash-hero {
+    margin-top: 20px;
+    padding: 22px 16px;
+  }
+  .hero-text h1 {
+    font-size: 30px;
+  }
+
+  /* Filters: two per row */
   .search-bar {
-    flex-direction: column;
-    align-items: stretch;
-    padding: 10px;
+    flex-wrap: wrap;
+    gap: 0 10px;
+    padding: 8px 10px 12px;
   }
   .search-field {
+    flex: 1 1 40%;
+    min-width: 0;
     padding: 10px 6px;
     border-right: 0;
     border-bottom: 1px solid var(--line);
   }
-  .search-bar .btn {
-    margin: 12px 0 0;
+  .search-field select {
+    width: 100%;
+    font-size: 15px;
   }
+  .search-bar .btn {
+    flex: 1 1 40%;
+    margin: 12px 0 0;
+    padding: 14px 10px;
+    text-align: center;
+  }
+
+  .area-list {
+    gap: 10px;
+  }
+  .area-tag {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+  .section-head {
+    margin: 0px 0px 24px;
+  }
+
+  /* Lodge cards: smaller so two fit in a row */
+  #recommended-grid {
+    gap: 12px;
+  }
+  #recommended-grid .card {
+    padding: 8px;
+  }
+  #recommended-grid .photo-box {
+    height: 130px;
+  }
+  #recommended-grid .card-body {
+    padding: 12px 4px 4px;
+  }
+  #recommended-grid .card-body h3 {
+    font-size: 15px;
+  }
+  #recommended-grid .muted {
+    font-size: 13px;
+  }
+  #recommended-grid .price {
+    font-size: 15px;
+  }
+  .tags span {
+    padding: 3px 8px;
+    font-size: 11px;
+  }
+  .card-buttons {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .card-buttons .btn {
+    padding: 10px 6px;
+    font-size: 13px;
+  }
+
   .credit-strip {
     padding: 18px;
   }
@@ -314,6 +377,27 @@
   }
   .dashboard-end {
     padding-bottom: 56px;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 400px) {
+  .phone-credit {
+    margin-right: 6px;
+    padding: 5px 8px;
+    font-size: 11px;
+  }
+  .logo {
+    font-size: 15px;
+  }
+  .logo img {
+    height: 24px;
+  }
+  .search-field select {
+    font-size: 14px;
+  }
+  .hero-text h1 {
+    font-size: 36px;
   }
 }
 
