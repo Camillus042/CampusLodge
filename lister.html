@@ -84,7 +84,7 @@
       <div class="modal-body">
         <span class="confirm-icon">&#9873;</span>
         <h2>Mark this room as taken?</h2>
-        <p class="muted"><strong id="taken-title">This room</strong> will no longer show up in search results. You can reopen it any time.</p>
+        <p class="muted"><strong id="taken-title">This room</strong> will no longer show on the Available lodges list. You can reopen it any time.</p>
       </div>
       <div class="modal-foot">
         <button type="button" class="btn btn-white" data-close="taken-modal">Cancel</button>
@@ -110,45 +110,11 @@
   </div>
 
   <script>
-    var takenModal = document.getElementById("taken-modal");
-    var takenTitle = document.getElementById("taken-title");
-    var chosenRow = null;
-
-    // Every "Mark as taken" button opens the box and remembers its row
-    document.querySelectorAll(".mark-taken").forEach(function (button) {
-      button.addEventListener("click", function () {
-        chosenRow = button.closest(".listing-row");
-        takenTitle.textContent = button.dataset.title;
-        takenModal.classList.add("open");
-      });
-    });
-
-    // Confirm: the row now shows Taken
-    // TEMPORARY: the real saving is added in the Supabase stage
-    document.getElementById("confirm-taken").addEventListener("click", function () {
-      var status = chosenRow.querySelector(".status");
-      status.textContent = "Taken";
-      status.className = "status status-taken";
-
-      var button = chosenRow.querySelector(".mark-taken");
-      button.textContent = "Reopen";
-      button.classList.remove("mark-taken");
-
-      takenModal.classList.remove("open");
-    });
-
-    // The Cancel button closes the box
+    // Cancel buttons close their box
     document.querySelectorAll("[data-close]").forEach(function (button) {
       button.addEventListener("click", function () {
         document.getElementById(button.dataset.close).classList.remove("open");
       });
-    });
-
-    // Clicking the dark area outside the box also closes it
-    takenModal.addEventListener("click", function (event) {
-      if (event.target === takenModal) {
-        takenModal.classList.remove("open");
-      }
     });
   </script>
 
@@ -189,8 +155,6 @@
 
   <script>
     // Show the lister's own rooms from Supabase
-    // TEMPORARY: the Edit, Mark as taken and Delete buttons come in the next steps,
-    // and the photo is a placeholder until photos are added
     var statusNames = {
       draft: "Draft",
       pending: "Pending",
@@ -214,7 +178,7 @@
         '<div class="row-info"><h3></h3><p class="muted"></p><p class="reject-note" hidden></p></div>' +
         '<p class="row-price"></p>' +
         '<span class="status"></span>' +
-        '<div class="row-buttons"><button type="button" class="small-btn delete-btn">Delete</button></div>';
+        '<div class="row-buttons"></div>';
 
       // Use the first photo if the room has one
       if (item.photos && item.photos.length > 0) {
@@ -229,9 +193,42 @@
         : item.area || "";
       row.querySelector(".row-price").textContent = "₦" + item.price.toLocaleString();
 
-      row.querySelector(".delete-btn").addEventListener("click", function () {
-        askDelete(item, row);
-      });
+      // Buttons depend on the status of the room
+      var buttons = row.querySelector(".row-buttons");
+
+      function addButton(text, onClick) {
+        var button = document.createElement("button");
+        button.type = "button";
+        button.className = "small-btn";
+        button.textContent = text;
+        button.addEventListener("click", onClick);
+        buttons.appendChild(button);
+      }
+
+      function addEdit() {
+        var link = document.createElement("a");
+        link.className = "small-btn";
+        link.href = "add-listing.html?id=" + item.id;
+        link.textContent = "Edit";
+        buttons.appendChild(link);
+      }
+
+      if (item.status === "draft" || item.status === "rejected") {
+        addEdit();
+        addButton("Delete", function () { askDelete(item, row); });
+      }
+      if (item.status === "pending") {
+        addEdit();
+        addButton("Withdraw", function () { changeStatus(item, row, "draft"); });
+      }
+      if (item.status === "live") {
+        addEdit();
+        addButton("Mark as taken", function () { askTaken(item, row); });
+      }
+      if (item.status === "taken") {
+        addEdit();
+        addButton("Reopen", function () { changeStatus(item, row, "live"); });
+      }
 
       var status = row.querySelector(".status");
       status.textContent = statusNames[item.status];
@@ -313,6 +310,41 @@
     deleteModal.addEventListener("click", function (event) {
       if (event.target === deleteModal) {
         deleteModal.classList.remove("open");
+      }
+    });
+
+    // ----- Change the status: Withdraw, Mark as taken, Reopen -----
+    async function changeStatus(item, row, newStatus) {
+      var result = await db.from("listings").update({ status: newStatus }).eq("id", item.id);
+      if (result.error) {
+        alert("We could not change it. Please try again.");
+        return;
+      }
+      item.status = newStatus;
+      row.replaceWith(makeRow(item));
+      showNumbers();
+    }
+
+    // "Mark as taken" asks first
+    var takenModal = document.getElementById("taken-modal");
+    var takenItem = null;
+    var takenRow = null;
+
+    function askTaken(item, row) {
+      takenItem = item;
+      takenRow = row;
+      document.getElementById("taken-title").textContent = item.title;
+      takenModal.classList.add("open");
+    }
+
+    document.getElementById("confirm-taken").addEventListener("click", function () {
+      changeStatus(takenItem, takenRow, "taken");
+      takenModal.classList.remove("open");
+    });
+
+    takenModal.addEventListener("click", function (event) {
+      if (event.target === takenModal) {
+        takenModal.classList.remove("open");
       }
     });
 

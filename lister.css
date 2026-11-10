@@ -41,7 +41,8 @@
   flex: 1 1 200px;
   padding: 22px 24px;
   border: 1px solid var(--line);
-  border-radius: 22px;
+  border-radius: 12px;
+  /* background: #0F6B31; */
 }
 
 .stat strong {
@@ -69,6 +70,30 @@
 
 .stat-grey {
   color: var(--grey);
+}
+
+/* Coloured number boxes */
+.stat-row .stat:nth-child(1) {
+  background: var(--dark);
+  border-color: var(--dark);
+}
+.stat-row .stat:nth-child(2) {
+  background: var(--green);
+  border-color: var(--green);
+}
+.stat-row .stat:nth-child(3) {
+  background: var(--orange);
+  border-color: var(--orange);
+}
+
+/* White text on the first three boxes */
+.stat-row .stat:nth-child(1) strong,
+.stat-row .stat:nth-child(2) strong,
+.stat-row .stat:nth-child(3) strong,
+.stat-row .stat:nth-child(1) span,
+.stat-row .stat:nth-child(2) span,
+.stat-row .stat:nth-child(3) span {
+  color: #fff;
 }
 
 .lister-title {
