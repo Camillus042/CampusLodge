@@ -14,11 +14,11 @@
   background: var(--orange);
 }
 .credit-chip {
-  padding: 8px 14px;
+  padding: 11px 17px;
   border-radius: 10px;
   background: var(--grey);
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 600;
   color: #fff;
 }
 
