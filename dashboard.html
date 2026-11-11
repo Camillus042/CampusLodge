@@ -123,19 +123,7 @@
   <!-- MY RESERVATIONS -->
   <section id="reservations" class="container section dashboard-end">
     <h2 class="title">My <span class="green-word">reservations</span></h2>
-    <div class="reservation-list">
-      <div class="reservation">
-        <div class="photo-box"><img src="images/room-1.png" alt="Self-contain, Back Gate"></div>
-        <div class="reservation-info">
-          <h3>Self-contain, Back Gate</h3>
-          <p class="muted">Paid on [date] &middot; Ref [reference number]</p>
-        </div>
-        <div class="fee">₦5,000<span>Booking fee</span></div>
-        <span class="status">Held, 41h left</span>
-        <button type="button" class="btn btn-white view-receipt" data-ref="[Reference number]" data-date="[Date and time]" data-room="Self-contain, Back Gate" data-owner="[Owner name]">View receipt</button>
-        <a href="reservation.html" class="btn btn-green">Open</a>
-      </div>
-    </div>
+    <div class="reservation-list" id="reservation-list"></div>
   </section>
 
     <!-- RECEIPT MODAL -->
@@ -213,16 +201,16 @@
     // TEMPORARY: the details are sample text until real reservations are saved
     var receiptModal = document.getElementById("receipt-modal");
 
-    document.querySelectorAll(".view-receipt").forEach(function (button) {
-      button.addEventListener("click", function () {
-        document.getElementById("r-ref").textContent = button.dataset.ref;
-        document.getElementById("r-date").textContent = button.dataset.date;
-        document.getElementById("r-student").textContent = document.querySelector('[data-user="first"]').textContent;
-        document.getElementById("r-room").textContent = button.dataset.room;
-        document.getElementById("r-owner").textContent = button.dataset.owner;
-        receiptModal.classList.add("open");
-      });
-    });
+    // document.querySelectorAll(".view-receipt").forEach(function (button) {
+    //   button.addEventListener("click", function () {
+    //     document.getElementById("r-ref").textContent = button.dataset.ref;
+    //     document.getElementById("r-date").textContent = button.dataset.date;
+    //     document.getElementById("r-student").textContent = document.querySelector('[data-user="first"]').textContent;
+    //     document.getElementById("r-room").textContent = button.dataset.room;
+    //     document.getElementById("r-owner").textContent = button.dataset.owner;
+    //     receiptModal.classList.add("open");
+    //   });
+    // });
 
     // The X and Close buttons close the box
     document.querySelectorAll("[data-close]").forEach(function (button) {
