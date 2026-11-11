@@ -146,7 +146,88 @@ async function showRoom() {
     return;
   }
   fillRoom(room);
+  fillPayment(room);
   document.getElementById("listing-content").hidden = false;
 }
 
 showRoom();
+
+// ===== Reserve this room (demo payment) =====
+
+function formatDate(text) {
+  return new Date(text).toLocaleString("en-NG", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+    hour: "numeric",
+    minute: "2-digit"
+  });
+}
+
+var currentRoom = null;
+
+// Put the real room into the payment box
+function fillPayment(room) {
+  currentRoom = room;
+  var box = document.querySelector("#payment-modal .pay-room");
+  var picture = box.querySelector("img");
+  if (room.photos && room.photos.length > 0) {
+    picture.src = photoUrl(room.photos[0]);
+  }
+  box.querySelector("strong").textContent = room.title;
+  box.querySelector(".muted").textContent = room.area;
+  box.querySelector(".price").textContent = "₦" + Number(room.price).toLocaleString() + " / year";
+
+  // Credit is added in a later step
+  document.querySelector(".use-credit").hidden = true;
+}
+
+// A place for error messages inside the payment box
+var payError = document.createElement("p");
+payError.className = "error-text";
+payError.hidden = true;
+document.querySelector("#payment-modal .modal-body").appendChild(payError);
+
+// The Pay button
+document.getElementById("pay-button").addEventListener("click", async function () {
+  var button = document.getElementById("pay-button");
+  payError.hidden = true;
+  button.disabled = true;
+  button.textContent = "Processing...";
+
+  // A short pause so the demo feels like a real payment
+  await new Promise(function (done) {
+    setTimeout(done, 1200);
+  });
+
+  var result = await db.rpc("reserve_room", { p_listing: currentRoom.id });
+  button.disabled = false;
+  button.textContent = "Pay ₦5,000 (demo)";
+
+  if (result.error) {
+    payError.textContent = result.error.message;
+    payError.hidden = false;
+    return;
+  }
+
+  // Fill the receipt with the real reservation
+  var reservation = result.data;
+  var lines = document.querySelectorAll("#receipt-modal .receipt-line strong");
+  lines[0].textContent = reservation.reference;
+  lines[1].textContent = formatDate(reservation.created_at);
+  lines[3].textContent = reservation.room_title;
+  lines[4].textContent = reservation.owner_name || "Owner";
+
+  var message = document.querySelector("#receipt-modal .btn-whatsapp");
+  var link = whatsappLink(currentRoom.whatsapp, "Hello, I have reserved \"" + currentRoom.title + "\" on CampusLodge.");
+  if (link) {
+    message.href = link;
+    message.target = "_blank";
+  } else {
+    message.hidden = true;
+  }
+  document.querySelector("#receipt-modal .btn-dark").href = "reservation.html?id=" + reservation.id;
+
+  document.getElementById("payment-modal").classList.remove("open");
+  document.getElementById("receipt-modal").classList.add("open");
+});
