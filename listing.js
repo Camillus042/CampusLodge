@@ -178,8 +178,13 @@ function fillPayment(room) {
   box.querySelector(".muted").textContent = room.area;
   box.querySelector(".price").textContent = "₦" + Number(room.price).toLocaleString() + " / year";
 
-  // Credit is added in a later step
-  document.querySelector(".use-credit").hidden = true;
+  // Show "Use my credit" only when the student has credit
+    db.rpc("my_credit_balance").then(function (result) {
+    var amount = result.data || 0;
+    var box = document.querySelector(".use-credit");
+    box.hidden = amount === 0;
+    box.querySelector("span").textContent = "Available: ₦" + amount.toLocaleString() + ". Reserve at ₦0. Not valid on rooms from the same owner as your returned room.";
+  });
 }
 
 // A place for error messages inside the payment box
@@ -200,7 +205,7 @@ document.getElementById("pay-button").addEventListener("click", async function (
     setTimeout(done, 1200);
   });
 
-  var result = await db.rpc("reserve_room", { p_listing: currentRoom.id });
+  var result = await db.rpc("reserve_room",    { p_listing: currentRoom.id, p_use_credit: document.getElementById("use-credit").checked };
   button.disabled = false;
   button.textContent = "Pay ₦5,000 (demo)";
 
@@ -217,6 +222,7 @@ document.getElementById("pay-button").addEventListener("click", async function (
   lines[1].textContent = formatDate(reservation.created_at);
   lines[3].textContent = reservation.room_title;
   lines[4].textContent = reservation.owner_name || "Owner";
+  lines[5].textContent = reservation.paid_with === "credit" ? "₦5,000 (paid with credit)" : "₦5,000";
 
   var message = document.querySelector("#receipt-modal .btn-whatsapp");
   var link = whatsappLink(currentRoom.whatsapp, "Hello, I have reserved \"" + currentRoom.title + "\" on CampusLodge.");

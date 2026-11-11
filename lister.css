@@ -656,3 +656,11 @@
   color: #fff;
   cursor: pointer;
 }
+
+.claims-intro {
+  margin-bottom: 16px;
+}
+.claim-note {
+  margin-top: 6px;
+  font-style: italic;
+}

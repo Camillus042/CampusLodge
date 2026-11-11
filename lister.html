@@ -54,6 +54,13 @@
       <div class="stat"><strong class="stat-grey" id="stat-taken">0</strong><span>Taken</span></div>
     </div>
 
+    <!-- CREDIT REQUESTS FROM STUDENTS -->
+    <div id="claims" hidden>
+      <h2 class="lister-title">Credit <span class="green-word">requests</span></h2>
+      <p class="muted claims-intro">A student says there was a problem with your room. Did this student take the room?</p>
+      <div class="listing-rows" id="claims-list"></div>
+    </div>
+
     <!-- MY LISTINGS -->
     <h2 class="lister-title">My <span class="green-word">listings</span></h2>
     <div class="listing-rows" id="listing-rows"></div>
@@ -225,10 +232,6 @@
         addEdit();
         addButton("Mark as taken", function () { askTaken(item, row); });
       }
-      if (item.status === "taken") {
-        addEdit();
-        addButton("Reopen", function () { changeStatus(item, row, "live"); });
-      }
 
       var status = row.querySelector(".status");
       status.textContent = statusNames[item.status];
@@ -315,12 +318,13 @@
 
     // ----- Change the status: Withdraw, Mark as taken, Reopen -----
     async function changeStatus(item, row, newStatus) {
-      var result = await db.from("listings").update({ status: newStatus }).eq("id", item.id);
+      var result = await db.from("listings").update({ status: newStatus }).eq("id", item.id).select("status").single();
       if (result.error) {
         alert("We could not change it. Please try again.");
         return;
       }
-      item.status = newStatus;
+      // The database may change it (a reopened room waits for the admin)
+      item.status = result.data.status;
       row.replaceWith(makeRow(item));
       showNumbers();
     }
@@ -348,7 +352,62 @@
       }
     });
 
-    showMyListings();
+    // ----- Credit requests from students -----
+    async function showClaims() {
+      var result = await db.rpc("owner_claims");
+      var items = result.data || [];
+      var list = document.getElementById("claims-list");
+      list.innerHTML = "";
+      document.getElementById("claims").hidden = items.length === 0;
+
+      items.forEach(function (item) {
+        var row = document.createElement("div");
+        row.className = "listing-row claim-row";
+        row.innerHTML =
+          '<div class="row-info"><h3></h3><p class="muted claim-reasons"></p><p class="claim-note"></p></div>' +
+          '<div class="row-buttons"></div>';
+        row.querySelector("h3").textContent = item.student_name + " on " + item.room_title;
+        row.querySelector(".claim-reasons").textContent = item.claim_reasons.join(", ");
+        row.querySelector(".claim-note").textContent = "\"" + item.claim_note + "\"";
+
+        var buttons = row.querySelector(".row-buttons");
+        var yes = document.createElement("button");
+        yes.type = "button";
+        yes.className = "small-btn";
+        yes.textContent = "They did not take it";
+        yes.addEventListener("click", function () {
+          answerClaim(item.id, true);
+        });
+        var no = document.createElement("button");
+        no.type = "button";
+        no.className = "small-btn";
+        no.textContent = "They took it";
+        no.addEventListener("click", function () {
+          answerClaim(item.id, false);
+        });
+        buttons.appendChild(yes);
+        buttons.appendChild(no);
+        list.appendChild(row);
+      });
+    }
+
+    async function answerClaim(id, confirmed) {
+      var result = await db.rpc("owner_answer_claim", { p_res: id, p_confirm: confirmed });
+      if (result.error) {
+        alert("We could not save your answer. Please try again.");
+        return;
+      }
+      showClaims();
+    }
+
+    // Holds that ended turn into credit first, then the page loads
+    async function startPage() {
+      await db.rpc("process_expired_holds");
+      showClaims();
+      showMyListings();
+    }
+
+    startPage();
   </script>
 </body>
 </html>
