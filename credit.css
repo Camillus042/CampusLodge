@@ -24,7 +24,7 @@
   margin-bottom: 28px;
   padding: 34px 36px;
   border-radius: 28px;
-  background: linear-gradient(135deg, #0F3D22 0%, #16803C 100%);
+  background: var(--green);
   color: #fff;
 }
 
@@ -39,7 +39,7 @@
 .balance-amount {
   margin-top: 4px;
   font-size: 56px;
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1;
 }
 

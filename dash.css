@@ -15,11 +15,11 @@
 }
 .credit-chip {
   padding: 8px 14px;
-  border-radius: 20px;
-  background: #FFF1E8;
+  border-radius: 10px;
+  background: var(--grey);
   font-size: 13px;
-  font-weight: 600;
-  color: #9A3F14;
+  font-weight: 500;
+  color: #fff;
 }
 
 .phone-credit {
