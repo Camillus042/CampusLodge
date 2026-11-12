@@ -205,7 +205,10 @@ document.getElementById("pay-button").addEventListener("click", async function (
     setTimeout(done, 1200);
   });
 
-  var result = await db.rpc("reserve_room",    { p_listing: currentRoom.id, p_use_credit: document.getElementById("use-credit").checked };
+  var result = await db.rpc("reserve_room", {
+  p_listing: currentRoom.id,
+  p_use_credit: document.getElementById("use-credit").checked
+  });
   button.disabled = false;
   button.textContent = "Pay ₦5,000 (demo)";
 

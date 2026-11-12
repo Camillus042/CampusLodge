@@ -30,6 +30,7 @@
         <a href="#credits" class="nav-link" data-tab="credits">Credits</a>
         <a href="#users" class="nav-link" data-tab="users">Users</a>
         <a href="#fees" class="nav-link" data-tab="fees">Fees</a>
+        <a href="#messages" class="nav-link" data-tab="messages">Messages</a>
         <span class="nav-user"><span class="avatar avatar-dark">A</span>Admin</span>
         <a href="index.html" class="btn btn-white">Log out</a>
       </nav>
@@ -56,6 +57,7 @@
       <button type="button" class="tab-btn" data-tab="credits">Credits and disputes</button>
       <button type="button" class="tab-btn" data-tab="users">Users</button>
       <button type="button" class="tab-btn" data-tab="fees">Fees</button>
+      <button type="button" class="tab-btn" data-tab="messages">Messages <span id="inbox-count"></span></button>
     </div>
 
     <!-- ================= TAB 1: REVIEW ================= -->
@@ -149,6 +151,17 @@
         <p class="muted panel-sub">The student asked for credit and the owner says the student took the room. Compare both sides and decide. Requests the owner confirms are credited without you.</p>
         <div class="admin-list" id="disputes-list"></div>
         <p class="rule-note"><strong>Rule:</strong> a student can get at most 3 credits per semester. Approved credit is used when the student reserves their next room.</p>
+      </section>
+
+    </div>
+
+    <!-- ================= TAB 5: MESSAGES AND APPEALS ================= -->
+    <div class="tab-panel" id="tab-messages" hidden>
+
+      <section class="panel">
+        <h2>Messages and <span class="green-word">appeals</span></h2>
+        <p class="muted panel-sub">Contact messages from the Contact page, and appeals from banned users. Reply to people by email, then mark the message as done.</p>
+        <div class="admin-list" id="inbox-list"></div>
       </section>
 
     </div>
@@ -273,7 +286,7 @@
 
   <script>
     // ----- TABS: Review / Credits / Users / Fees -----
-    var tabNames = ["review", "credits", "users", "fees"];
+    var tabNames = ["review", "credits", "users", "fees", "messages"];
 
     function showTab(name) {
       tabNames.forEach(function (tab) {

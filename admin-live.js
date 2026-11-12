@@ -404,9 +404,62 @@ document.getElementById("export-csv").addEventListener("click", function () {
   link.click();
 });
 
+// ----- Contact messages and ban appeals -----
+async function loadInbox() {
+  var result = await db.rpc("admin_inbox");
+  var items = result.data || [];
+  var box = document.getElementById("inbox-list");
+  var waiting = items.filter(function (i) { return i.status === "new"; }).length;
+  document.getElementById("inbox-count").textContent = waiting > 0 ? "(" + waiting + ")" : "";
+  box.innerHTML = "";
+  if (items.length === 0) {
+    emptyMessage(box, "No messages yet.");
+    return;
+  }
+  var doneNames = { done: "Done", restored: "Restored", rejected: "Rejected" };
+  items.forEach(function (item) {
+    var isNew = item.status === "new";
+    var buttons = [];
+    if (isNew && item.kind === "contact") {
+      buttons.push(makeAction({
+        text: "Mark as done", style: "small-green", rpc: "admin_inbox_action",
+        args: { p_id: item.id, p_decision: "done" },
+        title: "Mark this message as done?",
+        message: "Do this after you have replied to " + item.email + ".",
+        confirm: "Mark as done"
+      }));
+    }
+    if (isNew && item.kind === "appeal") {
+      buttons.push(makeAction({
+        text: "Restore", style: "small-green", rpc: "admin_inbox_action",
+        args: { p_id: item.id, p_decision: "restore" },
+        title: "Restore " + item.name + "?",
+        message: "They can log in and use the site again.",
+        label: "Note (only admins see this)", confirm: "Restore"
+      }));
+      buttons.push(makeAction({
+        text: "Reject", style: "small-red", rpc: "admin_inbox_action",
+        args: { p_id: item.id, p_decision: "reject" },
+        title: "Reject this appeal?",
+        message: "The account stays banned.",
+        label: "Note (only admins see this)", confirm: "Reject", danger: true
+      }));
+    }
+    box.appendChild(makeAdminRow({
+      title: item.name || "Unknown",
+      sub: item.email || "",
+      line1: (item.kind === "appeal" ? "Ban appeal" : "Contact message") + " · " + shortDate(item.created_at),
+      line2: "“" + item.body + "”",
+      chip: isNew ? "New" : doneNames[item.status],
+      chipClass: isNew ? "chip-orange" : "chip-grey",
+      buttons: buttons
+    }));
+  });
+}
+
 // Load everything again (also used after every admin action)
 async function refreshAdmin() {
-  await Promise.all([loadUsers(), loadReports(), loadDisputes(), loadFees()]);
+  await Promise.all([loadUsers(), loadReports(), loadDisputes(), loadFees(), loadInbox()]);
 }
 
 refreshAdmin();

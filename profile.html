@@ -49,7 +49,7 @@
       <nav class="profile-menu">
         <a href="#details">Personal details</a>
         <a href="#password">Password</a>
-        <a href="#payout">Payout account</a>
+        <a href="#payout" id="payout-link" hidden>Payout account</a>
         <a href="#notify">Notification settings</a>
         <a href="#delete">Delete account</a>
       </nav>
@@ -59,27 +59,32 @@
         <section class="profile-card" id="details">
           <h2>Personal details</h2>
           <p class="muted">How you appear on CampusLodge.</p>
-          <form class="profile-form">
+          <form class="profile-form" id="details-form">
             <div class="field">
               <label for="p-name">Full name</label>
-              <input type="text" id="p-name" value="Ekaette Okon">
+              <input type="text" id="p-name">
             </div>
             <div class="field">
               <label for="p-email">Email</label>
-              <input type="email" id="p-email" value="ekaette@example.com">
-              <p class="field-note">Changing your email asks you to confirm it again.</p>
+              <input type="email" id="p-email" readonly>
+              <p class="field-note">To change your email, please contact us.</p>
+            </div>
+            <div class="field" id="hostel-field" hidden>
+              <label for="p-hostel">Hostel name</label>
+              <input type="text" id="p-hostel">
             </div>
             <div class="field-row">
               <div class="field">
                 <label for="p-phone">Phone number</label>
-                <input type="tel" id="p-phone" value="08012345678">
+                <input type="tel" id="p-phone">
               </div>
-              <div class="field">
+              <div class="field" id="matric-field" hidden>
                 <label for="p-matric">Matric number</label>
-                <input type="text" id="p-matric" value="AKSU/2022/001">
+                <input type="text" id="p-matric">
                 <p class="field-note">Students only.</p>
               </div>
             </div>
+            <p class="error-text" hidden></p>
             <button type="submit" class="btn btn-green">Save changes</button>
             <span class="saved-note" hidden>Saved</span>
           </form>
@@ -103,16 +108,16 @@
                 <input type="password" id="confirm-password">
               </div>
             </div>
-            <p class="error-text" id="password-error" hidden>Fill in all three boxes. The new password needs 8 characters and both new passwords must match.</p>
+            <p class="error-text" id="password-error" hidden></p>
             <button type="submit" class="btn btn-green">Update password</button>
             <span class="saved-note" hidden>Password updated</span>
           </form>
         </section>
 
-        <section class="profile-card" id="payout">
+        <section class="profile-card" id="payout" hidden>
           <h2>Payout account</h2>
           <p class="muted">For owners and hostel managers only. Students see this only after they like your room and choose to pay rent. The &#8358;5,000 booking fee does not come to you.</p>
-          <form class="profile-form">
+          <form class="profile-form" id="payout-form">
             <div class="field">
               <label for="bank">Bank</label>
               <input type="text" id="bank" placeholder="Name of your bank">
@@ -127,6 +132,7 @@
                 <input type="text" id="acct-name" placeholder="Name on the account">
               </div>
             </div>
+            <p class="error-text" hidden></p>
             <button type="submit" class="btn btn-green">Save account</button>
             <span class="saved-note" hidden>Saved</span>
           </form>
@@ -135,13 +141,13 @@
         <section class="profile-card" id="notify">
           <h2>Notification settings</h2>
           <p class="muted">Important emails cannot be turned off, such as payment, hold and owner confirmations.</p>
-          <form class="profile-form">
+          <form class="profile-form" id="notify-form">
             <label class="check-row">
-              <input type="checkbox" checked>
+              <input type="checkbox" id="n-rooms">
               <span>Email me about new rooms in my saved areas</span>
             </label>
             <label class="check-row">
-              <input type="checkbox">
+              <input type="checkbox" id="n-tips">
               <span>Email me tips and updates</span>
             </label>
             <button type="submit" class="btn btn-green">Save settings</button>
@@ -171,6 +177,7 @@
         <div class="field delete-field">
           <input type="text" id="delete-word" placeholder="DELETE" autocomplete="off">
         </div>
+        <p class="error-text" id="delete-error" hidden></p>
       </div>
       <div class="modal-foot">
         <button type="button" class="btn btn-white" data-close="delete-modal">Cancel</button>
@@ -212,68 +219,12 @@
     </div>
   </footer>
 
-  <script>
-    // Every Save button shows a small "Saved" note
-    // TEMPORARY: the real saving is added in the Supabase stage
-    document.querySelectorAll(".profile-form").forEach(function (form) {
-      form.addEventListener("submit", function (event) {
-        event.preventDefault();
-        if (form.id === "password-form") {
-          return;
-        }
-        form.querySelector(".saved-note").hidden = false;
-      });
-    });
-
-    // Password form: all boxes filled, 8 characters, both new passwords the same
-    document.getElementById("password-form").addEventListener("submit", function () {
-      var oldPassword = document.getElementById("old-password").value;
-      var newPassword = document.getElementById("new-password").value;
-      var confirmPassword = document.getElementById("confirm-password").value;
-      var error = document.getElementById("password-error");
-      var note = this.querySelector(".saved-note");
-
-      var bad = oldPassword === "" || newPassword.length < 8 || newPassword !== confirmPassword;
-      error.hidden = !bad;
-      note.hidden = bad;
-    });
-
-    // Delete pop-up: the red button only works after typing DELETE
-    var deleteModal = document.getElementById("delete-modal");
-    var deleteWord = document.getElementById("delete-word");
-    var confirmDelete = document.getElementById("confirm-delete");
-
-    document.getElementById("open-delete").addEventListener("click", function () {
-      deleteWord.value = "";
-      confirmDelete.disabled = true;
-      deleteModal.classList.add("open");
-    });
-
-    deleteWord.addEventListener("input", function () {
-      confirmDelete.disabled = deleteWord.value !== "DELETE";
-    });
-
-    // TEMPORARY: the real deleting is added in the Supabase stage
-    confirmDelete.addEventListener("click", function () {
-      window.location.href = "index.html";
-    });
-
-    document.querySelectorAll("[data-close]").forEach(function (button) {
-      button.addEventListener("click", function () {
-        document.getElementById(button.dataset.close).classList.remove("open");
-      });
-    });
-
-    deleteModal.addEventListener("click", function (event) {
-      if (event.target === deleteModal) {
-        deleteModal.classList.remove("open");
-      }
-    });
-  </script>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
   <script src="config.js"></script>
   <script>protectPage();</script>
+  <script src="credit-chip.js"></script>
+  <script src="profile.js"></script>
 
 </body>
 </html>

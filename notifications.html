@@ -32,7 +32,7 @@
         <a href="dashboard.html#available" class="nav-link">Search</a>
         <a href="dashboard.html#saved" class="nav-link">Saved</a>
         <a href="dashboard.html#reservations" class="nav-link">Reservations</a>
-        <a href="notifications.html" class="nav-link nav-active">Notifications</a>
+        <a href="notifications.html" class="nav-link nav-active">Notifications<span class="nav-dot"></span></a>
         <a href="credit.html" class="credit-chip nav-credit">&#8358;5,000 credit</a>
         <a href="profile.html" class="nav-user"><span class="avatar">E</span>Ekaette</a>
         <a href="index.html" class="btn btn-white">Log out</a>
@@ -49,34 +49,9 @@
       <button type="button" class="btn btn-white" id="mark-read">Mark all as read</button>
     </div>
 
-    <div class="note-list">
-        <a href="reservation.html" class="note unread">
-          <span class="note-icon">&#9201;</span>
-          <span class="note-text">
-            <strong>Your hold ends in 6 hours</strong>
-            <span class="muted">Self-contain, Back Gate. Visit the room and tell us what you decided.</span>
-          </span>
-          <span class="note-time">2h ago</span>
-        </a>
-        <a href="credit.html" class="note unread">
-          <span class="note-icon">&#8358;</span>
-          <span class="note-text">
-            <strong>&#8358;5,000 credit added</strong>
-            <span class="muted">The owner confirmed you did not take the room.</span>
-          </span>
-          <span class="note-time">Yesterday</span>
-        </a>
-        <a href="reservation.html" class="note ">
-          <span class="note-icon">&#10003;</span>
-          <span class="note-text">
-            <strong>Payment confirmed</strong>
-            <span class="muted">Self-contain, Back Gate is held for you for 48 hours.</span>
-          </span>
-          <span class="note-time">2 days ago</span>
-        </a>
-    </div>
+    <div class="note-list" id="note-list"></div>
 
-    <p class="muted note-foot">We also email you for the important ones: payment confirmed, hold ending soon, owner needs to answer, credit added, listing approved or rejected.</p>
+    <p class="muted note-foot">Important things show up here, such as payment confirmed, credit added and when an owner needs to answer.</p>
   </main>
 
   <!-- FOOTER -->
@@ -112,22 +87,12 @@
     </div>
   </footer>
 
-  <script>
-    // "Mark all as read" removes the green background and the dot in the menu
-    // TEMPORARY: the real saving is added in the Supabase stage
-    document.getElementById("mark-read").addEventListener("click", function () {
-      document.querySelectorAll(".note.unread").forEach(function (note) {
-        note.classList.remove("unread");
-      });
-      document.querySelectorAll(".nav-dot").forEach(function (dot) {
-        dot.remove();
-      });
-    });
-  </script>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
   <script src="config.js"></script>
   <script>protectPage(["student"]);</script>
+  <script src="credit-chip.js"></script>
+  <script src="notifications.js"></script>
 
 </body>
 </html>

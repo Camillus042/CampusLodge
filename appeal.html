@@ -41,17 +41,17 @@
 
           <div class="ban-reason">
             <span class="small-label">Reason given by the admin</span>
-            <p>[Admin's reason]</p>
+            <p id="ban-reason">Loading...</p>
           </div>
 
           <div class="field">
             <label for="appeal-text">What happened?</label>
             <textarea id="appeal-text" rows="5" placeholder="Explain in your own words."></textarea>
-            <p class="error-text" id="appeal-error" hidden>Please write a few words first.</p>
+            <p class="error-text" id="appeal-error" hidden></p>
           </div>
 
           <button type="button" class="btn btn-green" id="send-appeal">Send appeal</button>
-          <p class="auth-switch"><a href="index.html">Log out</a></p>
+          <p class="auth-switch"><a href="index.html" id="appeal-logout">Log out</a></p>
         </div>
 
         <!-- After sending -->
@@ -66,20 +66,9 @@
   </div>
   </div>
 
-  <script>
-    var appealText = document.getElementById("appeal-text");
-    var appealError = document.getElementById("appeal-error");
-
-    // TEMPORARY: the real sending is added in the Supabase stage
-    document.getElementById("send-appeal").addEventListener("click", function () {
-      if (appealText.value.trim() === "") {
-        appealError.hidden = false;
-        appealText.classList.add("input-error");
-        return;
-      }
-      document.getElementById("appeal-form").hidden = true;
-      document.getElementById("appeal-sent").hidden = false;
-    });
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+  <script src="config.js"></script>
+  <!-- No protectPage here: banned people are sent to this page -->
+  <script src="appeal.js"></script>
 </body>
 </html>

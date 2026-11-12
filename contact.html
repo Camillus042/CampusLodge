@@ -78,7 +78,7 @@
             <label for="c-message">Message</label>
             <textarea id="c-message" rows="5" placeholder="How can we help?"></textarea>
           </div>
-          <p class="error-text" id="contact-error" hidden>Please fill in your name, email and message.</p>
+          <p class="error-text" id="contact-error" hidden></p>
           <button type="button" class="btn btn-green" id="send-contact">Send message</button>
         </div>
 
@@ -125,29 +125,8 @@
     </div>
   </footer>
 
-  <script>
-    // TEMPORARY: the real sending is added in the Supabase stage
-    document.getElementById("send-contact").addEventListener("click", function () {
-      var name = document.getElementById("c-name");
-      var email = document.getElementById("c-email");
-      var message = document.getElementById("c-message");
-      var error = document.getElementById("contact-error");
-
-      var missing = false;
-      [name, email, message].forEach(function (box) {
-        var empty = box.value.trim() === "";
-        box.classList.toggle("input-error", empty);
-        if (empty) {
-          missing = true;
-        }
-      });
-
-      error.hidden = !missing;
-      if (!missing) {
-        document.getElementById("contact-form").hidden = true;
-        document.getElementById("contact-sent").hidden = false;
-      }
-    });
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+  <script src="config.js"></script>
+  <script src="contact.js"></script>
 </body>
 </html>
