@@ -287,16 +287,6 @@
       document.getElementById("report-error").hidden = true;
       document.getElementById("report-modal").classList.add("open");
     });
-
-    // TEMPORARY: the real sending is added in the Supabase stage
-    document.getElementById("send-report").addEventListener("click", function () {
-      if (!document.querySelector('input[name="report"]:checked')) {
-        document.getElementById("report-error").hidden = false;
-        return;
-      }
-      document.getElementById("report-modal").classList.remove("open");
-      document.getElementById("report-sent-modal").classList.add("open");
-    });
   </script>
 
   <!-- FOOTER -->

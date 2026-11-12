@@ -237,3 +237,31 @@ document.getElementById("pay-button").addEventListener("click", async function (
   document.getElementById("payment-modal").classList.remove("open");
   document.getElementById("receipt-modal").classList.add("open");
 });
+
+// ===== Report this listing =====
+document.getElementById("send-report").addEventListener("click", async function () {
+  var chosen = document.querySelector('input[name="report"]:checked');
+  var error = document.getElementById("report-error");
+
+  if (!chosen) {
+    error.textContent = "Pick one reason first.";
+    error.hidden = false;
+    return;
+  }
+
+  var result = await db.rpc("report_listing", {
+    p_listing: roomId,
+    p_reason: chosen.value,
+    p_details: document.getElementById("report-details").value
+  });
+
+  if (result.error) {
+    error.textContent = result.error.message;
+    error.hidden = false;
+    return;
+  }
+
+  error.hidden = true;
+  document.getElementById("report-modal").classList.remove("open");
+  document.getElementById("report-sent-modal").classList.add("open");
+});
