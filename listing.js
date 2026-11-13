@@ -183,7 +183,7 @@ function fillPayment(room) {
     var amount = result.data || 0;
     var box = document.querySelector(".use-credit");
     box.hidden = amount === 0;
-    box.querySelector("span").textContent = "Available: ₦" + amount.toLocaleString() + ". Reserve at ₦0. Not valid on rooms from the same owner as your returned room.";
+    box.querySelector("span").textContent = "Available: ₦" + amount.toLocaleString() + ". Reserve at ₦0.";
   });
 }
 

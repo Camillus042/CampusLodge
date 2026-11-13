@@ -41,7 +41,7 @@
   </header>
 
   <main class="container info-page">
-    <h1 class="title">How booking <span class="green-word">works</span></h1>
+    <h1 class="title">How booking works</span></h1>
     <p class="big-text">Five steps, one small fee, and clear rules if things do not go to plan.</p>
 
     <div class="how-steps">
@@ -92,7 +92,7 @@
         <div class="how-row">
           <strong>The owner does not show up</strong>
           <span class="how-then">&#8358;5,000 becomes credit</span>
-          <span class="muted">Straight away. It does not count toward your 3 credits.</span>
+          <span class="muted">The admin checks your case, then it becomes credit. It does not count toward your 3 credits.</span>
         </div>
         <div class="how-row">
           <strong>You cancel</strong>
@@ -118,7 +118,7 @@
         </div>
         <div class="how-faq">
           <strong>Can I use it on the same owner?</strong>
-          <p class="muted">No, credit cannot be used on a room from the owner you got it from.</p>
+          <p class="muted">Yes. Credit works on any room.</p>
         </div>
         <div class="how-faq">
           <strong>Where do I see my credit?</strong>
@@ -167,6 +167,11 @@
       </div>
     </div>
   </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+  <script src="config.js"></script>
+  <script>protectPage(["student"]);</script>
+  <script src="credit-chip.js"></script>
 
 </body>
 </html>

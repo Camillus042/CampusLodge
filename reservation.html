@@ -114,8 +114,8 @@
               </div>
               <p class="muted decision-note">If you do not like it, the owner is asked to confirm you did not take the room before your ₦5,000 becomes credit. If you do nothing, the room reopens after 48 hours and the fee becomes credit anyway.</p>
               <div class="res-links">
-                <a href="#" class="link-red">Owner did not show up?</a>
-                <a href="#" class="link-grey">Cancel reservation</a>
+                <a href="#" class="link-red" id="open-problem">Owner did not show up?</a>
+                <a href="#" class="link-grey" id="open-cancel">Cancel reservation</a>
               </div>
             </div>
           </div>
@@ -133,7 +133,7 @@
         <div class="res-card" id="pay-rent">
           <p class="small-label">After "I like it"</p>
           <h3>Pay your rent to the owner</h3>
-          <p class="muted rent-text">Rent is paid directly to the owner, not through CampusLodge. Pay only when you are at the house and the owner gives you the key. Use a bank transfer so you have a receipt. Use a bank transfer so you have a receipt.</p>
+          <p class="muted rent-text">Rent is paid directly to the owner, not through CampusLodge. Pay only when you are at the house and the owner gives you the key. Use a bank transfer so you have a receipt.</p>
 
           <div class="rent-boxes">
             <div class="rent-box">
@@ -142,16 +142,11 @@
             </div>
             <div class="rent-box">
               <p class="small-label">Owner's account</p>
-              <strong>[Bank name and number, given by the owner]</strong>
+              <strong id="owner-account">The owner has not added an account yet</strong>
             </div>
           </div>
-
-          <p class="field-label">Upload your transfer receipt</p>
-          <label class="upload-box">
-            <input type="file" accept="image/*" hidden>
-            Tap to add a screenshot or photo of the receipt
-          </label>
-          <button type="button" class="btn btn-green">I have paid the rent</button>
+          <p class="error-text" id="rent-error" hidden></p>
+          <button type="button" class="btn btn-green" id="rent-paid">I have paid the rent</button>
         </div>
 
       </div>
@@ -186,12 +181,6 @@
           <label class="field-label" for="more-info">Tell us more <span class="required">(required)</span></label>
           <textarea id="more-info" class="more-info" rows="3" placeholder="What did you see when you visited?"></textarea>
           <p class="error-text" id="more-error" hidden>Write a few words about what you saw.</p>
-
-          <p class="field-label photo-label">Add a photo <span class="optional">(optional)</span></p>
-          <label class="upload-box small-upload">
-            <input type="file" accept="image/*" hidden>
-            Tap to add a photo of the problem
-          </label>
         </div>
       </div>
 
@@ -208,7 +197,7 @@
       <div class="modal-body">
         <span class="receipt-tick">&#10003;</span>
         <h2>Sent to the <span class="green-word">owner</span></h2>
-        <p class="muted">We asked the owner to confirm you did not take the room. When they agree, your ₦5,000 is added as credit. The room is released for others now.</p>
+        <p class="muted">We asked the owner to confirm you did not take the room. When they agree, your ₦5,000 is added as credit. The room stays held until the owner answers.</p>
       </div>
       <div class="modal-foot">
         <a href="dashboard.html#reservations" class="btn btn-dark">Back to my reservations</a>
@@ -252,7 +241,7 @@
       <div class="modal-body">
         <span class="receipt-tick">&#10003;</span>
         <h2>Case <span class="green-word">opened</span></h2>
-        <p class="muted">The admin will check your receipt, your chats and the owner's ID. Your ₦5,000 becomes credit, and it does not count toward your limit of 3.</p>
+        <p class="muted">The admin will check your receipt, your chats and the owner's ID. If the admin agrees, your ₦5,000 becomes credit, and it does not count toward your limit of 3.</p>
       </div>
       <div class="modal-foot">
         <button type="button" class="btn btn-dark" data-close="problem-sent-modal">Okay</button>
@@ -260,7 +249,25 @@
     </div>
   </div>
 
-  <!-- "I GOT MY KEY" MODAL -->
+  <!-- CANCEL MODAL -->
+  <div class="modal-overlay" id="cancel-modal">
+    <div class="modal-box sent-box">
+      <div class="modal-head">
+        <h2>Cancel this reservation?</h2>
+        <button type="button" class="modal-close" data-close="cancel-modal" aria-label="Close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="muted">Your &#8358;5,000 becomes credit and the room opens for other students. This counts as 1 of your 3 credits this semester.</p>
+        <p class="error-text" id="cancel-error" hidden></p>
+      </div>
+      <div class="modal-foot">
+        <button type="button" class="btn btn-white" data-close="cancel-modal">Keep it</button>
+        <button type="button" class="btn btn-red" id="confirm-cancel">Yes, cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- "RENT PAID" MODAL -->
   <div class="modal-overlay" id="key-modal">
     <div class="modal-box sent-box">
       <div class="modal-body">
@@ -269,18 +276,23 @@
         <p class="muted">Thank you for confirming. Keep your rent receipt safe, in case you need it later.</p>
       </div>
       <div class="modal-foot">
-        <button type="button" class="btn btn-dark" data-close="key-modal">Okay</button>
+        <a href="dashboard.html#reservations" class="btn btn-dark">Okay</a>
       </div>
     </div>
   </div>
 
   <script>
-    var dislikeModal = document.getElementById("dislike-modal");
-    var sentModal = document.getElementById("sent-modal");
-
-    // Open the "I did not like it" box
+    // Open the pop-ups
     document.getElementById("open-dislike").addEventListener("click", function () {
-      dislikeModal.classList.add("open");
+      document.getElementById("dislike-modal").classList.add("open");
+    });
+    document.getElementById("open-problem").addEventListener("click", function (event) {
+      event.preventDefault();
+      document.getElementById("problem-modal").classList.add("open");
+    });
+    document.getElementById("open-cancel").addEventListener("click", function (event) {
+      event.preventDefault();
+      document.getElementById("cancel-modal").classList.add("open");
     });
 
     // Every X and Cancel button closes the box it belongs to
@@ -297,46 +309,6 @@
           overlay.classList.remove("open");
         }
       });
-    });
-
-    // // Send: at least one reason and some words are needed
-    // var moreInfo = document.getElementById("more-info");
-    // var bannerError = document.getElementById("dislike-error");
-    // var moreError = document.getElementById("more-error");
-
-    // document.getElementById("send-dislike").addEventListener("click", function () {
-    //   var reasonChosen = document.querySelectorAll(".reason input:checked").length > 0;
-    //   var wordsWritten = moreInfo.value.trim() !== "";
-
-    //   bannerError.hidden = reasonChosen && wordsWritten;
-    //   moreError.hidden = wordsWritten;
-    //   moreInfo.classList.toggle("input-error", !wordsWritten);
-
-    //   // TEMPORARY: the real saving is added in the Supabase stage
-    //   if (reasonChosen && wordsWritten) {
-    //     dislikeModal.classList.remove("open");
-    //     sentModal.classList.add("open");
-    //   }
-    // });
-
-
-    var problemInfo = document.getElementById("problem-info");
-    var problemBanner = document.getElementById("problem-error");
-    var problemInfoError = document.getElementById("problem-info-error");
-
-    document.getElementById("send-problem").addEventListener("click", function () {
-      var problemChosen = document.querySelector('input[name="problem"]:checked') !== null;
-      var wordsWritten = problemInfo.value.trim() !== "";
-
-      problemBanner.hidden = problemChosen && wordsWritten;
-      problemInfoError.hidden = wordsWritten;
-      problemInfo.classList.toggle("input-error", !wordsWritten);
-
-      // TEMPORARY: the real saving is added in the Supabase stage
-      if (problemChosen && wordsWritten) {
-        document.getElementById("problem-modal").classList.remove("open");
-        document.getElementById("problem-sent-modal").classList.add("open");
-      }
     });
   </script>
 

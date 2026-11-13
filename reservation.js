@@ -27,7 +27,7 @@ async function showReservation() {
 
   // Opened from the navbar (no id in the address): show the latest reservation
   if (!reservationId) {
-    var latest = await db.from("reservations").select("id").order("created_at", { ascending: false }).limit(1);
+    var latest = await db.from("reservations").select("id").neq("status", "credited").order("created_at", { ascending: false }).limit(1);
     reservationId = latest.data && latest.data[0] ? latest.data[0].id : null;
   }
 
@@ -79,6 +79,10 @@ async function showReservation() {
   // The steps and the rent
   document.querySelector(".res-step .muted").textContent = "₦5,000 paid. Receipt ref " + item.reference + ".";
   document.querySelector(".rent-box strong").textContent = "₦" + Number(item.price).toLocaleString();
+  if (item.owner_account_number) {
+    document.getElementById("owner-account").textContent =
+      [item.owner_bank, item.owner_account_number, item.owner_account_name].filter(Boolean).join(", ");
+  }
 
   // The timer, or the status when the hold is over
   if (item.status === "held") {
@@ -91,6 +95,8 @@ async function showReservation() {
     document.querySelector(".timer strong").textContent = statusNames[item.status] || item.status;
     document.querySelector(".decision").hidden = true;
     document.querySelector(".decision-note").hidden = true;
+    document.querySelector(".res-links").hidden = true;
+    document.getElementById("pay-rent").hidden = true;
   }
 
   // How many credits the student has used this semester
@@ -135,6 +141,59 @@ document.getElementById("send-dislike").addEventListener("click", async function
 
   document.getElementById("dislike-modal").classList.remove("open");
   document.getElementById("sent-modal").classList.add("open");
+});
+
+// "Owner did not show up?": the admin looks at it
+document.getElementById("send-problem").addEventListener("click", async function () {
+  var chosen = document.querySelector('input[name="problem"]:checked');
+  var info = document.getElementById("problem-info");
+  var wordsWritten = info.value.trim() !== "";
+  var banner = document.getElementById("problem-error");
+
+  banner.hidden = chosen !== null && wordsWritten;
+  document.getElementById("problem-info-error").hidden = wordsWritten;
+  info.classList.toggle("input-error", !wordsWritten);
+  if (!chosen || !wordsWritten) {
+    return;
+  }
+
+  var result = await db.rpc("report_no_show", {
+    p_res: reservationId,
+    p_reason: chosen.parentNode.textContent.trim(),
+    p_note: info.value
+  });
+  if (result.error) {
+    banner.textContent = result.error.message;
+    banner.hidden = false;
+    return;
+  }
+  document.getElementById("problem-modal").classList.remove("open");
+  document.getElementById("problem-sent-modal").classList.add("open");
+});
+
+// Cancel the reservation: the fee becomes credit
+document.getElementById("confirm-cancel").addEventListener("click", async function () {
+  var error = document.getElementById("cancel-error");
+  var result = await db.rpc("cancel_reservation", { p_res: reservationId });
+  if (result.error) {
+    error.textContent = result.error.message;
+    error.hidden = false;
+    return;
+  }
+  window.location.href = "credit.html";
+});
+
+// "I have paid the rent"
+document.getElementById("rent-paid").addEventListener("click", async function () {
+  var error = document.getElementById("rent-error");
+  var result = await db.rpc("mark_rent_paid", { p_res: reservationId });
+  if (result.error) {
+    error.textContent = result.error.message;
+    error.hidden = false;
+    return;
+  }
+  error.hidden = true;
+  document.getElementById("key-modal").classList.add("open");
 });
 
 showReservation();

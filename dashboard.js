@@ -139,7 +139,7 @@ function makeReservation(item) {
 }
 
 async function loadReservations() {
-  var result = await db.from("reservations").select("*").order("created_at", { ascending: false });
+  var result = await db.from("reservations").select("*").neq("status", "credited").order("created_at", { ascending: false });
   var list = document.getElementById("reservation-list");
   var items = result.data || [];
   list.innerHTML = "";

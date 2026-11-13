@@ -48,7 +48,7 @@
       <div class="balance-card">
         <div>
           <p class="balance-label">Available credit</p>
-          <p class="balance-amount">₦5,000</p>
+          <p class="balance-amount" id="balance-amount">₦0</p>
         </div>
         <a href="dashboard.html#available" class="btn btn-white">Find a room to use it on</a>
       </div>
@@ -56,29 +56,12 @@
       <!-- HISTORY -->
       <div class="card history">
         <h3>History</h3>
-
-        <div class="history-row">
-          <span class="history-icon icon-plus">+</span>
-          <div class="history-info">
-            <strong>Credit added</strong>
-            <p class="muted">Self-contain, Back Gate. Your reasons were approved on 14 Oct.</p>
-          </div>
-          <strong class="amount-plus">+₦5,000</strong>
-        </div>
-
-        <div class="history-row">
-          <span class="history-icon icon-minus">&minus;</span>
-          <div class="history-info">
-            <strong>Credit used</strong>
-            <p class="muted">Applied to Single room, Ekim. Not used yet.</p>
-          </div>
-          <strong class="amount-minus">&minus;₦0</strong>
-        </div>
+        <div id="history-list"></div>
       </div>
 
       <!-- HOW IT WORKS -->
       <div class="credit-note">
-        <strong>How credit works.</strong> It never expires during the semester, it cannot be withdrawn as cash, and it is used when you tick &ldquo;Use my credit&rdquo; on the payment pop-up. You can get credit up to 3 times each semester, and it cannot be used on a room from the same owner.
+        <strong>How credit works.</strong> It never expires during the semester, it cannot be withdrawn as cash, and it is used when you tick &ldquo;Use my credit&rdquo; on the payment pop-up. You can get credit up to 3 times each semester.
       </div>
 
       <!-- SHOWN INSTEAD OF THE ABOVE WHEN THERE IS NO CREDIT (JavaScript will switch it on later) -->
@@ -126,6 +109,7 @@
   <script src="config.js"></script>
   <script>protectPage(["student"]);</script>
   <script src="credit-chip.js"></script>
+  <script src="credit.js"></script>
 
 </body>
 </html>
