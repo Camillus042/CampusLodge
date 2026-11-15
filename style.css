@@ -247,7 +247,7 @@ img {
 
 .fan-photo2 {
   position: absolute;
-  top: 10px;
+  top: 0px;
   width: 300px;
   height: 360px;
   margin-bottom: 0;
@@ -256,13 +256,13 @@ img {
   transition: 0.5s;
   border-radius: 10px;
   left: 0px;
-  transform: rotate(-8deg);
+  /* transform: rotate(-8deg); */
   z-index: 1;
 }
 
 .fan-photo3 {
   position: absolute;
-  top: 10px;
+  top: 0px;
   width: 300px;
   height: 360px;
   margin-bottom: 0;
@@ -271,13 +271,13 @@ img {
   transition: 0.5s;
   border-radius: 10px;
   right: 0px;
-  transform: rotate(8deg);
+  /* transform: rotate(8deg); */
   z-index: 1;
 }
 
 .fan-photo1 {
   position: absolute;
-  top: -10px;
+  top: -30px;
   width: 260px;
   height: 430px;
   margin-bottom: 0;

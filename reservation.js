@@ -80,8 +80,15 @@ async function showReservation() {
   document.querySelector(".res-step .muted").textContent = "₦5,000 paid. Receipt ref " + item.reference + ".";
   document.querySelector(".rent-box strong").textContent = "₦" + Number(item.price).toLocaleString();
   if (item.owner_account_number) {
-    document.getElementById("owner-account").textContent =
-      [item.owner_bank, item.owner_account_number, item.owner_account_name].filter(Boolean).join(", ");
+    // Bank name, account number and account name, one under the other
+    var accountBox = document.getElementById("owner-account");
+    accountBox.textContent = "";
+    [item.owner_bank, item.owner_account_number, item.owner_account_name].filter(Boolean).forEach(function (line, index) {
+      if (index > 0) {
+        accountBox.appendChild(document.createElement("br"));
+      }
+      accountBox.appendChild(document.createTextNode(line));
+    });
   }
 
   // The timer, or the status when the hold is over

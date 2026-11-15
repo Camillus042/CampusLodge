@@ -43,6 +43,11 @@ async function loadProfile() {
   document.getElementById("hostel-field").hidden = me.role !== "hostel";
   document.getElementById("payout").hidden = isStudent;
   document.getElementById("payout-link").hidden = isStudent;
+
+  // Owners and hostel managers get their own top bar
+  if (!isStudent) {
+    showListerNavbar();
+  }
 }
 
 // Personal details

@@ -16,24 +16,24 @@
   <!-- NAVBAR -->
   <header class="navbar">
     <div class="container navbar-inner">
-      <a href="dashboard.html" class="logo">
+      <a href="dashboard.html" class="logo" id="top-logo">
         <img src="images/logo.png" alt="CampusLodge logo">
         CampusLodge
       </a>
       <!-- Credit balance for phones (hidden on bigger screens) -->
-      <a href="credit.html" class="credit-chip phone-credit">&#8358;5,000 credit</a>
+      <a href="credit.html" class="credit-chip phone-credit student-only">&#8358;5,000 credit</a>
 
       <!-- Menu button for phones (hidden on bigger screens) -->
       <input type="checkbox" id="menu-toggle" class="menu-toggle">
       <label for="menu-toggle" class="menu-button">&#9776;</label>
 
       <nav class="navbar-links dashboard-nav">
-        <a href="dashboard.html" class="nav-link">Home</a>
-        <a href="dashboard.html#available" class="nav-link">Search</a>
-        <a href="dashboard.html#saved" class="nav-link">Saved</a>
-        <a href="dashboard.html#reservations" class="nav-link">Reservations</a>
-        <a href="notifications.html" class="nav-link nav-active">Notifications<span class="nav-dot"></span></a>
-        <a href="credit.html" class="credit-chip nav-credit">&#8358;5,000 credit</a>
+        <a href="dashboard.html" class="nav-link student-only">Home</a>
+        <a href="dashboard.html#available" class="nav-link student-only">Search</a>
+        <a href="dashboard.html#saved" class="nav-link student-only">Saved</a>
+        <a href="dashboard.html#reservations" class="nav-link student-only">Reservations</a>
+        <a href="notifications.html" class="nav-link nav-active student-only">Notifications<span class="nav-dot"></span></a>
+        <a href="credit.html" class="credit-chip nav-credit student-only">&#8358;5,000 credit</a>
         <a href="profile.html" class="nav-user"><span class="avatar">E</span>Ekaette</a>
         <a href="index.html" class="btn btn-white">Log out</a>
       </nav>
@@ -44,14 +44,14 @@
     <div class="note-head">
       <div>
         <h1 class="title"><span class="green-word">Notifications</span></h1>
-        <p class="big-text">Important things about your reservations and credit.</p>
+        <p class="big-text">Important things about your account.</p>
       </div>
       <button type="button" class="btn btn-white" id="mark-read">Mark all as read</button>
     </div>
 
     <div class="note-list" id="note-list"></div>
 
-    <p class="muted note-foot">Important things show up here, such as payment confirmed, credit added and when an owner needs to answer.</p>
+    <p class="muted note-foot">Important things show up here, such as payment confirmed, credit added, a student reserving your room, and listings approved or rejected.</p>
   </main>
 
   <!-- FOOTER -->
@@ -90,7 +90,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
   <script src="config.js"></script>
-  <script>protectPage(["student"]);</script>
+  <script>protectPage();</script>
   <script src="credit-chip.js"></script>
   <script src="notifications.js"></script>
 

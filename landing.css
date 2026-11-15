@@ -1,0 +1,458 @@
+/* ===== CampusLodge landing page redesign (only index.html uses this file) ===== */
+.lp {
+  --green: #16803C;
+  --orange: #FF6F31;
+  --dark-green: #0B431F;
+  --footer: #021007;
+  --light: #EAEAEA;
+  font-family: "Poppins", sans-serif;
+}
+
+.lp .big-text {
+  color: var(--green);
+}
+
+/* ===== Navbar ===== */
+.lp .navbar {
+  border-bottom: none;
+}
+.lp .navbar-inner {
+  height: 84px;
+}
+.lp .navbar-links {
+  gap: 14px;
+}
+.lp .nav-link {
+  margin-right: 6px;
+  font-weight: 500;
+}
+.lp .btn {
+  padding: 12px 22px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+}
+.lp .btn-dark {
+  background: #000;
+}
+.lp .btn-white {
+  border: none;
+}
+
+/* ===== Hero ===== */
+.lp-hero {
+  background: #0B1A14 url(images/hero-pc.jpg) center / cover no-repeat;
+  color: #fff;
+}
+.lp-hero-inner {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+  min-height: 600px;
+}
+.lp-hero-text {
+  align-self: center;
+  padding: 40px 0;
+}
+.lp-hero-text h1 {
+  max-width: 560px;
+  margin-bottom: 22px;
+  font-size: 70px;
+  line-height: 1.05;
+  font-weight: 600;
+}
+.lp-hero-text p {
+  max-width: 560px;
+  margin-bottom: 30px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.7;
+}
+.lp-hero .orange-word {
+  font-style: italic;
+  font-weight: 400;
+}
+.lp-hero-people {
+  display: block;
+  width: auto;
+  max-width: 55%;
+  height: 520px;
+  object-fit: contain;
+  object-position: bottom right;
+}
+.lp-hero .btn {
+  flex: none;
+  width: auto;
+  padding: 14px 32px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* ===== How to use ===== */
+.lp .how {
+  padding: 80px 0 110px;
+  background: var(--light);
+}
+.lp .how .title {
+  margin-bottom: 48px;
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.lp .step {
+  padding: 36px 28px;
+  border: none;
+  border-radius: 10px;
+}
+.lp .step-number {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 1.1;
+}
+.lp .step h3 {
+  font-size: 22px;
+  font-weight: 500;
+}
+.lp .step p {
+  color: var(--dark);
+  font-size: 15px;
+}
+
+/* ===== A look inside ===== */
+.lp .section {
+  padding-top: 90px;
+}
+.lp .section-head {
+  margin-bottom: 36px;
+}
+.lp .card1 {
+  background: #FFEDE5;
+}
+.lp .card2 {
+  background: #CFE5D7;
+}
+.lp .photo-box {
+  height: 210px;
+  border-radius: 14px;
+}
+.lp .badge {
+  padding: 5px 14px;
+  font-weight: 600;
+  color: #fff;
+}
+.lp .card-body h3 {
+  font-size: 18px;
+  font-weight: 600;
+}
+.lp .card-body .price {
+  font-size: 22px;
+  font-weight: 700;
+}
+.lp .card-body .price span {
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--dark);
+}
+.lp .card-link {
+  font-size: 14px;
+}
+
+/* ===== Say goodbye to stress ===== */
+.lp .goodbye {
+  margin-top: 90px;
+  padding: 50px 0;
+  background: var(--dark-green);
+  color: #fff;
+}
+.lp .goodbye .split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+.lp .goodbye .split > div {
+  min-width: 0;
+}
+.lp .goodbye .title {
+  font-size: 48px;
+  font-weight: 600;
+}
+.lp .goodbye .orange-word {
+  display: block;
+  font-style: italic;
+  font-weight: 400;
+}
+.lp .goodbye .big-text {
+  margin-top: 16px;
+  max-width: 560px;
+  font-size: 16px;
+  color: #fff;
+}
+.lp .badge-row p {
+  font-size: 14px;
+}
+.lp .split-photos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.lp .split-photos .photo-box {
+  height: 190px;
+  border-radius: 18px;
+}
+.lp .split-photos .why-big {
+  grid-row: span 2;
+  height: 394px;
+}
+
+/* ===== Old way vs new way ===== */
+.lp .compare {
+  gap: 14px;
+}
+.lp .compare-box {
+  padding: 36px 24px;
+  border-radius: 10px;
+}
+.lp .compare-old {
+  background: var(--orange);
+  color: #000;
+}
+.lp .compare-new {
+  background: var(--green);
+  color: #fff;
+}
+.lp .compare-box h3 {
+  font-size: 20px;
+  font-weight: 600;
+}
+.lp .compare-box li {
+  margin-bottom: 16px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* ===== For owners ===== */
+.lp .lister-box {
+  position: relative;
+  display: block;
+  margin-bottom: 120px;
+  padding: 48px 56px;
+  border: none;
+  border-radius: 16px;
+  background: var(--light);
+}
+.lp .lister-text {
+  max-width: 620px;
+}
+.lp .lister-box .title {
+  font-size: 40px;
+  font-weight: 600;
+}
+.lp .lister-box .orange-word {
+  font-style: italic;
+  font-weight: 400;
+}
+.lp .lister-box .big-text {
+  margin: 14px 0 26px;
+  font-size: 16px;
+}
+.lp .lister-buttons {
+  display: flex;
+  gap: 12px;
+}
+.lp .lister-hand {
+  position: absolute;
+  right: -30px;
+  bottom: -90px;
+  width: 420px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* ===== Footer ===== */
+.lp .footer {
+  background: var(--footer);
+}
+.lp .footer .logo {
+  font-size: 20px;
+}
+.lp .footer p {
+  font-size: 15px;
+}
+.lp .footer h4 {
+  font-size: 18px;
+  font-weight: 600;
+}
+.lp .copyright {
+  margin-top: 60px;
+  font-size: 14px;
+}
+
+.only-phone {
+  display: none;
+}
+
+/* ===== Phones and small tablets ===== */
+@media (max-width: 800px) {
+  .only-phone {
+    display: inline;
+  }
+  .lp .navbar-inner {
+    height: 68px;
+  }
+
+  /* Hero */
+  .lp-hero {
+    background-image: url(images/hero-phone.jpg);
+  }
+  .lp-hero-inner {
+    min-height: 490px;
+    justify-content: center;
+    text-align: center;
+  }
+  .lp-hero-text {
+    padding: 50px 0;
+  }
+  .lp-hero-text h1 {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 47px;
+  }
+  .lp-hero-text p {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 16px;
+  }
+  .lp-hero-people {
+    display: none;
+  }
+  .lp-hero .hero-buttons {
+    gap: 14px;
+  }
+  .lp-hero .btn {
+    flex: 1;
+    text-align: center;
+  }
+  .lp .compare-box ul {
+    padding-left: 18px;
+  }
+  .lp .section > .title {
+    font-size: 26px;
+  }
+
+  /* How to use */
+  .lp .how {
+    padding: 50px 0 60px;
+  }
+  .lp .how .title {
+    margin-bottom: 30px;
+    font-size: 28px;
+  }
+  .lp .step {
+    height: auto;
+    padding: 18px 20px 22px;
+  }
+  .lp .step-number {
+    font-size: 48px;
+  }
+  .lp .step h3 {
+    font-size: 20px;
+  }
+
+  /* Rooms: two across, all six showing */
+  .lp .section {
+    padding-top: 60px;
+  }
+  .lp .room-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .lp .card1,
+  .lp .card2 {
+    padding: 8px;
+  }
+  .lp .photo-box {
+    height: 100px;
+    border-radius: 10px;
+  }
+  .lp .photo-box .badge {
+    top: 8px;
+    left: 8px;
+    padding: 3px 10px;
+    font-size: 10px;
+  }
+  .lp .card-body {
+    padding: 12px 4px 4px;
+  }
+  .lp .card-body h3 {
+    font-size: 13px;
+  }
+  .lp .card-body .muted {
+    font-size: 11px;
+  }
+  .lp .card-body .price {
+    margin: 8px 0 4px;
+    font-size: 14px;
+  }
+  .lp .card-body .price span {
+    font-size: 13px;
+  }
+  .lp .card-link {
+    font-size: 11px;
+  }
+
+  /* Say goodbye */
+  .lp .goodbye {
+    margin-top: 60px;
+    padding: 50px 0;
+  }
+  .lp .goodbye .split {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .lp .goodbye .title {
+    font-size: 36px;
+  }
+  .lp .split-photos .photo-box {
+    height: 130px;
+  }
+  .lp .split-photos .why-big {
+    height: 274px;
+  }
+
+  /* Compare */
+  .lp .compare {
+    flex-direction: column;
+  }
+  .lp .compare-box {
+    min-width: 0;
+    padding: 28px 20px;
+  }
+
+  /* Owners */
+  .lp .lister-box {
+    margin-bottom: 70px;
+    padding: 32px 22px;
+  }
+  .lp .lister-box .title {
+    font-size: 28px;
+  }
+  .lp .lister-hand {
+    display: none;
+  }
+  .lp .lister-buttons {
+    flex-direction: row;
+  }
+  .lp .lister-buttons .btn {
+    flex: 1;
+    text-align: center;
+  }
+
+  /* Footer */
+  .lp .footer-columns {
+    justify-content: flex-start;
+    gap: 60px;
+  }
+}

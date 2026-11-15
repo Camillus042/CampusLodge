@@ -61,4 +61,12 @@ document.getElementById("mark-read").addEventListener("click", async function ()
   });
 });
 
+// Owners and hostel managers see their own top bar
+db.rpc("my_profile").then(function (result) {
+  var me = result.data && result.data[0];
+  if (me && me.role !== "student") {
+    showListerNavbar();
+  }
+});
+
 loadNotes();

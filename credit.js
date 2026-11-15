@@ -64,6 +64,9 @@ async function showCreditPage() {
     ));
   });
 
+  var used = await db.rpc("credits_this_semester");
+  document.getElementById("credits-used").textContent = "Credits used this semester: " + (used.data || 0) + " of 3";
+
   document.getElementById("balance-amount").textContent = "₦" + balance.toLocaleString();
   document.querySelector(".history").hidden = list.length === 0;
   document.querySelector(".no-credit").hidden = list.length !== 0;

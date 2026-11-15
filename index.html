@@ -5,10 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CampusLodge | Find your next home near AKSU</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="landing.css">
 </head>
-<body>
+<body class="lp">
 
   <!-- NAVBAR -->
   <header class="navbar">
@@ -23,44 +24,31 @@
 
       <nav class="navbar-links">
         <a href="login.html" class="nav-link">Login</a>
-        <a href="signup.html" class="btn btn-dark">Sign up</a>
+        <a href="signup.html" class="btn btn-dark">Sign Up</a>
         <a href="signup.html" class="btn btn-green">List a property</a>
       </nav>
     </div>
   </header>
 
   <!-- HERO -->
-    <video class="hero-video" autoplay muted loop poster="images/hero-poster.jpg" >
-        <source src="images/hero-clip.mp4" type="video/mp4">
-    </video>
-  <section class="container">
-    <div class="hero"> 
-      <div class="hero-inner">
-        <div class="hero-text">
-          <h1>Find your next <span class="orange-word">home</span> near campus.</h1>
-          <p>Hostels on campus and apartments around AKSU, listed by approved owners. Contact them directly and reserve your room online.</p>
-          <div class="hero-buttons">
-            <a href="signup.html" class="btn btn-green">Sign up</a>
-            <a href="login.html" class="btn btn-white">Login</a>
-          </div>
-        </div>
-
-        <!-- Two sample cards, tilted -->
-        <div class="hero-cards">
-          <div class="split-images">
-            <img class="fan-photo2" src="images/room-1.png" alt="">
-            <img class="fan-photo1" src="images/room-2.png" alt="">
-            <img class="fan-photo3" src="images/room-3.png" alt="">
-          </div>
+  <section class="lp-hero">
+    <div class="container lp-hero-inner">
+      <div class="lp-hero-text">
+        <h1>Find your next <span class="orange-word">home</span> near campus.</h1>
+        <p>Hostels on campus and apartments around AKSU, listed by approved owners. Contact them directly and reserve your room online.</p>
+        <div class="hero-buttons">
+          <a href="signup.html" class="btn btn-green">Sign Up</a>
+          <a href="login.html" class="btn btn-white">Login</a>
         </div>
       </div>
+      <img class="lp-hero-people" src="images/people.png" alt="Two students holding a key and a model house">
     </div>
   </section>
 
-  <!-- HOW IT WORKS -->
+  <!-- HOW TO USE -->
   <section class="how">
     <div class="container">
-      <h2 class="title center">How it works</h2>
+      <h2 class="title center">How to use CampusLodge</h2>
       <div class="grid-3">
         <div class="step">
           <span class="step-number">1</span>
@@ -90,91 +78,92 @@
       </div>
     </div>
 
-    <div class="grid-3">
+    <div class="grid-3 room-grid">
       <article class="card1">
         <div class="photo-box">
-          <img src="images/room-1.png" alt="Self-contain room in Back Gate">
+          <img src="images/lp-1.jpg" alt="Self-contain room in Back Gate">
           <span class="badge badge-trusted">Trusted</span>
         </div>
         <div class="card-body">
           <h3>Self-contain, Back Gate</h3>
           <p class="muted">5 mins to campus</p>
           <p class="price">₦230,000 <span>/ year</span></p>
-          <a href="signup.html" class="card-link">Sign up to view details &rarr;</a>
-        </div>
-      </article>
-
-      <article class="card1">
-        <div class="photo-box">
-          <img src="images/room-2.png" alt="Single room in Ekim">
-          <span class="badge badge-trusted">Trusted</span>
-        </div>
-        <div class="card-body">
-          <h3>Single room, Ekim</h3>
-          <p class="muted">10 mins to campus</p>
-          <p class="price">₦120,000 <span>/ year</span></p>
-          <a href="signup.html" class="card-link">Sign up to view details &rarr;</a>
+          <a href="signup.html" class="card-link">Signup to view details</a>
         </div>
       </article>
 
       <article class="card2">
         <div class="photo-box">
-          <img src="images/room-3.png" alt="Hostel room, Block B">
+          <img src="images/lp-2.jpg" alt="Block 2B hostel">
           <span class="badge badge-verified">Verified</span>
         </div>
         <div class="card-body">
-          <h3>Hostel room, Block B</h3>
+          <h3>Block 2B, flat 3 Hostel</h3>
           <p class="muted">On campus</p>
           <p class="price">₦250,000 <span>/ year</span></p>
-          <a href="signup.html" class="card-link">Sign up to view details &rarr;</a>
+          <a href="signup.html" class="card-link">Signup to view details</a>
         </div>
       </article>
 
-      <article class="card2 extra-card">
+      <article class="card1">
         <div class="photo-box">
-          <img src="images/room-4.png" alt="Hostel room, female hostel">
+          <img src="images/lp-5.jpg" alt="Single quarters in Ekim">
+          <span class="badge badge-trusted">Trusted</span>
+        </div>
+        <div class="card-body">
+          <h3>Single quarters, Ekim</h3>
+          <p class="muted">15 mins to campus</p>
+          <p class="price">₦120,000 <span>/ year</span></p>
+          <a href="signup.html" class="card-link">Signup to view details</a>
+        </div>
+      </article>
+
+      <article class="card2">
+        <div class="photo-box">
+          <img src="images/lp-1.jpg" alt="Female hostel, Block 2A">
           <span class="badge badge-verified">Verified</span>
         </div>
         <div class="card-body">
-          <h3>Hostel room, Female hostel</h3>
+          <h3>Female Hostel, Block 2A</h3>
           <p class="muted">On campus</p>
-          <p class="price">₦180,000 <span>/ year</span></p>
-          <a href="signup.html" class="card-link">Sign up to view details &rarr;</a>
+          <p class="price">₦250,000 <span>/ year</span></p>
+          <a href="signup.html" class="card-link">Signup to view details</a>
         </div>
       </article>
 
-      <article class="card1 extra-card">
+      <article class="card1">
         <div class="photo-box">
-          <img src="images/room-5.png" alt="Self-contain room in Ikot Enin">
+          <img src="images/lp-2.jpg" alt="Self-contain room in Ikot Enin">
           <span class="badge badge-trusted">Trusted</span>
         </div>
         <div class="card-body">
           <h3>Self-contain, Ikot Enin</h3>
-          <p class="muted">14 mins to campus</p>
-          <p class="price">₦310,000 <span>/ year</span></p>
-          <a href="signup.html" class="card-link">Sign up to view details &rarr;</a>
+          <p class="muted">10 mins to campus</p>
+          <p class="price">₦210,000 <span>/ year</span></p>
+          <a href="signup.html" class="card-link">Signup to view details</a>
         </div>
       </article>
 
-      <article class="card extra-card">
+      <article class="card1">
         <div class="photo-box">
-          <img src="images/room-6.png" alt="Shared room in Ikot Oyoro">
+          <img src="images/lp-5.jpg" alt="Shared room, Mansion">
+          <span class="badge badge-trusted">Trusted</span>
         </div>
         <div class="card-body">
-          <h3>Shared room, Ikot Oyoro</h3>
+          <h3>Shared room, Mansion</h3>
           <p class="muted">7 mins to campus</p>
-          <p class="price">₦100,000 <span>/ year</span></p>
-          <a href="signup.html" class="card-link">Sign up to view details &rarr;</a>
+          <p class="price">₦70,000 <span>/ year</span></p>
+          <a href="signup.html" class="card-link">Signup to view details</a>
         </div>
       </article>
     </div>
   </section>
 
   <!-- SAY GOODBYE TO STRESS -->
-  <section class="container section">
-    <div class="split">
+  <section class="goodbye">
+    <div class="container split">
       <div class="split-text">
-        <h2 class="title">Say goodbye to <span class="green-word">apartment-hunting</span> stress.</h2>
+        <h2 class="title">Say goodbye to <span class="orange-word">apartment-hunting</span> stress.</h2>
         <p class="big-text">No more walking street to street or chasing agents. Browse approved listings from your phone, see the price up front, and talk to the owner directly.</p>
         <div class="badge-row">
           <span class="badge badge-verified">Verified</span>
@@ -186,16 +175,16 @@
         </div>
       </div>
       <div class="split-photos">
-        <div class="photo-box why-big"><img src="images/why-1.svg" alt="Student hostel"></div>
-        <div class="photo-box"><img src="images/why-2.svg" alt="Apartment building"></div>
-        <div class="photo-box"><img src="images/why-3.svg" alt="Room interior"></div>
+        <div class="photo-box why-big"><img src="images/lp-4.jpg" alt="Apartment building"></div>
+        <div class="photo-box"><img src="images/lp-5.jpg" alt="Apartments with a paved compound"></div>
+        <div class="photo-box"><img src="images/lp-3.jpg" alt="Student hostel"></div>
       </div>
     </div>
   </section>
 
   <!-- OLD WAY VS CAMPUSLODGE WAY -->
   <section class="container section">
-    <h2 class="title center">The old way <span class="green-word">vs</span> the CampusLodge way</h2>
+    <h2 class="title center">The old way vs <br class="only-phone">The CampusLodge way</h2>
     <div class="compare">
       <div class="compare-box compare-old">
         <h3>The old way</h3>
@@ -221,14 +210,15 @@
   <!-- FOR OWNERS -->
   <section class="container section">
     <div class="lister-box">
-      <div>
-        <h2 class="title">Own a property or run a hostel near <span class="green-word">AKSU </span> ?</h2>
+      <div class="lister-text">
+        <h2 class="title">Own a property or you want to list a hostel in <span class="orange-word">AKSU</span>?</h2>
         <p class="big-text">Create a lister account, add your rooms with photos and a pin on the map, and reach students looking right now.</p>
+        <div class="lister-buttons">
+          <a href="signup.html" class="btn btn-green">List a property</a>
+          <a href="login.html" class="btn btn-white">Login</a>
+        </div>
       </div>
-      <div class="lister-buttons">
-        <a href="signup.html" class="btn btn-green">List a property</a>
-        <a href="login.html" class="btn btn-white">Login</a>
-      </div>
+      <img class="lister-hand" src="images/hand-house.png" alt="">
     </div>
   </section>
 
@@ -238,9 +228,9 @@
       <div class="footer-top">
         <div class="footer-about">
           <a href="index.html" class="logo">
-        <img src="images/logo.png" alt="CampusLodge logo">
-        CampusLodge
-      </a>
+            <img src="images/logo.png" alt="CampusLodge logo">
+            CampusLodge
+          </a>
           <p>Find conducive hostels and very affordable apartments around AKSU.</p>
         </div>
         <div class="footer-columns">
@@ -261,8 +251,7 @@
       </div>
 
       <div class="copyright-footer">
-        <!-- <p class="copyright">&copy; 2026 CampusLodge. All rights reserved.</p> -->
-        <p class="copyright">CampusLodge. An AKSU IT Defense Project by Egwuatu Camillus Onyedika</p>
+        <p class="copyright">CampusLodge. An AKSU SIWES Defense Project by Egwuatu Camillus Onyedika</p>
       </div>
     </div>
   </footer>
