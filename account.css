@@ -1,4 +1,4 @@
-/* ===== Notifications and Profile (also use dash.css and modal.css) ===== */
+/* Styling for Notifications and Profile */
 .account-page {
   padding-top: 44px;
   padding-bottom: 100px;
@@ -13,7 +13,7 @@
   margin-bottom: 32px;
 }
 
-/* ----- Notifications ----- */
+/* Notifications styles */
 .note-head {
   display: flex;
   align-items: flex-end;
@@ -98,7 +98,7 @@
   line-height: 1.6;
 }
 
-/* ----- Profile ----- */
+/* Profile styles */
 .profile-layout {
   display: flex;
   align-items: flex-start;
@@ -193,7 +193,7 @@
   color: #fff;
 }
 
-/* Delete pop-up */
+/* Delete pop-up and buttons */
 .delete-box {
   max-width: 440px;
 }
@@ -207,7 +207,7 @@
   cursor: not-allowed;
 }
 
-/* Desktop hover */
+/* Desktop hover transitions*/
 @media (min-width: 801px) {
   .profile-menu a:hover {
     background: var(--light);
@@ -215,7 +215,7 @@
   }
 }
 
-/* ===== PHONE ===== */
+/* RESPONSIVE STYLE FOR MOBILE*/
 @media (max-width: 800px) {
 
   .account-page {
@@ -232,7 +232,6 @@
     text-align: center;
   }
 
-  /* Notification: the time goes under the words */
   .note {
     flex-wrap: wrap;
     padding: 16px;
@@ -252,7 +251,6 @@
     gap: 20px;
   }
 
-  /* The list becomes a row of small buttons you can swipe */
   .profile-menu {
     position: static;
     width: 100%;

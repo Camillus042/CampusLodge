@@ -1,4 +1,3 @@
-/* ===== Colours ===== */
 :root {
   --green: #16803C;
   --orange: #ff6f31;
@@ -6,9 +5,9 @@
   --grey: #55615A;
   --line: #E3E8E2;
   --light: #F3F6F2;
+  --footer: #021007;
 }
 
-/* ===== Basics ===== */
 * {
   box-sizing: border-box;
 }
@@ -73,11 +72,11 @@ img {
 /* The coloured italic word in headings */
 .green-word, .orange-word {
   font-family: "poppins",;
-  font-style: italic;
-  font-weight: 400;
+  font-style: normal;
+  font-weight: 700;
 }
 .green-word {
-  color: var(--green);
+  color: var(--dark);
 }
 .orange-word {
   color: var(--orange);
@@ -480,7 +479,7 @@ img {
 /* ===== Footer ===== */
 .footer {
   padding: 70px 0 28px;
-  background: #0A140F;
+  background: var(--footer);
   color: #fff;
 }
 .footer-top {
@@ -713,7 +712,7 @@ img {
   justify-content: space-between;
   padding: 44px 56px;
   color: #fff;
-  background: url(images/room-6.png);
+  background: url(images/lp-5-login.jpg);
   background-size: cover;
 }
 

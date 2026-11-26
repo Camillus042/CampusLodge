@@ -1,4 +1,4 @@
-// ===== Add listing: save the room to Supabase =====
+// This Add listing, saves the room to Supabase
 
 var addForm = document.getElementById("add-form");
 var formError = document.getElementById("form-error");
@@ -20,6 +20,7 @@ function toNumber(text) {
 
 // Hostel managers list campus hostels, everyone else lists apartments.
 // The hostel part of the form (gender, beds) only shows for hostel managers.
+
 var isHostel = false;
 var hostelSection = document.getElementById("hostel-section");
 
